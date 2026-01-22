@@ -1,0 +1,234 @@
+---
+format:
+  revealjs:
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+resources:
+  - demo.pdf
+execute:
+  echo: true
+---
+
+
+# Ausführliches Beispiel
+
+```bash
+ls
+
+# Ausgabe
+Keine Datei zu sehen
+```
+
+. . .
+
+Hier sieht man das eigentliche Repository
+
+```bash
+ls -a 
+
+# Ausgabe
+.  ..  .git
+```
+
+
+
+----
+
+
+::: {.columns}
+
+::: {.column width="40%"}
+Inhalt des Propositories
+
+![](images/base.png)
+:::
+
+::: {.column width="60%"}
+Diese Struktur sehen wir uns später an!
+:::
+
+:::
+
+---
+
+BILD ORDNER-REPO-Stage
+
+::: {.notes}
+
+* Für den Laien nicht trennbar
+
+:::
+
+---
+
+## Aktueller Stand
+
+```bash
+git log --oneline 
+
+# Ausgabe 
+51d69fb (HEAD -> main) Erläuterung
+7f3c752 Datei anlegen
+```
+
+. . .
+
+Kontrolle
+
+```bash
+git status
+
+# Ausgabe 
+Auf Branch main
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+
+---
+
+Ändern der Dateien
+
+```bash
+# Eingabe (Lasse ich zukünftig weg)
+echo "Version 3" >> datei1.txt
+echo "Version 1" >> datei2.txt
+```
+
+Was erwarten wir?
+
+```bash 
+git status 
+```
+
+---
+
+Ausgabe
+
+```bash  {style="font-size:0.95em;"}
+Auf Branch main
+Änderungen, die nicht zum Commit vorgemerkt sind:  
+  (benutzen Sie "git add <Datei>...",  
+   um die Änderungen zum Commit vorzumerken)
+  
+  (benutzen Sie "git restore <Datei>...",  
+   um die Änderungen im Arbeitsverzeichnis zu verwerfen)  
+
+	geändert:       datei1.txt
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", 
+   um die Änderungen zum Commit vorzumerken)
+
+	datei2.txt
+
+keine Änderungen zum Commit vorgemerkt 
+(benutzen Sie "git add" und/oder "git commit -a")
+```
+
+---
+
+Versionieren:
+
+
+```bash {style="font-size:0.95em;"}
+# Dateien aufnehmen
+git add .
+
+# Status abzeigen
+git status 
+
+# Ausgabe  
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged <Datei>..."  
+   zum Entfernen aus der Staging-Area)  
+
+	geändert:       datei1.txt
+	neue Datei:     datei2.txt
+```
+
+
+---
+
+Nächste Änderung
+
+
+```bash {style="font-size:0.95em;"}
+echo "Weitere Zeile" >> datei1.txt  
+echo "Weitere Zeile" >> datei2.txt 
+git status 
+```
+
+
+---
+
+Ausgabe
+
+```bash {style="font-size:0.9em;"}
+# Ausgabe ( "----"" sind Anmerkungen )
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged <Datei>..."  
+   zum Entfernen aus der Staging-Area)
+	
+    geändert:       datei1.txt
+	neue Datei:     datei2.txt
+--------------- Ende Stage ------------
+--------------- Anfang Workdir --------
+Änderungen, die nicht zum Commit vorgemerkt sind:
+  (benutzen Sie "git add <Datei>...", um die Änderungen 
+   zum Commit vorzumerken)
+  
+  (benutzen Sie "git restore <Datei>...", 
+   um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+
+geändert:       datei1.txt
+geändert:       datei2.txt
+```
+
+---
+
+Commit 
+
+```bash
+git commit -m "nur Stage"
+git Status
+```
+
+. . .
+
+Ausgabe 
+
+```bash {style="font-size:0.9em;"}
+Auf Branch main
+Änderungen, die nicht zum Commit vorgemerkt sind:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+  (benutzen Sie "git restore <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+	geändert:       datei1.txt
+	geändert:       datei2.txt
+
+keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git commit -a")
+```
+
+
+---
+
+Nächster Schritt
+
+```bash {style="font-size:0.9em;"}
+# Zum Stage hinzufügen
+git add . 
+git status
+
+# Ausgabe
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git restore --staged <Datei>..." zum Entfernen aus der Staging-Area)
+	geändert:       datei1.txt
+	geändert:       datei2.txt
+```
+

@@ -1,0 +1,19 @@
+﻿
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}[]
+\draw[>=latex, <-, line width=0.3mm](1.5,1) -- ++(1,0);
+\draw[fill=red!20]
+(1,1) circle (0.5) node [  ]   { \tiny commit 1  }   ++ 
+(2,0) circle (0.5) node [  ]   { \tiny commit 2  }   ;
+
+\draw(1,0) node{\small afbc9c5};
+\draw(3,0) node{\small eaa6289  };
+
+\draw(3,2.5) node[rectangle, draw] {\small HEAD};
+\draw[>=latex, ->, line width=0.3mm](3, 2.27) -- ++ (0, -0.76);
+
+\draw(4.5,1) node[scale=1.2]{\small main};
+\end{scope}
+
+\end{tikzpicture}

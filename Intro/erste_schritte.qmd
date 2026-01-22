@@ -1,0 +1,282 @@
+---
+format:
+  revealjs:
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+resources:
+  - demo.pdf
+execute:
+  echo: true
+---
+
+
+# Erste Schritte
+
+---
+
+## Grundkonfiguration
+
+
+
+::: {.notes}
+* git bash öffnen
+* git bash in Ordner öffnen
+:::
+
+
+Überblick bekommen  
+
+```bash
+# Eingabe
+git config --list
+```
+
+Einstellungen vornehmen  
+
+```bash
+# eigene Phantasiedaten verwenden
+git config --global user.name="Susi Sandmann" 
+git config --global user.email="susi@sandmann.de"
+```
+
+---
+
+**Auswahl von git-Befehlen  **  
+
+|   |   |   |
+|---|---|---|
+| git status | git add     | git commit | 
+| git log    | git switch  | git branch |
+| git merge  | git clone   | git push   |
+| git pull   | git restore | git init   |
+
+---
+
+## Erstellen eines Ordners
+
+```bash
+mkdir versuch_1   # Ordner erstellen
+cd versuch_1      # in den Ordner wechseln
+```
+
+---
+
+## Weitere Befehle
+
+(siehe Merkblatt)  
+
+|Befehl|Kurzerklärung|
+|------|-------------|
+|`ls -la`| Auflisten aller Dateien im Ordner|
+|`cd`|Wechsel in den Home-Ordner|
+|`cd <ordner>`|Wechsel in *Ordner*|
+|`cd ..`|Wechsel eine Ebene nach oben|
+|`echo <Text>`|Ausgabe von Text|
+
+---
+
+## Weitere Befehle
+
+(siehe Merkblatt)  
+
+|Befehl              |Kurzerklärung|
+|--------------------|-------------|
+|`echo "txt" > <datei>`|Ausgabe in Datei (s.u.)|
+|`mkdir <ordner>`|Ordner erstellen|
+|`rm -rf <ordner>`|Ordner ohne Rückfrage löschen|
+|`cat <datei>`|Inhalt der Datei komplett ausgeben|
+|`less <datei>`|Langsame Ausgabe, Ende mit `q`|
+
+::: {.notes}
+* Repo = Arbeitsverzeichnis und mehr
+* Wie legen wir ein Repo an?
+* Geht mit der Maus, besser ist Kenntnis der Befehle
+* git Bash ist ein Mini-Linux ... wir brauchen Basisbefehle
+:::
+
+---
+
+# Übungen
+
+::: notes
+Minimale Linux-Übungen ... Übungsblatt
+:::
+
+
+---
+
+## Erstellen eines Repositories
+
+```bash
+git init            # Möglichkeit 1, bereits im Ordner
+git init versuch1  # mit Erstellen des Ordners
+```
+
+## Interpretation der Meldung
+
+```bash
+Hinweis: Als Name für den initialen Branch wurde 'master' benutzt. 
+Hinweis: Dieser Standard-Branchname kann sich ändern. Um den 
+... 
+Hinweis: Häufig gewählte Namen statt 'master' sind 'main', 'trunk'
+Hinweis: und 'development'. Der gerade erstellte Branch kann
+Hinweis: mit diesem Befehl umbenannt werden:
+Hinweis: 
+Hinweis: git branch -m <Name>
+Leeres Git-Repository in /tmp/versuch1/.git/ initialisiert
+```
+
+::: {.notes}
+* master nach main - Grund
+* Ordner .git letzte Zeile
+:::
+
+---
+
+## Umbenennen nach main
+
+```bash
+git branch -m main
+git status
+```
+
+**Ausgabe**  
+
+```bash
+Auf Branch main
+
+Noch keine Commits
+
+nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
+Sie "git add" zum Versionieren)
+```
+
+---
+
+# Workflow
+
+---
+
+## Ablauf
+
+* Datei(en) erstellen / bearbeiten
+* Datei(en) in die Versionierung aufnehmen
+* Meilenstein im Projektverlauf erstellen
+
+---
+
+## Erste Versionierung
+
+```bash
+echo "Version 1" > datei1.txt
+git add datei1.txt
+git commit -m "Erste Datei erstellt"
+```
+
+---
+
+## Zweite Versionierung
+
+```bash
+echo "Version 2" >> datei1.txt 
+git add datei1.txt 
+git commit -m "Erläuterung"
+```
+
+---
+
+## Überblick behalten
+
+```bash
+git log --oneline 
+
+# Ausgabe
+eaa6289 (HEAD -> main) Erläuterung
+afbc9c5 Erste Datei erstellt
+```
+![](images/two_commits.png)
+
+
+---
+
+## Details zu add
+
+
+```bash
+git add .  # Alle Dateien im aktuellen Ordner 
+           # und den Unterordnern
+
+git add --all  # (oder -A) fügt alle Dateien 
+               # ab der obersten Ebene des 
+               # Projekts hinzu  
+```
+
+---
+
+## Problem leere Ordner
+
+```bash
+mkdir git
+git init versuch_2
+
+.... Hinweis ...
+
+cd versuch_2/
+git branch -m main  
+echo "Test" > datei.txt
+git add .
+git commit -m "Datei anlegen"
+
+# Ausgabe 
+[main (Root-Commit) 7f3c752] Datei anlegen
+ 1 file changed, 1 insertion(+)
+ create mode 100644 datei.txt
+ ```
+
+ ---
+
+## Problem leere Ordner
+
+Wie es nicht geht   
+
+ ```bash
+ mkdir unterlagen
+ git status
+
+ # Ausgabe
+Auf Branch main
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+
+ ---
+
+## Problem leere Ordner
+
+Ordner mit versionieren  
+
+```bash
+touch unterlagen/.gitkeep
+git status
+
+# Ausgabe
+Auf Branch main
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", 
+   um die Änderungen zum Commit vorzumerken)
+	unterlagen/
+
+nichts zum Commit vorgemerkt, aber es gibt unversionierte Dateien
+(benutzen Sie "git add" zum Versionieren)
+```
+
+
+# ÜBUNGEN
+::: {.notes}
+Erstellen eines Miniprojektes, damit die 
+Schritte geläufig werden.
+:::

@@ -1,0 +1,52 @@
+---
+format:
+  revealjs:
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+resources:
+  - demo.pdf
+execute:
+  echo: true
+---
+
+## Installation des Clients
+
+**Windows**
+
+Download: [https://notepad-plus-plus.org](https://notepad-plus-plus.org/downloads/){target="_blank"}  
+Download: [https://gitforwindows.org/](https://gitforwindows.org/){target="_blank"}  
+
+---
+
+BILDERSTRECKE
+
+---
+
+## Installation auf Linux
+
+```bash
+sudo apt install git -y
+```
+
+---
+
+## Installation auf MacOS
+
+```bash
+brew install git
+```
+
+::: notes
+Hier kommt im Handout die Serverinstallation.
+Die machen wir später!
+:::
+
+[zurück](index.html#/was-und-wo/1/4)
+[Erste Schritte](erste_schritte.html)
+---
+

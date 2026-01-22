@@ -1,0 +1,57 @@
+---
+title: "Einführung in Git"
+author: "Wolfgang Höfer"
+date: "27.03.2026"
+format:
+  revealjs:
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+resources:
+  - demo.pdf
+execute:
+  echo: true
+---
+
+## Was erwartet uns?
+:::: {.columns}
+
+::: { .incremental .column width="60%"}
+* Installation/Konfiguration
+* Arbeiten als Single-Developer
+* Übungen
+* Git Interna
+:::
+
+::: { .incremental .column width="40%"}
+* Arbeiten im Team
+* Self-Hosting
+* CI/CD und TDD
+:::
+
+::::
+
+
+
+# Installation 
+## Was und wo?
+
+**Systeme**  
+
+::: { .incremental}
+* Windows als Client - geht  
+* Windows als Server - schlecht!  
+* Linux als Client und Server -  geht gut  
+* MacOS als Client - geht  
+* MacOS als Server - ?  
+:::
+
+Link: [Client-Installation](installation_1.html)
+
+
+
+

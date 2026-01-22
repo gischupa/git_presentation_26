@@ -1,0 +1,176 @@
+---
+format:
+  revealjs:
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: '[https://{{< meta prerelease-subdomain >}}quarto.org](https://{{< meta prerelease-subdomain >}}quarto.org)'
+resources:
+  - demo.pdf
+execute:
+  echo: true
+---
+
+
+# Git - Internals
+
+## Objekt-Typen
+
+* blob
+* tree 
+* commit
+* tag
+
+---
+
+## Details
+
+**Blob**  
+(= binary large object)
+
+. . .
+
+Reine Datei**daten**, kein Dateiname, keine Metadaten
+
+::: {.notes}
+Auf diese blobs werden von Git Dateinamen verlinkt und so 
+Doppelspeicherungen in der History vermieden.
+:::
+
+. . . 
+
+**Tree**  
+
+Eine Form von Verzeichnisstruktur, aber nur Dateinamen ohne Daten.  
+Immer komplett in der aktuellen Version gespeichert.
+
+---
+
+## Details
+
+**Commit**  
+
+Zeiger auf den jeweils aktuellen Tree + Metadaten
+
+. . . 
+
+**Tag**  
+
+Zusatzname für einen Commit
+
+---
+
+## Vorbereitung
+
+```bash
+cd ..  # Eine Ebene höher, raus aus dem Arbeitsordner
+git init demo 
+cd demo
+git branch -m main
+```
+
+---
+
+## Startzustand
+
+![](images/base.png)
+
+---
+
+## Daten erzeugen
+
+```bash
+echo "Etwas HTML" >> homepage.html
+git add homepage.html 
+```
+
+. . . 
+
+Der Tree zeigt noch keine Änderungen
+
+---
+
+Adden der Datei
+
+```bash
+git add .
+```
+
+. . . 
+
+![](imges/1_neue_datei.png)
+
+--- 
+
+Auch erkennbar durch  -- liest die Datei *index*
+
+```bash
+git ls-files --stage
+
+# Ausgabe
+100644 ce1332fcf1795166c3c5cd0216b5e7dc2dce7998 0	homepage.htm
+```
+
+. . . 
+
+Hash auch durch 
+
+```bash
+git hash-object homepage.htm 
+```
+
+--- 
+
+## Commit der Datei
+
+```bash
+git commit -m "homepage.html added"
+```
+
+. . . 
+
+![](bilder/git_internals/2_commit.png)
+
+
+--- 
+
+# Welches Object ist was?
+
+Verschiedene Befehle möglich:
+
+```bash 
+git log 
+```
+
+Zeigt den Hash des Commit
+
+. . .
+
+Typ ermitteln (-t) ... alternativ
+
+```bash 
+git cat-file  -t b7510dd34252cb3e42bfc82f043d9f42aa00b2f5
+```
+
+Ist ein Commit
+
+. . . 
+
+Commit-Details schön (=pretty) formaitert mit -p
+
+```bash
+git cat-file -p b7510dd34252cb3e42bfc82f043d9f42aa00b2f5
+```
+
+Zeigt den Tree und seinen Hash 
+
+. . . 
+
+
+```bash
+git cat-file -p 94eed25c4ef6cfa1384df66f28308c09dc9bf28d
+```
+
