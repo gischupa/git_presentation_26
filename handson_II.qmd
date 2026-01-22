@@ -109,3 +109,49 @@ git add story_1.md
 git commit -m "Erster Versuch"
 ```
 
+# Schritt 7 (Buch)
+Anfang von Story 2 geplant - Branch erstellen
+```bash
+git switch -c entwicklung_story_2
+``` 
+
+# Schritt 8: (Vorlage)
+* Step 3 auschecken
+```bash
+git checkout Step_3
+```
+* Kopieren Story 2 Teil 1
+```bash
+cp story_2.md ../buch/
+```
+
+# Schritt 9: (Buch)
+* Blick ins Buch
+```bash
+less story_2.md
+```
+* Schaffenskrise - which way?
+```bash
+git switch -c story2_idee_1
+git switch -c story2_idee_2
+```
+# Schritt 10
+Beginnen mit Idee 1
+
+* richtigen Branch wählen (BUCH)
+```bash
+git switch story2_idee_1
+```
+* Step 4 auschecken und kopieren (VORLAGE)
+```bash
+git checkout Step_3
+cp story_2.md ../buch
+```
+
+# Schritt 11 (BUCH)
+*Ansehen
+
+* Versionieren
+
+
+Schritt 10
