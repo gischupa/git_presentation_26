@@ -1,0 +1,111 @@
+---
+title: "HandsOn II"
+author: "Wolfgang Höfer"
+format: revealjs
+editor: visual
+jupyter: python3
+---
+
+## Hands On 2
+
+Erstellen / Nacherstellen zweier „Kurzgeschichten“.
+
+## Idee
+
+Repository I: Meine Vorlage
+
+Repository II: Eure Entwicklung
+
+## Vorsicht
+
+Der Entwicklungszyklus ist sehr eyakt ausgearbeitet, um bestimmte Situationen zu erzeugen. Also wirklich jeden Schritt *genau so* machen, wie beschrieben!
+
+# Schritt 1
+
+-   Erstellen eines Arbeitsordners, z.B. 
+    
+```{bash}
+mkdir hands_on_ii
+cd hands_on_ii
+```
+
+-   Clonen des Vorlagen-Repositories
+
+```bash
+git clone xxx.xxx.xxx
+```
+
+# Schritt 2
+
+Erstellen des Buch-Repositories
+
+```bash
+git init buch
+cd buch
+git branch -m main
+```
+
+# Schritt 3
+
+* Terminal 1: Vorlagen Repository
+```bash
+cd hands_on_ii
+cd vorlage
+```
+* Terminal 2: Buch Repository
+```bash
+cd hands_on_ii
+cd buch
+```
+
+# Schritt 4 (Vorlage-Ordner/Fenster)
+
+* Den ersten Entwicklungsstand (Projektbeginn) auschecken
+
+```bash
+git checkout Step_1
+```
+
+* Kopieren von `story_1.md` in den Buch-Ordner
+```bash
+cp story_1.md ../buch
+```
+
+# Aktueller Stand (Buch-Ordner/Fenster)
+Die erste Hälfte von Story 1 ist *geschrieben*.  
+Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:
+
+```bash
+less story_1.md
+
+# beenden mit 'q'
+```
+
+**Noch keine Aufnahme in die Versionsverwaltung!**
+
+# Schritt 5 (Vorlage-Ordner/Fenster)
+
+* Step 2 auschecken
+```bash
+git checkout Step_2
+```
+* Übertragen in den Buch Ordner
+```bash
+cp story_1.md ../buch
+```
+
+# Schritt 6 BUCH
+* Kurzer Blick in die Geschichte
+
+```bash
+less story_1.qmd
+
+# beenden mit 'q'
+```
+
+* Versionieren
+```bash
+git add story_1.md
+git commit -m "Erster Versuch"
+```
+
