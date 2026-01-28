@@ -21,19 +21,23 @@ Repository II: Eure Entwicklung
 Der Entwicklungszyklus ist sehr exakt ausgearbeitet, um bestimmte Situationen zu erzeugen. Also wirklich jeden Schritt *genau so* machen, wie beschrieben!
 
 ## Schritt 1
+::: {.fragment}
+Erstellen eines Arbeitsordners, z.B.
 
--   Erstellen eines Arbeitsordners, z.B.
 
 ```{bash}
 mkdir hands_on_ii
 cd hands_on_ii
 ```
+:::
 
--   Clonen des Vorlagen-Repositories
+::: {.fragment}
+Clonen des Vorlagen-Repositories
 
 ``` bash
 git clone xxx.xxx.xxx
 ```
+:::
 
 ## Schritt 2
 
@@ -47,38 +51,46 @@ git branch -m main
 
 ## Schritt 3
 
--   Terminal 1: Vorlagen Repository
+::: {.fragment}
+Terminal 1: Vorlagen Repository
 
 ``` bash
 cd hands_on_ii
 cd vorlage
 ```
+:::
 
--   Terminal 2: Buch Repository
+::: {.fragment}
+Terminal 2: Buch Repository
 
 ``` bash
 cd hands_on_ii
 cd buch
 ```
+:::
 
 ## Schritt 4 (Vorlage-Ordner/Fenster)
 
--   Den ersten Entwicklungsstand (Projektbeginn) auschecken
+::: {.fragment}
+Den ersten Entwicklungsstand (Projektbeginn) auschecken
 
 ``` bash
 git checkout Step_1
 ```
+:::
 
--   Kopieren von `story_1.md` in den Buch-Ordner
+::: {.fragment}
+Kopieren von `story_1.md` in den Buch-Ordner
 
 ``` bash
 cp story_1.md ../buch
 ```
+:::
 
 ## Aktueller Stand (Buch-Ordner/Fenster)
 
 Die erste Hälfte von Story 1 ist *geschrieben*.  
-Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:
+Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:  
 
 ``` bash
 less story_1.md
@@ -95,7 +107,8 @@ git status
 
 -------------
 
-Ausgabe:
+Ausgabe:  
+
 ```bash
 Auf Branch main
 Noch keine Commits
@@ -110,42 +123,51 @@ Zum Commit vorgemerkte Änderungen:
 
 ## Schritt 5 (Vorlage-Ordner/Fenster)
 
--   Step 2 auschecken
+::: {.fragment}
+Step 2 auschecken
 
 ``` bash
 git checkout Step_2
 ```
+:::
 
--   Übertragen in den Buch Ordner
+::: {.fragment}
+Übertragen in den Buch Ordner
 
 ``` bash
 cp story_1.md ../buch
 ```
+:::
 
-* Im Buch-Ordner die Aufnahme in Git
+::: {.fragment}
+Im Buch-Ordner die Aufnahme in Git
 ```bash
 git add .
 git status
 ```
-
+:::
 
 
 ## Schritt 6 BUCH
 
--   Kurzer Blick in die Geschichte
+Kurzer Blick in die Geschichte
 
+::: {.fragment}
 ``` bash
 less story_1.qmd
 
 # beenden mit 'q'
 ```
+:::
 
--   Versionieren
+::: {.fragment}
+Versionieren
 
 ``` bash
 git add story_1.md
 git commit -m "Guter Ansatz"
 ```
+:::
 
 ## Schritt 7 (Buch)
 
@@ -157,90 +179,113 @@ git switch -c entwicklung_story_2
 
 ## Schritt 8: (Vorlage)
 
--   Step 3 auschecken
+::: {.fragment}
+Step 3 auschecken
 
 ``` bash
 git checkout Step_3
 ```
+:::
 
--   Kopieren Story 2 Teil 1
+::: {.fragment}
+Kopieren Story 2 Teil 1
 
 ``` bash
 cp story_2.md ../buch/
 ```
+:::
 
 ## Schritt 9: (Buch)
 
--   Blick ins Buch
+Blick ins Buch
 
 ``` bash
 less story_2.md
 ```
 
--   Schaffenskrise - which way?
+::: {.fragment}
+Schaffenskrise - which way?
 
 ``` bash
 git switch -c story2_idee_1
 git switch -c story2_idee_2
 ```
+:::
 
 ## Schritt 10
 
 Beginnen mit Idee 1
 
--   richtigen Branch wählen (BUCH)
+::: {.fragment}
+Richtigen Branch wählen (BUCH)
 
 ``` bash
 git switch story2_idee_1
 ```
+:::
 
--   Step 4 auschecken und kopieren (VORLAGE)
+::: {.fragment}
+Step 4 auschecken und kopieren (VORLAGE)
 
 ``` bash
 git checkout Step_4
 cp story_2.md ../buch
 ```
+:::
 
 ## Schritt 11 (BUCH)
 
-* Ansehen
+::: {.fragment}
+Ansehen
 ```bash
 less story2.md
 ```
+:::
 
-* Versionieren
+::: {.fragment}
+Versionieren
 ```bash 
 git add story2.md
 git commit-m "Inhalt nach Idee1 fortgeführt"
 ```
+:::
 
-## Schritt 12 (Buch/vrlage)
+## Schritt 12 (Buch/Vorlage)
 Entwurf Idee 2
 
-* Wechsel in richtigen Branch
+::: {.fragment}
+Wechsel in richtigen Branch
 ```bash
 git switch story2_idee_2
 ```
-* Verfeinern von Idee 2
+:::
+
+::: {.fragment}
+Verfeinern von Idee 2
 ```bash
 cd  ../vorlage
 git checkout Step_5
 cp story2.md ../buch/
 cd ../buch
 ```
-* Versioinieren
+:::
+
+::: {.fragment}
+Versionieren
 ```bash
 git add story2.md
 git commit -m "Inhalt nach Idee 2 fortgeführt"
 ```
+:::
 
 ## Schritt 13
 Orientieren / Reparieren  
 
+**Nicht in einem Ideen-Branch ausführen**
+
 Tauschen „weiße“ durch „weise“ im Entwicklungszweig 
 
-**Nicht in einem Ideen-Branch**
-
+::: {.fragment}
 ```bash
 git switch entwicklung_story_2
 
@@ -251,6 +296,7 @@ cd ../buch
 git add story2.md
 git commit -m "typo 'weiße' korrigiert"
 ```
+:::
 
 ## Schritt 14
 Mergen von Branch *Idee 1* auf *Entwicklung*
