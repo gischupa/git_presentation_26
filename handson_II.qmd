@@ -41,6 +41,7 @@ git clone xxx.xxx.xxx
 
 ## Schritt 2
 
+::: {.fragment}
 Erstellen des Buch-Repositories
 
 ``` bash
@@ -48,6 +49,7 @@ git init buch
 cd buch
 git branch -m main
 ```
+:::
 
 ## Schritt 3
 
@@ -233,10 +235,11 @@ cp story_2.md ../buch
 ```
 :::
 
-## Schritt 11 (BUCH)
+## Schritt 11 
 
 ::: {.fragment}
-Ansehen
+Ansehen (BUCH)
+
 ```bash
 less story2.md
 ```
@@ -283,7 +286,7 @@ Orientieren / Reparieren
 
 **Nicht in einem Ideen-Branch ausführen**
 
-Tauschen „weiße“ durch „weise“ im Entwicklungszweig 
+Tauschen „weiße“ durch „weise“ im **Entwicklungszweig**
 
 ::: {.fragment}
 ```bash
@@ -301,5 +304,84 @@ git commit -m "typo 'weiße' korrigiert"
 ## Schritt 14
 Mergen von Branch *Idee 1* auf *Entwicklung*
 
-Auflösen des Konflikts
+::: {.fragment}
+Ein FF-Merge ist nicht möglich.  
+Ein Merge-Commit ist nötig.
+:::
 
+::: note 
+```bash
+git diff --color-words entwicklung_story_2..story2_idee_1
+```
+
+Vergleich der Commits: weiseweiße
+:::
+
+## Schritt 15
+::: {.fragment}
+Zum Testen ändern wir im Branch für Idee 1  
+die Schildkröte in Riesenschildkröte.
+:::
+
+::: {.fragment}
+```bash
+git switch story2_idee_1 
+sed -i -s/Schildkröte/Riesenschildkröte/g story2.md 
+```
+:::
+
+
+::: note 
+```bash
+git diff --color-words entwicklung_story_2..story2_idee_1
+```
+
+Was sehen wir? Keine Neuerung, da Änderung nicht im Commit!
+
+Wir brauchen `git diff`
+:::
+
+## Schritt 16
+
+Commiten der Version
+
+::: {.fragment}
+```bash
+git add story2.md
+git commit -m "Riesenschildkröte statt Schildkröte"
+```
+:::
+
+::: note 
+Wieder den Commit - Vergleich
+
+```bash
+git diff --color-words entwicklung_story_2..story2_idee_1
+```
+
+Entwicklung: WEISE schildkröte = Tier falsch  
+Ideen:       WEIße riesenschildkröte = weiße falsch
+:::
+
+
+## Schritt 17
+
+::: {.fragment}
+Merge von Idee auf Entwicklung
+:::
+
+::: {.fragment}
+git switch entwicklung_story_2
+git merge story2_idee_1
+:::
+
+-------
+
+Meldung  
+
+```bash
+automatischer Merge von story2.md
+KONFLIKT (Inhalt): Merge-Konflikt in story2.md
+Automatischer Merge fehlgeschlagen; beheben 
+Sie die Konflikte und committen Sie dann das Ergebnis.
+```
