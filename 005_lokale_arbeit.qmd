@@ -1,0 +1,164 @@
+---
+title: "Lokales Arbeiten"
+author: "Wolfgang Höfer"
+format: revealjs
+editor: visual
+jupyter: python3
+---
+
+# Lokales Arbeiten
+
+Konfiguration von Git
+
+::: fragment
+``` bash
+# Eingabe
+git config --list
+# Ausgabe
+user.email=
+user.name=
+...
+```
+:::
+
+::: fragment
+Variablen setzen
+:::
+
+::: fragment
+``` bash
+git config --global user.name="Susi Sandmann"
+git config --global user.email="susi@sandmann.de"
+```
+:::
+
+------------------------------------------------------------------------
+
+Repository anlegen
+
+::::::: columns
+:::: column
+::: fragment
+``` bash
+mkdir versuch_1
+cd versuch_1
+git init
+```
+:::
+::::
+
+:::: column
+::: fragment
+``` bash
+git init versuch_1
+cd versuch_1
+```
+:::
+::::
+:::::::
+
+::: fragment
+Umbenennen
+
+``` bash
+git branch -m main 
+```
+:::
+
+# Linux - Grundlagen
+
+Übungsblatt
+
+# Einfacher Workflow
+
+::: fragment
+Inhalt erstellen
+:::
+
+::: fragment
+``` bash
+echo "Version 1" > datei1.txt
+```
+:::
+
+::: fragment
+Datei aufnehmen
+:::
+
+::: fragment
+``` bash
+git add datei1.txt
+```
+:::
+
+::: fragment
+Datei versionieren
+:::
+
+::: fragment
+``` bash
+git commit -m "Erste Datei erstellt"
+```
+:::
+
+------------------------------------------------------------------------
+
+Erweitern der Datei
+
+::: fragment
+``` bash
+echo "Version 2" >> datei1.txt
+git add datei1.txt
+git commit -m "Erläuterung"
+```
+:::
+
+------------------------------------------------------------------------
+
+Was ist passiert?
+
+``` bash
+git log --oneline  # auch ohne --oneline probieren!
+# Ausgabe
+eaa6289 (HEAD -> main) Erläuterung
+afbc9c5 Erste Datei erstellt
+```
+
+------------------------------------------------------------------------
+
+Varianten von *add*
+
+::: fragment
+git add <dateiname> \# Einzelne Datei
+:::
+
+::: fragment
+git add . \# Alle Dateien im aktuellen Ordner \# und den Unterordnern
+:::
+
+::: fragment
+git add --all \# (oder -A) fügt alle Dateien \# ab der obersten Ebene des Projekts hinzu
+:::
+
+------------------------------------------------------------------------
+
+Ausschließen von Dateien
+
+Inhalt von *.gitignore* (evtl. verborgene Dateien anzeigen lassen)
+
+``` bash
+*.log
+*.tmp
+```
+
+------------------------------------------------------------------------
+
+Git arbeitet dateibasiert und ignoriert leere Ordner.
+
+Eine Datei *.gitkeep* erzwingt Ordnerversionierung
+
+``` bash
+touch .gitignore 
+```
+
+------------------------------------------------------------------------

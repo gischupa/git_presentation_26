@@ -1,0 +1,114 @@
+---
+title: "Fehler und ihre Behebung"
+author: "Wolfgang Höfer"
+format: revealjs
+editor: visual
+jupyter: python3
+---
+
+# Einfache Fehler
+
+* Datei aus Commit restaurieren
+* Komplett auf Commit zurücksetzen
+* Suchen gehen
+
+
+# Dateien restaurieren
+
+--- 
+
+Aus dem Stage
+
+```bash
+git restore <datei>
+```
+
+---
+
+Beispiel
+
+::: {.fragment}
+```bash
+git init beispiel_1
+cd beispiel_1
+git branch -m main
+```
+:::
+::: {.fragment}
+```bash
+# Inhalt ok
+echo "Alles gut" > datei.txt
+git add .
+git commit -m "alles gut"
+```
+:::
+
+::: {.fragment}
+```bash
+# Inhalt falsch
+echo "Mist gebaut" >> datei.txt
+```
+:::
+
+::: {.fragment}
+```bash
+###### Alte Version vom Stage wieder herstellen
+git restore datei.txt
+```
+:::
+
+---
+
+Nach einem voreiligen *add*
+
+::: {.fragment}
+```bash
+# alles funktioniert
+echo "Alles gut" > datei.txt
+git add .
+git commit -m "alles gut"
+
+# Hier kommt der Fehler
+echo "Mist gebaut" >> datei.txt
+git add . # DAS ist anders!
+```
+:::
+
+::: {.fragment}
+Mit dem Hash vom letzten Commit:
+
+```bash
+git restore --source=<HASH> datei.txt
+```
+:::
+
+---
+Problem und Lösung
+
+::: {.fragment}
+Das geht mit jedem Commit, überschreibt 
+aber immer die aktuelle Datei!
+:::
+
+:::{.fragment}
+Lösung
+
+```bash
+git show <HASH>:datei.txt > datei_alt.txt
+```
+:::
+
+## Größere Fehler
+
+Aktuellen Stand komplett verwerfen -- Varianten
+
+---
+
+Hard 
+
+```bash
+
+```
+
+
+
