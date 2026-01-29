@@ -1,0 +1,240 @@
+---
+title: "HandsOn I"
+author: "Wolfgang Höfer"
+format: revealjs
+editor: visual
+jupyter: python3
+---
+
+## Hands On 2
+
+::: fragment
+Anlegen des Repos `versuch_1`
+:::
+
+::: columns
+::: column
+::: fragment
+``` bash
+mkdir versuch_1
+cd versuch_1
+git init
+git branch -m main
+```
+:::
+:::
+
+::: column
+::: fragment
+``` bash
+git init versuch_1
+cd versuch_1
+git branch -m main
+```
+:::
+:::
+:::
+
+---
+
+Kontrolle  
+
+```bash
+git status 
+
+# Ausgabe 
+Auf Branch main
+Noch keine Commits
+nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
+Sie "git add" zum Versionieren)
+```
+
+Inhalte erstellen
+```bash
+echo "Version 1" > datei1.txt
+git add datei1.txt
+git commit -m "Erste Datei erstellt"
+echo "Version 2" >> datei1.txt
+git add datei1.txt
+git commit -m "Erläuterung"
+```
+
+---
+
+Check  
+
+```bash
+git log
+
+# Ausgabe
+commit 6db4f3383512a7f3aaaf3b050334d7fd2c474688 (HEAD -> main)
+Author: Wolfgang <hoeferwolf@t-online.de>
+Date:
+Thu Nov 13 10:46:50 2025 +0100
+Erläuterung
+commit 430149c83906005ae2c53c8eaf9ce230e3456ad0
+Author: Wolfgang <hoeferwolf@t-online.de>
+Date:
+Thu Nov 13 10:46:50 2025 +0100
+Erste Datei erstellt
+```
+
+---
+
+Kontrolle  
+
+```bash
+# Eingabe
+git status
+# Ausgabe (Zeilenumbrüche geändert)
+Auf Branch main
+nichts zu committen,
+Arbeitsverzeichnis unverändert
+```
+
+## Weiterer Inhalt
+
+```bash
+# Eingabe (Lasse ich zukünftig weg)
+echo "Version 3" >> datei1.txt
+echo "Version 1" >> datei2.txt
+
+# Status anzeigen lassen
+git status
+```
+
+---
+
+```bash
+# Ausgabe
+Auf Branch main
+Änderungen, die nicht zum Commit vorgemerkt sind:
+(benutzen Sie "git add <Datei>...",
+um die Änderungen zum Commit vorzumerken)
+(benutzen Sie "git restore <Datei>...",
+um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+geändert: datei1.txt
+Unversionierte Dateien:
+(benutzen Sie "git add <Datei>...",
+um die Änderungen zum Commit vorzumerken)
+      datei2.txt
+keine Änderungen zum Commit vorgemerkt
+(benutzen Sie "git add" und/oder "git commit -a")
+```
+
+---
+Versionieren
+
+```bash
+# Dateien aufnehmen
+git add .
+
+# Status abzeigen
+git status
+
+# Ausgabe
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+(benutzen Sie "git restore --staged <Datei>..."
+zum Entfernen aus der Staging-Area)
+geändert:
+neue Datei:
+datei1.txt
+datei2.txt
+```
+
+---
+
+Weitere Zeilen 
+
+```bash
+echo "Weitere Zeile" >> datei1.txt
+echo "Weitere Zeile" >> datei2.txt
+git status
+```
+
+---
+
+Ausgabe
+
+```bash
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+(benutzen Sie "git restore --staged <Datei>..."
+zum Entfernen aus der Staging-Area)
+geändert:
+neue Datei:
+datei1.txt
+datei2.txt
+--------------- Ende Stage ------------
+```
+
+---
+
+Ausgabe - cont
+
+```bash
+--------------- Anfang Workdir --------
+Änderungen, die nicht zum Commit vorgemerkt sind:
+(benutzen Sie "git add <Datei>...", um die Änderungen
+zum Commit vorzumerken)
+(benutzen Sie "git restore <Datei>...",
+um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+geändert:
+geändert:
+datei1.txt
+datei2.txt
+```
+
+<!-- Ende Seite 18 + block 19 -->
+
+---
+
+Commit des aktuellen Stands
+
+```bash
+git commit -m "nur Stage"
+```
+
+------------
+
+Aktueller Status
+
+```bash
+git Status
+
+# Ausgabe
+Auf Branch main
+Änderungen, die nicht zum Commit vorgemerkt sind:
+(benutzen Sie "git add <Datei>...", um die Änderungen zum Commit
+vorzumerken)
+(benutzen Sie "git restore <Datei>...", um die Änderungen im
+Arbeitsverzeichnis zu verwerfen)
+geändert:
+datei1.txt
+geändert:
+datei2.txt
+keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add"
+und/oder "git commit -a")
+```
+<!--Seite 19-->
+
+----
+
+Jetzt der Rest ...
+
+```bash
+# Zum Stage hinzufügen
+git add .
+git status
+
+# Ausgabe
+Auf Branch main
+Zum Commit vorgemerkte Änderungen:
+(benutzen Sie "git restore --staged <Datei>..." zum Entfernen aus
+der Staging-Area)
+geändert:
+datei1.txt
+geändert:
+datei2.txt
+```

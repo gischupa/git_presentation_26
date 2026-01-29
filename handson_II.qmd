@@ -21,17 +21,17 @@ Repository II: Eure Entwicklung
 Der Entwicklungszyklus ist sehr exakt ausgearbeitet, um bestimmte Situationen zu erzeugen. Also wirklich jeden Schritt *genau so* machen, wie beschrieben!
 
 ## Schritt 1
-::: {.fragment}
+
+::: fragment
 Erstellen eines Arbeitsordners, z.B.
 
-
-```{bash}
+``` bash
 mkdir hands_on_ii
 cd hands_on_ii
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Clonen des Vorlagen-Repositories
 
 ``` bash
@@ -41,7 +41,7 @@ git clone xxx.xxx.xxx
 
 ## Schritt 2
 
-::: {.fragment}
+::: fragment
 Erstellen des Buch-Repositories
 
 ``` bash
@@ -53,7 +53,7 @@ git branch -m main
 
 ## Schritt 3
 
-::: {.fragment}
+::: fragment
 Terminal 1: Vorlagen Repository
 
 ``` bash
@@ -62,7 +62,7 @@ cd vorlage
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Terminal 2: Buch Repository
 
 ``` bash
@@ -73,7 +73,7 @@ cd buch
 
 ## Schritt 4 (Vorlage-Ordner/Fenster)
 
-::: {.fragment}
+::: fragment
 Den ersten Entwicklungsstand (Projektbeginn) auschecken
 
 ``` bash
@@ -81,7 +81,7 @@ git checkout Step_1
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Kopieren von `story_1.md` in den Buch-Ordner
 
 ``` bash
@@ -91,8 +91,8 @@ cp story_1.md ../buch
 
 ## Aktueller Stand (Buch-Ordner/Fenster)
 
-Die erste Hälfte von Story 1 ist *geschrieben*.  
-Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:  
+Die erste Hälfte von Story 1 ist *geschrieben*.\
+Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:
 
 ``` bash
 less story_1.md
@@ -103,15 +103,16 @@ less story_1.md
 ### Aufnehmen
 
 Status prüfen
-```bash
+
+``` bash
 git status
 ```
 
--------------
+------------------------------------------------------------------------
 
-Ausgabe:  
+Ausgabe:
 
-```bash
+``` bash
 Auf Branch main
 Noch keine Commits
 Zum Commit vorgemerkte Änderungen:
@@ -125,7 +126,7 @@ Zum Commit vorgemerkte Änderungen:
 
 ## Schritt 5 (Vorlage-Ordner/Fenster)
 
-::: {.fragment}
+::: fragment
 Step 2 auschecken
 
 ``` bash
@@ -133,7 +134,7 @@ git checkout Step_2
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Übertragen in den Buch Ordner
 
 ``` bash
@@ -141,20 +142,20 @@ cp story_1.md ../buch
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Im Buch-Ordner die Aufnahme in Git
-```bash
+
+``` bash
 git add .
 git status
 ```
 :::
 
-
 ## Schritt 6 BUCH
 
 Kurzer Blick in die Geschichte
 
-::: {.fragment}
+::: fragment
 ``` bash
 less story_1.qmd
 
@@ -162,7 +163,7 @@ less story_1.qmd
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Versionieren
 
 ``` bash
@@ -181,7 +182,7 @@ git switch -c entwicklung_story_2
 
 ## Schritt 8: (Vorlage)
 
-::: {.fragment}
+::: fragment
 Step 3 auschecken
 
 ``` bash
@@ -189,7 +190,7 @@ git checkout Step_3
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Kopieren Story 2 Teil 1
 
 ``` bash
@@ -205,7 +206,7 @@ Blick ins Buch
 less story_2.md
 ```
 
-::: {.fragment}
+::: fragment
 Schaffenskrise - which way?
 
 ``` bash
@@ -218,7 +219,7 @@ git switch -c story2_idee_2
 
 Beginnen mit Idee 1
 
-::: {.fragment}
+::: fragment
 Richtigen Branch wählen (BUCH)
 
 ``` bash
@@ -226,7 +227,7 @@ git switch story2_idee_1
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Step 4 auschecken und kopieren (VORLAGE)
 
 ``` bash
@@ -235,37 +236,41 @@ cp story_2.md ../buch
 ```
 :::
 
-## Schritt 11 
+## Schritt 11
 
-::: {.fragment}
+::: fragment
 Ansehen (BUCH)
 
-```bash
+``` bash
 less story2.md
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Versionieren
-```bash 
+
+``` bash
 git add story2.md
 git commit-m "Inhalt nach Idee1 fortgeführt"
 ```
 :::
 
 ## Schritt 12 (Buch/Vorlage)
+
 Entwurf Idee 2
 
-::: {.fragment}
+::: fragment
 Wechsel in richtigen Branch
-```bash
+
+``` bash
 git switch story2_idee_2
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Verfeinern von Idee 2
-```bash
+
+``` bash
 cd  ../vorlage
 git checkout Step_5
 cp story2.md ../buch/
@@ -273,23 +278,25 @@ cd ../buch
 ```
 :::
 
-::: {.fragment}
+::: fragment
 Versionieren
-```bash
+
+``` bash
 git add story2.md
 git commit -m "Inhalt nach Idee 2 fortgeführt"
 ```
 :::
 
 ## Schritt 13
-Orientieren / Reparieren  
+
+Orientieren / Reparieren
 
 **Nicht in einem Ideen-Branch ausführen**
 
 Tauschen „weiße“ durch „weise“ im **Entwicklungszweig**
 
-::: {.fragment}
-```bash
+::: fragment
+``` bash
 git switch entwicklung_story_2
 
 cd ../vorlage
@@ -302,15 +309,16 @@ git commit -m "typo 'weiße' korrigiert"
 :::
 
 ## Schritt 14
+
 Mergen von Branch *Idee 1* auf *Entwicklung*
 
-::: {.fragment}
-Ein FF-Merge ist nicht möglich.  
+::: fragment
+Ein FF-Merge ist nicht möglich.\
 Ein Merge-Commit ist nötig.
 :::
 
-::: note 
-```bash
+::: note
+``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 ```
 
@@ -318,21 +326,21 @@ Vergleich der Commits: weiseweiße
 :::
 
 ## Schritt 15
-::: {.fragment}
-Zum Testen ändern wir im Branch für Idee 1  
+
+::: fragment
+Zum Testen ändern wir im Branch für Idee 1\
 die Schildkröte in Riesenschildkröte.
 :::
 
-::: {.fragment}
-```bash
+::: fragment
+``` bash
 git switch story2_idee_1 
 sed -i -s/Schildkröte/Riesenschildkröte/g story2.md 
 ```
 :::
 
-
-::: note 
-```bash
+::: note
+``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 ```
 
@@ -345,41 +353,39 @@ Wir brauchen `git diff`
 
 Commiten der Version
 
-::: {.fragment}
-```bash
+::: fragment
+``` bash
 git add story2.md
 git commit -m "Riesenschildkröte statt Schildkröte"
 ```
 :::
 
-::: note 
+::: note
 Wieder den Commit - Vergleich
 
-```bash
+``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 ```
 
-Entwicklung: WEISE schildkröte = Tier falsch  
-Ideen:       WEIße riesenschildkröte = weiße falsch
+Entwicklung: WEISE schildkröte = Tier falsch\
+Ideen: WEIße riesenschildkröte = weiße falsch
 :::
-
 
 ## Schritt 17
 
-::: {.fragment}
+::: fragment
 Merge von Idee auf Entwicklung
 :::
 
-::: {.fragment}
-git switch entwicklung_story_2
-git merge story2_idee_1
+::: fragment
+git switch entwicklung_story_2 git merge story2_idee_1
 :::
 
--------
+------------------------------------------------------------------------
 
-Meldung  
+Meldung
 
-```bash
+``` bash
 automatischer Merge von story2.md
 KONFLIKT (Inhalt): Merge-Konflikt in story2.md
 Automatischer Merge fehlgeschlagen; beheben 

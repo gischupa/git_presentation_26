@@ -1,0 +1,209 @@
+---
+title: "Git Internals"
+author: "Wolfgang Höfer"
+format: revealjs
+editor: visual
+jupyter: python3
+---
+
+# Was passiert in Git?
+
+Vorbereitungen  
+
+::: columns
+::: column
+::: fragment
+``` bash
+mkdir demo
+cd demo
+git init
+git branch -m main
+```
+:::
+:::
+
+::: column
+::: fragment
+``` bash
+git init demo
+cd demo
+git branch -m main
+```
+:::
+:::
+:::
+
+## Git - Ordner
+
+Darstellen der Ordnerstruktur durch *tree*
+erfordert Nachinstallation!
+
+---
+
+* [http://gnuwin32.sourceforge.net/packages/tree.htm](http://gnuwin32.sourceforge.net/packages/tree.htm)
+* Zip herunterladen
+* Ordner *c:\benutzer\name\bin* erstellen
+* Zip dort entpacken
+
+--- 
+
+Git Ordner inspizieren
+
+```bash
+tree .git 
+```
+
+---
+
+TODO: BILD? Oder Bash?
+
+---
+
+Inhalt hinzufügen
+
+::: {.fragment}
+```bash
+echo "Etwas HTML" >> homepage.html
+git add homepage.html
+```
+:::
+
+::: {.fragment}
+und wieder *tree .git*
+:::
+
+---
+
+*index* = Stage  
+Nicht direkt lesbar
+
+::: {.fragment}
+```bash
+git ls-files --stage 
+```
+:::
+
+
+::: {.fragment}
+```bash
+100644 ce1332fcf1795166c3c5cd0216b5e7dc2dce7998 0 homepage.htm
+```
+:::
+
+
+::: notes
+Wir entfernen uns von den Std Befehlen!
+
+"ce" bildet einen Ordner im Tree  
+Dateityp 100664  
+Status 0  
+:::
+
+---
+
+Direktanzeige des Hashs der Datei:
+
+::: {.fragment}
+git hash-object homepage.htm
+:::
+
+---
+
+Commiten der Hompage
+
+```bash
+git commit -m "homepage.html added"
+```
+
+---
+
+Wieder `tree .git` 
+
+TODO BILD ODER BASH
+
+::: notes
+Einige Änderungen  
+
+Objects und logs
+:::
+
+---
+
+Objects
+
+BILD VOM COMMIT-HASH im Ordner Objects
+
+```bash
+git log 
+
+# Ausgabe 
+commit b7510dd34252cb3e42bfc82f043d9f42aa00b2f5 (HEAD -> main)
+Author: wolfgang <hoeferwolf@t-online.de>
+Date: Sun Jan 26 20:20:10 2025 +0100
+      homepage.html added
+```
+
+--- 
+
+Überprüfen des Verdachts ... nur Bestätigung
+
+```bash
+git cat-file -t b7510dd342...
+```
+
+---
+
+Mehr Details
+
+```bash
+# Eingabe
+git cat-file -p b7510dd34252cb3e42bfc82f043d9f42aa00b2f5
+
+# Ausgabe
+tree 94eed25c4ef6cfa1384df66f28308c09dc9bf28d  << wichtig!
+author wolfgang <hoeferwolf@t-online.de> 1737919210 +0100
+committer wolfgang <hoeferwolf@t-online.de> 1737919210 +0100
+homepage.html added
+```
+
+Der Commit verweist auf einen TREE (hier nur eine Datei!)
+
+---
+
+```bash
+# Eingabe
+git cat-file -p 94eed25c4ef6cfa1384df66f28308c09dc9bf28d
+
+# Ausgabe - normal deutlich länger!
+100644 blob ce1332fcf1795166c3c5cd0216b5e7dc2dce7998 homepage.html
+```
+
+Im TREE gibt es einen BLOB 
+
+---
+
+Der Blob enthält:
+
+```bash
+git cat-file -p ce1332fcf1795166c3c5cd0216b5e7dc2dce7998
+
+# Ausgabe
+Etwas HTML
+```
+--- 
+
+Zusammenfassung
+
+* Der Commit zeigt auf einen Tree
+* Im Tree stehen Dateinamen mit den Hashes  
+  Das sind nur die Namen und nicht die Dateien!
+* Der Hash gehört zu einem blob (oder tree),  
+  also den reinen Rohdaten der Datei ohne Dateinamen
+
+::: notes
+Jeder Commit ist ein Tree  
+
+Das spart Speicher, mehrer Trees (=Commits)
+auf unveränderte Rohdaten verweisen können.
+:::
+
