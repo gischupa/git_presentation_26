@@ -1,0 +1,202 @@
+---
+title: "Merge I"
+author: "Wolfgang Höfer"
+format: 
+  revealjs:
+    width: 1300
+    margin: 0.05
+    auto-stretch: false
+jupyter: python3
+---
+
+# Branches
+
+## Erstellen
+
+```bash
+git switch -c spielplatz
+```
+
+Erstelle einen Zeiger *spielplatz*   
+auf den aktuellen Commit.
+
+---
+
+Vorbereitung
+
+::: columns 
+::: {.column width="50%"}
+::: {.fragment }
+```bash 
+cd /tmp
+rm -rf lab
+
+git init branch_lab
+cd branch_lab 
+git branch -m main
+
+echo "Zeile 1" > datei.txt 
+git add .
+git commit -m "Datei 1 erstellt"
+
+git log --oneline
+```
+:::
+:::
+
+::: {.column width="50%"} 
+::: {.fragment}
+```{.bash .smaller}
+0e468ef (HEAD -> main) Datei 1 erstellt
+```
+:::
+:::
+:::
+
+---
+
+Ein Blick in Git
+
+::: columns
+::: column 
+::: {.fragment}
+![](bilder/branch/mainbranch.png)
+:::
+:::
+
+::: column 
+::: {.fragment}
+```bash
+cat .git/refs/heads/main
+
+# Ausgabe
+70eaef36a87aeb8a1e2eba93577a01329aff34d8
+```
+:::
+
+::: {.fragment}
+Inhalt von HEAD bleibt,   
+Inhalt von *main* ändert sich.
+:::
+:::
+
+:::
+
+---
+
+Mehr Inhalt
+
+::: columns
+::: column 
+::: {.fragment}
+```bash
+echo "Zeile 2" >> datei.txt 
+git add . && git commit -m "Zeile 2"
+
+git log --oneline  # HEAD->main
+
+echo "Zeile 3" >> datei.txt 
+git add . && git commit -m "Zeile 3"
+
+git log --oneline  # HEAD->main
+```
+:::
+:::
+
+::: column 
+::: {.fragment}
+```bash
+c921d8f (HEAD -> main) Zeile 2
+0e468ef Datei 1 erstellt
+
+ec1375f (HEAD -> main) Zeile 3
+c921d8f Zeile 2
+0e468ef Datei 1 erstellt
+```
+:::
+:::
+
+:::
+
+
+
+::: notes
+Der Zeiger rutscht von Commit zu Commit
+:::
+
+---
+
+Branch *spielplatz* erstellen
+
+```bash
+git switch -c spielplatz
+git log --oneline  # HEAD -> spielplatz, main
+```
+
+Der Zeiger wechselt die Position auf *spielplatz*
+
+---
+
+Zurück zu Branch *main*
+
+```bash
+git switch main
+git log --oneline  # HEAD -> main, spielplatz
+```
+
+Der Zeiger wechselt die Position zu *main*
+
+::: notes
+Die aktuelle Branchposition ist in gitk schlecht zu sehen
+:::
+
+---
+
+Verfolgen in GIT
+
+
+::: columns
+::: column 
+::: {.fragment}
+
+```bash
+cat .git/HEAD
+
+#Ausgabe
+ref: refs/heads/spielplatz
+```
+:::
+:::
+
+::: column 
+::: {.fragment}
+Noch ist der Stand gleich:
+
+```bash
+cat .git/refs/heads/spielplatz
+7c5a5851fcb062c07a9b99195e33b97ee5353ab0
+
+cat .git/refs/heads/main
+7c5a5851fcb062c07a9b99195e33b97ee5353ab0
+```
+:::
+:::
+:::
+
+::: {.notes}
+Einen Commit auf Spielplatz drauf setzen und ausgeben lassen
+:::
+
+## Zusammenführung
+
+Einfachster Fall:  
+
+Nur Änderungen in Spielplatz ...
+
+![](bilder/branch/spielplatz.tikz.png){style="width: 60%;"}
+
+::: {.notes}
+Hier spult git einfach vor und setzt den Pointer vor.
+Mehr kommt später!
+:::
+
