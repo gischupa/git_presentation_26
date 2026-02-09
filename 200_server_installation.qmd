@@ -90,6 +90,68 @@ Kennwort *gitkurs*
 
 ---
 
+**Kennwortlosen Zugang einrichten**
+
+```bash
+# git-bash
+ssh-keygen -t rsa
+```
+Alle Fragen mit ENTER quittieren
+
+---
+
+**Kennwortlosen Zugang einrichten**
+
+Anzeigen des Keys:
+```bash
+cat .ssh/id_rsa.pub
+```
+
+Markieren & Kopieren mit rechter Maustaste
+
+---
+
+**Kennwortlosen Zugang einrichten**
+
+Anmelden als Benutzer *benutzer* 
+auf dem Server:
+
+```bash
+ssh -p benutzer@<ip>
+```
+
+Warnung mit *yes* quittieren  
+Kennwort *gitkurs* eingeben (wird nicht angezeigt!)
+
+---
+
+**Kennwortlosen Zugang einrichten**
+
+Eintragen des Keys:
+
+```bash
+mkdir .ssh
+nano .ssh/authorized_keys
+# rechte Maustaste einfügen
+# strg + o
+# strg + x
+chmod 644 .ssh/authorized_keys
+```
+
+---
+
+**Kennwortlosen Zugang einrichten**
+
+Abmelden und neu anmelden. Sollte jetzt ohne Kennwort klappen.
+
+---
+
+**Individuelle Nutzer**
+
+Im Prinzip muss der Schlüssel für jeden Benutzer eingetragen werden.
+
+---
+
 **Server aktualisieren**
 
 ```bash
@@ -105,6 +167,55 @@ apt upgrade
 
 ```bash
 apt install git -y
+# eventuell noch 
+apt install gitk git-big-picture
 ```
 
+---
 
+**Anlegen von Benutzern**
+
+Je nach Einsatzzweck des Servers
+
+---
+
+**Anlegen von Benutzern**
+
+```bash
+adduser max
+
+---
+
+**
+
+```bash
+#!/bin/bash
+
+PASSWORT="gitkurs"
+
+for i in {1..30}; do
+  USER="benutzer_$i"
+  useradd -m "$USER"
+  echo "$USER:$PASSWORT" | chpasswd
+done
+```
+
+---
+
+**Aufgabe**  
+
+Lege einen Benutzer *git* mit Kennwort Unterricht an
+
+---
+
+
+
+
+
+Transport:
+groupadd gitklasse
+usermod -aG gitklasse benutzer_1
+mkdir -p /srv/git/klasse.git
+git init --bare /srv/git/klasse.git
+chown -R root:gitklasse /srv/git/klasse.git
+chmod -R 2770 /srv/git/klasse.git
