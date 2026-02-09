@@ -1,0 +1,247 @@
+---
+title: "Arbeit im Team"
+author: "Wolfgang Höfer"
+format: 
+  revealjs:
+    width: 1300
+    margin: 0.05
+    auto-stretch: false
+jupyter: python3
+---
+
+# Allgemein
+
+-----
+
+Im Prinzip wie bei der lokalen Arbeit.
+
+Zwischenstände werden geteilt.
+
+* Einfacher Git-Server (ssh)
+* Kennwortloser http-git-server
+* github / gitlab / gitea
+
+(Selbst hosten)?
+
+# Clonen
+
+Ein Server-Repository wird angelegt.
+
+```bash
+git init --bare projekt
+```
+
+Dort werden von Benutzern keine Dateien erstellt!
+
+---
+
+**Workflow**  
+
+* Repository clonen (einmalig)
+* Aktualisieren (pull -- regelmäßig)
+* Veröffentlichen (push -- wenn sinnvoll)
+
+---
+
+**Regeln**  
+
+Firmen definieren ihre eigenen Workflows.
+
+Es gibt kein *richtig* sondern nur Regeln.
+
+Branching wird zentrales Thema!
+
+
+---
+
+**Clone**
+
+Haben wir bereits gemacht (ohne Zugriffsrechte!)
+
+Jetzt kompletter Setup!
+
+---
+
+**ssh**  
+
+Verschlüsseltes Protokoll für Remote-Zugriff 
+
+Erfordert öffentlichen und privaten Schlüssel
+
+Öffentlicher Schlüssel muss IMMER auf den Server.
+
+---
+
+**Erstellen eines Schlüssels**
+
+```bash
+ssh-keygen -t rsa 
+```
+
+Wird unter `.ssh/` abgespeichert.  
+
+Public Key muss auf den Server (Problem)
+
+Wohin mit dem Private-Key? (nächstes Problem)
+
+::: {.notes}
+Priv-Key muss Updates überleben und hängt am 
+Rechner - außer man legt ihn auf den Share der Schule
+:::
+
+---
+
+**Übung**  
+
+Mit SSH anmelden auf dem Trainingsserver
+
+```bash
+ssh -p 25 benutzer_x@bww.hoefam.com
+```
+
+Anlegen eines git Repos
+
+```bash
+cd /home/benutzer_x/
+git init --bare projekt.git  # Endung wichtig
+cd projekt.git 
+git branch -m main 
+```
+
+---
+
+**Wichtig**
+
+* clonen
+* Readme anlegen
+* ersten Commit erstellen
+* pushen
+
+---
+
+**Clonen**
+
+```bash
+git clone ssh:<IP>:25/home/benutzer_x/projekt.git
+cd projekt   # ohne ".git"
+```
+
+**Generelle Kontrolle**
+
+```bash
+git remote -v 
+
+# Ausgabe
+origin	<IP>:/home/benutzer_x/projekt.git (fetch)
+origin	<IP>:/home/benutzer_x/projekt.git (push)
+```
+
+---
+**Vorsicht**
+
+```bash
+cd projekt
+git status
+
+# Ausgabe
+uf Branch master
+
+Noch keine Commits
+
+nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
+Sie "git add" zum Versionieren)
+```
+
+**Umbenennen**
+
+```bash
+git branch -m main 
+```
+
+---
+
+**Readme anlegen**
+
+```bash
+echo "Willkommen ..." > README.txt
+git add . 
+git commit -m "Initial"
+git push -u origin main
+```
+
+::: {.notes}
+
+Hier kommt eine kleine Tree-Demo auf Server und Client
+
+:::
+
+
+
+## Blick ins Innere von git
+
+---
+
+Einzelschritte beobachten mit Tree auf Server und Client
+
+---
+
+## Fetch / Pull / Push
+
+---
+
+**Fetch / Pull**
+
+*Fetch* holt die Änderungen des *aktuellen* Branchs ohne sie zu integrieren  
+
+*Pull* führt *Fetch* + *Merge* aus => Dateien in aktueller Version 
+
+---
+
+**Beispiel**  
+
+```bash
+git switch main 
+git fetch 
+git diff main origin/main # aktuell <-> neu
+git log HEAD..origin/main # neue Commits 
+```
+
+---
+
+**Push**  
+
+Schiebt eigene Änderungen ins Repository.
+
+
+---
+
+**Strategie**  
+
+* Der *main*-Branch sollte tabu für *push* sein.   
+* Nur Projekt-Manager mergen in *main*
+* Absichern durch Hooks möglich
+
+---
+
+**Die KI sagt**
+
+```bash
+cd /path/to/projekt.git/hooks
+touch pre-receive
+chmod +x pre-receive
+
+### Dateiinhalt von pre-reiceive
+
+#!/bin/bash
+
+while read oldrev newrev refname
+do
+  if [ "$refname" = "refs/heads/main" ]; then
+    echo "Pushes to the main branch are not allowed."
+    exit 1
+  fi
+done
+
+exit 0
+
+```

@@ -1,0 +1,110 @@
+---
+title: "Server-Installation"
+author: "Wolfgang Höfer"
+format: 
+  revealjs:
+    width: 1300
+    margin: 0.05
+    auto-stretch: false
+jupyter: python3
+---
+
+# Allgemein
+
+---
+
+**Varianten**  
+
+* Direkt auf dem Server (nicht empfohlen)
+* Mit Docker virtualisieren (empfohlen)
+* Codeberg.org (selber testen)
+* Provider verwenden (kostet mehr)
+* Originäre Plattformen gitlab / github / ...
+
+---
+
+**Vorüberlegungen**  
+
+* Zweck des Servers 
+* Nutzer des Servers
+* Rollen der Benutzer
+* Benutzerkonten
+
+::: {.notes}
+
+* Nur git oder mehr
+* Weitere Admins im Haus?
+* Benutzer nur für Git oder full featured?
+* Benamungsprobleme, Doppelungen, Sonderzeichen, ...
+
+:::
+
+---
+
+**VirtualBox**  
+Nur für *in Klasse Szenarien* geeignet  
+Nicht für Server im Internet
+
+---
+
+**Vollwertiger Server**  
+* Simulieren wir hier mit Proxmox  
+* Jeder bekommt einen kompletten Server -- virtuell
+
+---
+
+**Docker**  
+* Simulieren wir mit Proxmox
+* Jeder bekommt einen kompletten Server -- virtuell
+
+# Git-Server -- native
+
+## Verbindung zum Server
+
+Für die Installation ssh-Verbindung nötig
+
+* cmd.exe (nicht empfohlen)
+* git-Bash (empfohlen)
+* putty (geht auch gut, weil portabel)
+
+---
+
+**ssh**
+
+```bash
+ssh benutzer_<x>@<IP>
+```
+
+Bestätigen mit *yes*
+
+Kennwort *gitkurs*
+
+---
+
+**logout**
+
+* exit
+* logout
+* strg+d
+* schließen (brutale Variante)
+
+---
+
+**Server aktualisieren**
+
+```bash
+sudo -i 
+-> gitkurs 
+apt update 
+apt upgrade
+```
+
+---
+
+**Installieren von git**
+
+```bash
+apt install git -y
+```
+
+

@@ -1,0 +1,44 @@
+﻿
+\begin{tikzpicture}
+
+\draw(0,0) -- ++ (2,0);
+\draw[red](3.7,0.7) -- ++ (2,0);
+
+%oberer Branch
+\draw(2,0) -- ++ (45:1) -- ++(1,0);
+
+\draw[fill=blue](0,0) circle(0.1cm);
+\draw[fill=blue](1,0) circle(0.1cm);
+
+\draw[fill=yellow](2,0) circle(0.1cm);
+
+
+% im oberen Branch
+\draw[fill=blue](2,0) ++(45:1) circle(0.1cm) ;
+\draw[fill=yellow] (2,0) ++ (45:1)  ++ (1,0) circle(0.1);
+
+
+
+\draw[fill=blue](4.7,0.7) circle(0.1cm);
+%\draw[fill=blue](4,0) circle(0.1cm);
+\draw[fill=yellow](5.7,0.7) circle(0.1cm);
+
+
+
+\begin{scope}[]
+\begin{scope}[xshift=1.72cm, yshift=0.7cm]
+\draw(2,0.7) node[draw,rectangle] {\small main};
+\draw[>=latex, <-](2,0.1) -- ++ (0, 0.37);
+\end{scope}
+
+	\begin{scope}[xshift=1.7cm, yshift=0.7cm]
+		\draw[>=latex, <-](4,-0.1) -- ++ (0, -0.35);
+		\draw(4,-0.7) node[draw,rectangle] {\small spielplatz};
+		
+		\draw(4,-1.55) node[draw,rectangle] {\small HEAD};
+		\draw[>=latex, <-](4,-0.97) -- ++ (0, -0.35);
+	\end{scope}
+\end{scope}
+
+
+\end{tikzpicture}
