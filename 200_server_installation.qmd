@@ -15,6 +15,7 @@ jupyter: python3
 
 **Varianten**  
 
+* VirtualBox
 * Direkt auf dem Server (nicht empfohlen)
 * Mit Docker virtualisieren (empfohlen)
 * Codeberg.org (selber testen)
@@ -48,12 +49,14 @@ Nicht für Server im Internet
 ---
 
 **Vollwertiger Server**  
+
 * Simulieren wir hier mit Proxmox  
 * Jeder bekommt einen kompletten Server -- virtuell
 
 ---
 
 **Docker**  
+
 * Simulieren wir mit Proxmox
 * Jeder bekommt einen kompletten Server -- virtuell
 
@@ -72,12 +75,21 @@ Für die Installation ssh-Verbindung nötig
 **ssh**
 
 ```bash
-ssh benutzer_<x>@<IP>
+ssh benutzer_<x>@<IP-Trainingsserver>
+```
+
+Rückmeldung:  
+
+```bash
+The authenticity of host 'try.example.com (38.243.220.195)' can't be established.
+ED25519 key fingerprint is SHA256:DSeSsfXDL2PkSlLYCt64krg9xa2vNr3og5SBJzZ/WNk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
 Bestätigen mit *yes*
 
-Kennwort *gitkurs*
+Kennwort *gitkurs* (evtl. keine Anzeige am Bildschirm)
 
 ---
 
@@ -117,11 +129,19 @@ Anmelden als Benutzer *benutzer*
 auf dem Server:
 
 ```bash
-ssh -p benutzer@<ip>
+ssh -p benutzer@<ip-Eigener-Server>
+```
+
+Rückmeldung:
+```bash
+The authenticity of host 'try.example.com (38.243.220.195)' can't be established.
+ED25519 key fingerprint is SHA256:DSeSsfXDL2PkSlLYCt64krg9xa2vNr3og5SBJzZ/WNk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
 Warnung mit *yes* quittieren  
-Kennwort *gitkurs* eingeben (wird nicht angezeigt!)
+Kennwort *gitkurs* eingeben (evtl. keine Anzeige am Bildschirm)
 
 ---
 
@@ -146,9 +166,10 @@ Abmelden und neu anmelden. Sollte jetzt ohne Kennwort klappen.
 
 ---
 
-**Individuelle Nutzer**
+**Individuelle Nutzer (=Schüler)**
 
 Im Prinzip muss der Schlüssel für jeden Benutzer eingetragen werden.
+
 
 ---
 
@@ -156,7 +177,7 @@ Im Prinzip muss der Schlüssel für jeden Benutzer eingetragen werden.
 
 ```bash
 sudo -i 
--> gitkurs 
+# Kennwort gitkurs 
 apt update 
 apt upgrade
 ```
@@ -175,7 +196,7 @@ apt install gitk git-big-picture
 
 **Anlegen von Benutzern**
 
-Je nach Einsatzzweck des Servers
+Je nach Einsatzzweck des Servers verschieden
 
 ---
 
@@ -183,10 +204,11 @@ Je nach Einsatzzweck des Servers
 
 ```bash
 adduser max
+```
 
 ---
 
-**
+**Scripting**
 
 ```bash
 #!/bin/bash
@@ -204,18 +226,197 @@ done
 
 **Aufgabe**  
 
-Lege einen Benutzer *git* mit Kennwort Unterricht an
+Lege einen Benutzer *git* mit Kennwort *Unterricht* an
 
 ---
 
+**Repository vorbereiten**
 
-
-
-
-Transport:
+```bash
 groupadd gitklasse
 usermod -aG gitklasse benutzer_1
 mkdir -p /srv/git/klasse.git
-git init --bare /srv/git/klasse.git
+cd /srv/git/klasse.git
+git init --bare 
+git branch -m main 
 chown -R root:gitklasse /srv/git/klasse.git
 chmod -R 2770 /srv/git/klasse.git
+```
+
+# Git-Server mit Docker
+
+## Was ist Docker?
+
+* Spezielle Virtualisierungslösung
+* Verwendet laufendes System mit  
+* ergänzt schichtweise fehlende Komponenten
+* Komplette Systeme mit einem Befehl erstellen
+
+---
+
+**Installation**  
+
+* Anmelden auf Server
+* sudo -i 
+* Installationsscript ausführen
+
+---
+
+**Script**  
+
+```bash
+sudo -i
+apt update
+apt install apt-transport-https curl -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg
+| gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+\
+echo "deb [arch=$(dpkg --print-architecture) \
+signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release && echo "$VERSION_CODENAME") \
+stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+---
+
+**Script**  
+
+```bash
+apt update
+apt install docker-ce docker-ce-cli \
+containerd.io docker-buildx-plugin \
+docker-compose-plugin -y
+compose_url="https://github.com/docker/compose/releases/download"
+curl -L $compose_url/1.28.5/docker-compose-`uname \
+-s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+```
+
+---
+
+**Test der Installation**
+
+```bash
+docker --version
+docker-compose --version
+```
+
+---
+
+**Erster Kontakt**  
+
+```bash
+docker run -d -p 8090:80 --name it-tools corentinth/it-tools
+```
+
+* `-d` = Als Hintergrunddienst
+* `-p 8090:80` = Die Software verwendet Port 80, ist aber über 8090 erreichbar
+* `--name` = So taucht der Container in der Liste auf
+* `corentinth/it-tools` Image
+
+---
+
+**Erster Kontakt**
+
+Aufruf im Browser
+
+```bash
+http://<IP>:8090
+```
+
+... Spielen !
+
+---
+
+**Was ist passiert**  
+
+```bash
+# Container-Info
+docker ps
+```
+
+```bash
+# Image-Info
+docker image ls 
+```
+
+---
+
+|Befehl|Wirkung|
+|------|-------|
+|docker stop it-tools| Container stoppen|
+|docker stop bd072e349cab| geht auch|
+|docker start it-tools|Container starten|
+|docker start bd072e349cab| geht auch|
+|docker rm it-tools|Container entfernen -- Image bleibt!|
+|docker rmi "corentinth/it-tools"|Entfernt auch das Image|
+
+---
+
+**Weitere Schritte**  
+
+* Die Parameter in einem Dockerfile zusammenfassen
+* Organisieren von Containern in Docker-Compose Files
+
+---
+
+**Einfaches Dockerfile**
+
+
+---
+
+**Container starten**
+
+
+---
+
+**Problem**
+
+Bei mehreren Containern, die zusammenarbeiten sind 
+Abhängigkeiten schwer zu verwalten -> Docker compose
+
+---
+
+**Komplexeres Dockerfile**  
+
+```bash
+FROM ubuntu:24.04
+     
+# Installiere Git und Nginx
+RUN apt-get update && apt-get install -y \
+    git \
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
+
+# Erstelle Git-Repositorys
+RUN mkdir -p ./repositories
+
+# Kopiere das Nginx-Config
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Kopiere Beispiel-Repositories (optional)
+RUN mkdir ./repositories/myrepo.git && \
+          ./repositories/myrepo.git && \
+          git init --bare
+
+# Nginx- und Git-Ports freigeben
+EXPOSE 80 9418
+
+# Starte nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+---
+
+**Docker compose**
+
+* Yaml-Steuerungsdatei zum Koordinieren von mehreren Containern
+* Definiert Abhängigkeiten zwischen Containern
+* Definiert eigene Netzwerke für Container.
+
+---
+
+**Übungen**
+
+---
