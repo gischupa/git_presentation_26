@@ -11,7 +11,7 @@ jupyter: python3
 
 # Allgemein
 
------
+---
 
 Im Prinzip wie bei der lokalen Arbeit.
 
@@ -23,9 +23,9 @@ Zwischenstände werden geteilt.
 
 (Selbst hosten)?
 
-# Clonen
+# Server-Repository
 
-Ein Server-Repository wird angelegt.
+Ein Server-Repository wird angelegt durch
 
 ```bash
 git init --bare projekt
@@ -64,45 +64,27 @@ Jetzt kompletter Setup!
 
 **ssh**  
 
-Verschlüsseltes Protokoll für Remote-Zugriff 
+(secure shell - Verschlüsselter Remote Zugriff)
 
-Erfordert öffentlichen und privaten Schlüssel
-
-Öffentlicher Schlüssel muss IMMER auf den Server.
-
----
-
-**Erstellen eines Schlüssels**
+Mit SSH anmelden auf deinem Server
 
 ```bash
-ssh-keygen -t rsa 
+ssh  benutzer@<IP>
+# Kennwort gitkurs
 ```
 
-Wird unter `.ssh/` abgespeichert.  
-
-Public Key muss auf den Server (Problem)
-
-Wohin mit dem Private-Key? (nächstes Problem)
-
-::: {.notes}
-Priv-Key muss Updates überleben und hängt am 
-Rechner - außer man legt ihn auf den Share der Schule
-:::
-
----
-
-**Übung**  
-
-Mit SSH anmelden auf dem Trainingsserver
+Falls abweichender Port:
 
 ```bash
-ssh -p 25 benutzer_x@bww.hoefam.com
+ssh -p 25 benutzer@<IP>
 ```
+
+---
 
 Anlegen eines git Repos
 
 ```bash
-cd /home/benutzer_x/
+cd /home/benutzer/
 git init --bare projekt.git  # Endung wichtig
 cd projekt.git 
 git branch -m main 
@@ -110,20 +92,29 @@ git branch -m main
 
 ---
 
-**Wichtig**
+**Weitere Reihenfolge**
 
 * clonen
 * Readme anlegen
 * ersten Commit erstellen
 * pushen
 
+Danach können andere mit dem Repository arbeiten.
+
 ---
 
 **Clonen**
 
 ```bash
-git clone ssh:<IP>:25/home/benutzer_x/projekt.git
+git clone <IP>/home/benutzer/projekt.git
 cd projekt   # ohne ".git"
+```
+
+Bei abweichendem Port
+
+```bash
+git clone ssh://<IP>:25/home/benutzer/projekt.git
+cd projekt
 ```
 
 **Generelle Kontrolle**
@@ -132,19 +123,19 @@ cd projekt   # ohne ".git"
 git remote -v 
 
 # Ausgabe
-origin	<IP>:/home/benutzer_x/projekt.git (fetch)
-origin	<IP>:/home/benutzer_x/projekt.git (push)
+origin	<IP>:/home/benutzer/projekt.git (fetch)
+origin	<IP>:/home/benutzer/projekt.git (push)
 ```
 
 ---
+
 **Vorsicht**
 
 ```bash
-cd projekt
 git status
 
 # Ausgabe
-uf Branch master
+Auf Branch master    <<<<<<<<< VORSICHT
 
 Noch keine Commits
 
@@ -183,7 +174,11 @@ Hier kommt eine kleine Tree-Demo auf Server und Client
 
 Einzelschritte beobachten mit Tree auf Server und Client
 
----
+
+```bash
+sudo apt install tree -y
+```
+
 
 ## Fetch / Pull / Push
 
