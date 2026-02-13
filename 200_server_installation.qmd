@@ -304,6 +304,16 @@ docker-compose --version
 
 ---
 
+**Varianten**  
+
+* Direkter Aufruf mit allen Parametern.
+* Mit Dockerfile die Einstellungen für das Image zusammenfassen.  
+  Immer noch viele Einstellungen über Kommandozeile.
+* Mit Docker-Compose den kompletten Aufruf managen und auch
+  mehrere Container verwalten.
+
+---
+
 **Erster Kontakt**  
 
 ```bash
@@ -333,7 +343,8 @@ http://<IP>:8090
 
 ```bash
 # Container-Info
-docker ps
+docker ps  
+# docker ps -a 
 ```
 
 ```bash
@@ -354,6 +365,24 @@ docker image ls
 
 ---
 
+**Aufräumen**
+
+```bash
+# gestoppte Container löschen
+docker rm <hash> # oder Name
+
+# Laufenden Container löschen (brutale Variante)
+docker rm -f <hash>
+
+# Image löschen 
+docker rmi <hash>
+
+```
+
+Image ist nur löschbar, wenn kein zugehöriger Container existiert. 
+
+---
+
 **Weitere Schritte**  
 
 * Die Parameter in einem Dockerfile zusammenfassen
@@ -363,11 +392,73 @@ docker image ls
 
 **Einfaches Dockerfile**
 
+* Welches Image 
+* Welche Programme
+* Arbeitsverzeichnis im Container (z.B. /app) 
+* Copier-Befehl für Arbeitsdateien (copy . /app)
+* Erweitertes Copy = Add (z.B. Entpacken im Container)
+* Startbefehl für laufenden Container (CMD)
+* Alternativ *ENTRYPOINT*
+* Verwendete Shell (SHELL["bin/bash", "-c"])
+* Mountpoints für Volumes (VOLUME["/pfad/im/container"])
+* Benutzer (USER appuser)
 
 ---
 
-**Container starten**
+**Container erstellen und starten**
 
+Einfaches Dockerfile
+
+```bash
+FROM lighttpd:latest
+# Kein Latest bei "ernsten" Projekten
+
+# Config ersetzen
+COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
+
+# Website kopieren
+COPY index.html /var/www/html/index.html
+
+# Nur Doku
+EXPOSE 80
+
+CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+
+```
+
+---
+
+**Container erstellen und starten**
+
+```bash
+# Image erstellen
+docker build -t meinWebserver .  # Punkt wichtig
+
+# Container starten 
+docker run --rm -p 8080:80 meinWebserver
+```
+
+---
+
+**Lighttp komplexer**
+
+Dockerfile
+```bash
+```
+---
+
+**Lighttp komplexer**
+
+---
+
+**Lighttp komplexer**
+
+---
+
+**Lighttp komplexer**
+
+---
+xxx
 
 ---
 
