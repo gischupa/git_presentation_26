@@ -2,3 +2,6 @@
 *save
 200_server_installation_*
 200_server_installation.html
+
+/.quarto/
+**/*.quarto_ipynb

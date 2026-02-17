@@ -1,0 +1,27 @@
+﻿\begin{tikzpicture}
+\draw[white](0,0) rectangle ++(1,1);
+\draw(0,0) -- ++ (2,0);
+
+\draw[fill=blue](0,0) circle(0.1cm);
+\draw[fill=blue](1,0) circle(0.1cm);
+
+\draw[fill=yellow](2,0) circle(0.1cm);
+
+
+
+\begin{scope}[xshift=-0cm]
+\draw(2,0.7) node[draw,rectangle] {\small main};
+\draw[>=latex, <-](2,0.1) -- ++ (0, 0.37);
+
+\end{scope}
+
+\begin{scope}[xshift=-3cm]
+\draw[>=latex, <-](5,-0.1) -- ++ (0, -0.35);
+\draw(5,-0.7) node[draw,rectangle] {\small spielplatz};
+
+\draw(5,-1.55) node[draw,rectangle] {\small HEAD};
+\draw[>=latex, <-](5,-0.97) -- ++ (0, -0.35);
+\end{scope}
+
+
+\end{tikzpicture}

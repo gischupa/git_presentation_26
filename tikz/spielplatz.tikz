@@ -1,5 +1,5 @@
 ﻿\begin{tikzpicture}
-
+\draw[white](-1,1) rectangle ++(7,-3);
 \draw(0,0) -- ++ (5,0);
 
 \draw[fill=blue](0,0) circle(0.1cm);

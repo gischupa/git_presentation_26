@@ -1,0 +1,23 @@
+.smaller {
+    font-size: 0.7em;
+}
+
+.alert{
+    color:red;
+}
+
+.success{
+    color: green;
+}
+
+.branch{
+    font-weight: bold;
+    color: green;
+}
+
+.quadrant3{
+    position: absolute;
+    left: 0px;
+    top: 70%;
+    width: 40%;
+}

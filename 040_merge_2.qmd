@@ -1,39 +1,38 @@
 ---
-title: "Branch-Work II"
-author: "Wolfgang Höfer"
-format: 
-  revealjs:
-    width: 1300
-    margin: 0.05
-    auto-stretch: false
-jupyter: python3
+format: revealjs
 ---
 
-# Merge
+# Merge{#merge_2}
 
 ## Fast-Forward
 
 Verschiebt nur den Branchpointer
 
-![](bilder/branch/spielplatz1.tikz.png){style="width: 60%;"}
-![](bilder/branch/spielplatz.tikz.png){style="width: 60%;"}
+::: columns 
+::: column
+![](tikz/spielplatz.png){style="width: 80%;"}
+:::
+
+::: column
+![](tikz/spielplatz1.png){style="width: 80%;"}
+:::
+:::
 
 ## Merge-Commit
 (3 Way Merge)
 
-Änderungen in beiden Branches werden in einem Commit 
-zusammengeführt.
+Änderungen in beiden Branches werden   
+in einem Commit zusammengeführt.
 
-Kein Versetzen der Branch-Pointer
+Nicht alle Pointer werden versetzt!
 
-BILD 1
+::: {.r-stack}
+![](tikz/merge_commit.png){.fragment .absolute top=50px; left=750px; width=400 }
 
-----
+![](tikz/merge_commit_1.png){.fragment  .absolute top=400px; left=10px; width=500}
 
-Oder so 
-
-
-BILD 2
+![](tikz/merge_commit_2.png){.fragment  .absolute top=380px; left=700px; width=500}
+:::
 
 ----
 
@@ -97,11 +96,19 @@ Alternative zu Merge
 * 9790fb5 schritt 2
 * 5db40d9 schritt 1
 ```
+::: {.fragment}
+Rebasen
+```bash
+git switch entwicklung
+git rebase main
+```
+:::
 :::
 :::
 
-::: columns 
+::: column 
 ::: {.fragment}
+```bash
 * 9fa3c20 (HEAD -> entwicklung) schritt 6
 * a775571 schritt 5
 * 07c3941 schritt 4
@@ -110,6 +117,7 @@ Alternative zu Merge
 * 58ebec4 schritt 3
 * 9790fb5 schritt 2
 * 5db40d9 schritt 1
+```
 :::
 :::
 :::
@@ -121,11 +129,7 @@ geht ein merge oder ein reset hard
 
 ---
 
-BILD rebase 2
-
----
-
-Squash
+**Squash**
 
 * Eine Methode, um mehrere Commits zu bündeln.  
 * Nur ein Parameter zu Rebase (-i)
@@ -149,8 +153,8 @@ git branch -m main
 for i in {1..10}
 do
    echo "zeile $i" > hauptdatei.txt
-git add . hauptdatei.txt
-git commit -m "zeile $i"
+   git add . hauptdatei.txt
+   git commit -m "zeile $i"
 done
 ```
 

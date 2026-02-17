@@ -1,0 +1,116 @@
+
+## CICD {#cicd}
+
+### Konzept 
+
+Eine Datei mit speziellen Befehlen 
+triggert nach einem Commit bestimmte 
+Aktivitäten.
+
+**Problem**
+
+Geeignete kleine Beispiele finden.
+
+---
+
+## Repository erstellen
+
+::: {.fragment}
+Readme erstellen lassen
+:::
+::: {.fragment}
+Neue Datei erstellen: *.gitlab-ci.yml*
+:::
+::: {.fragment}
+```bash
+stages:
+  - build 
+
+ausgabe_1:
+  stage: build 
+  script: echo "Ich bin die erste Ausgabe"
+```
+:::
+
+---
+
+### Nötige Schritte 
+
+* Installieren Runner (egal wo)
+* Anlegen Runner (gitLab)
+* Registrieren Runner 
+
+---
+
+### Installieren des Runners
+
+Schnelle Variante Docker
+<div class="smaller">(Besser im Handout mit compose)</div>
+
+```bash
+docker run -d --name gitlab-runner \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+```
+
+---
+
+### Registrieren des Runners
+
+* Beginn in GitLab (Projektsettungs)
+* Wechsel zu Docker (Registrierung)
+
+---
+
+
+
+**Erstellen eines Buches**
+
+* Erstelle auf GitLab ein Projekt (mit Readme)
+* Clone es auf deinen Rechner
+* Entpacke das Paket *quarto_vorlage.zip* in das Repository
+* Erstelle einen Commit
+* Führe einen Push aus
+
+---
+
+**CI/CD**  
+(Grober Ablauf)
+
+* runner übernimmt .gitlab-ci.yml
+* Die Datei definiert den Workflow
+  - Erstellen eines Docker-Containers
+  - Clonen des Repos in den Container
+  - Ausführen der Befehle
+  - Rückkopieren des Ergebnisses nach GitLab 
+
+Der Runner muss lokal installiert werden  
+(oder auf GitLab aktiviert)
+
+---
+
+**Probleme**  
+
+* Container erstellen dauert 
+* Nur begrenzte Anzahl an Ausführungen (gratis)
+
+**Lösung**  
+
+* Runner lokal
+* Docker lokal (kein Download nötig)
+
+---
+
+**Lokaler Runner**
+
+```bash
+apt install gitlab-runner 
+```
+
+Docker ist dafür überdimensioniert
+
+---
+
+**Lokales Dockerimage für Quarto**
+

@@ -1,15 +1,8 @@
 ---
-title: "Server-Installation"
-author: "Wolfgang Höfer"
-format: 
-  revealjs:
-    width: 1300
-    margin: 0.05
-    auto-stretch: false
-jupyter: python3
+format:   revealjs
 ---
 
-# Allgemein
+# Allgemein{#server_installation}
 
 ---
 
@@ -42,23 +35,21 @@ jupyter: python3
 
 ---
 
-**VirtualBox**  
-Nur für *in Klasse Szenarien* geeignet  
-Nicht für Server im Internet
+### Unser Setup
 
----
-
+:::{.fragment}
 **Vollwertiger Server**  
 
 * Simulieren wir hier mit Proxmox  
 * Jeder bekommt einen kompletten Server -- virtuell
+:::
 
----
-
+:::{.fragment}
 **Docker**  
 
 * Simulieren wir mit Proxmox
 * Jeder bekommt einen kompletten Server -- virtuell
+:::
 
 # Git-Server -- native
 
@@ -72,12 +63,14 @@ Für die Installation ssh-Verbindung nötig
 
 ---
 
-**ssh**
+### ssh
 
+:::{.fragment}
 ```bash
 ssh benutzer_<x>@<IP-Trainingsserver>
 ```
-
+:::
+:::{.fragment}
 Rückmeldung:  
 
 ```bash
@@ -86,14 +79,16 @@ ED25519 key fingerprint is SHA256:DSeSsfXDL2PkSlLYCt64krg9xa2vNr3og5SBJzZ/WNk.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
+:::
+:::{.fragment}
+[Bestätigen mit *yes*]{.smaller}
 
-Bestätigen mit *yes*
-
-Kennwort *gitkurs* (evtl. keine Anzeige am Bildschirm)
+[Kennwort *gitkurs* (evtl. keine Anzeige am Bildschirm)]{.smaller}
+:::
 
 ---
 
-**logout**
+### logout
 
 * exit
 * logout
@@ -102,28 +97,28 @@ Kennwort *gitkurs* (evtl. keine Anzeige am Bildschirm)
 
 ---
 
-**Kennwortlosen Zugang einrichten**
+### Kennwortlosen Zugang einrichten
 
+:::{.fragment}
 ```bash
 # git-bash
 ssh-keygen -t rsa
 ```
-Alle Fragen mit ENTER quittieren
+[Alle Fragen mit ENTER quittieren]{.smaller}
+:::
 
----
-
-**Kennwortlosen Zugang einrichten**
-
+:::{.fragment}
 Anzeigen des Keys:
 ```bash
 cat .ssh/id_rsa.pub
 ```
 
-Markieren & Kopieren mit rechter Maustaste
+[Markieren & Kopieren mit rechter Maustaste]{.smaller}
+:::
 
 ---
 
-**Kennwortlosen Zugang einrichten**
+### Kennwortlosen Zugang einrichten
 
 Anmelden als Benutzer *benutzer* 
 auf dem Server:
@@ -132,21 +127,7 @@ auf dem Server:
 ssh -p benutzer@<ip-Eigener-Server>
 ```
 
-Rückmeldung:
-```bash
-The authenticity of host 'try.example.com (38.243.220.195)' can't be established.
-ED25519 key fingerprint is SHA256:DSeSsfXDL2PkSlLYCt64krg9xa2vNr3og5SBJzZ/WNk.
-This key is not known by any other names.
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
-```
-
-Warnung mit *yes* quittieren  
-Kennwort *gitkurs* eingeben (evtl. keine Anzeige am Bildschirm)
-
----
-
-**Kennwortlosen Zugang einrichten**
-
+:::{.fragment}
 Eintragen des Keys:
 
 ```bash
@@ -157,57 +138,61 @@ nano .ssh/authorized_keys
 # strg + x
 chmod 644 .ssh/authorized_keys
 ```
+:::
 
----
-
-**Kennwortlosen Zugang einrichten**
-
-Abmelden und neu anmelden. Sollte jetzt ohne Kennwort klappen.
+:::{.fragment}
+[Abmelden und neu anmelden. Sollte jetzt ohne Kennwort klappen.]{.smaller}
+:::
 
 ---
 
 **Individuelle Nutzer (=Schüler)**
 
-Im Prinzip muss der Schlüssel für jeden Benutzer eingetragen werden.
+[Im Prinzip muss der Schlüssel für jeden Benutzer eingetragen werden.]{.smaller}  
 
-
----
-
-**Server aktualisieren**
-
+[Individuelle Variante:]{.smaller}
 ```bash
-sudo -i 
-# Kennwort gitkurs 
-apt update 
-apt upgrade
+ssh-copy-id -i <datei>.pub <benutzer>@<IP>
 ```
 
 ---
 
-**Installieren von git**
+### Server aktualisieren
+
+:::{.fragment}
+```bash
+sudo -i 
+# Kennwort gitkurs 
+apt update 
+apt upgrade -y
+```
+:::
+
+:::{.fragment}
+**Installieren von git**  
+[(Oft schon vorinstalliert)]{.smaller}
 
 ```bash
 apt install git -y
 # eventuell noch 
 apt install gitk git-big-picture
 ```
+:::
 
 ---
 
-**Anlegen von Benutzern**
+### Anlegen von Benutzern
 
-Je nach Einsatzzweck des Servers verschieden
+[Je nach Einsatzzweck des Servers verschieden]{.smaller}
 
----
-
-**Anlegen von Benutzern**
-
+:::{.fragment}
+**Einzeluser**
 ```bash
 adduser max
 ```
+:::
 
----
-
+:::{.fragment}
 **Scripting**
 
 ```bash
@@ -221,12 +206,7 @@ for i in {1..30}; do
   echo "$USER:$PASSWORT" | chpasswd
 done
 ```
-
----
-
-**Aufgabe**  
-
-Lege einen Benutzer *git* mit Kennwort *Unterricht* an
+:::
 
 ---
 
@@ -254,7 +234,21 @@ chmod -R 2770 /srv/git/klasse.git
 
 ---
 
-**Installation**  
+### Problem
+
+Wegen exzessiver Nutzung ist mittlerweile 
+ein Accout auf *dockerhub.com* erforderlich.
+
+Dort muss in den Settings ein Access-Token erstellt werden.
+
+```bash
+docker login -u <benutzer> 
+```
+
+---
+
+### Installation
+
 
 * Anmelden auf Server
 * sudo -i 
@@ -408,22 +402,30 @@ Image ist nur löschbar, wenn kein zugehöriger Container existiert.
 **Container erstellen und starten**
 
 Einfaches Dockerfile
+(lighttpd.conf und index.html nötig!)
 
-```bash
-FROM lighttpd:latest
-# Kein Latest bei "ernsten" Projekten
+```{.bash style="max-height:60vh; overflow-y:auto;"}
+{{< include material/docker/lighttpd/simple/Dockerfile >}}
+```
 
-# Config ersetzen
-COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
+---
 
-# Website kopieren
-COPY index.html /var/www/html/index.html
+**Container erstellen und starten**
 
-# Nur Doku
-EXPOSE 80
+lighttpd.conf
 
-CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+```{.bash style="max-height:60vh; overflow-y:auto;"}
+{{< include material/docker/lighttpd/simple/lighttpd.conf >}}
+```
 
+---
+
+**Container erstellen und starten**
+
+index.html
+
+```{.bash style="max-height:60vh; overflow-y:auto;"}
+{{< include material/docker/lighttpd/simple/index.html >}}
 ```
 
 ---
@@ -431,84 +433,18 @@ CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
 **Container erstellen und starten**
 
 ```bash
-# Image erstellen
-docker build -t meinWebserver .  # Punkt wichtig
+# Image erstellen (Name in Kleinbuchstaben!)
+docker build -t meinwebserver .  # Punkt wichtig
 
 # Container starten 
-docker run --rm -p 8080:80 meinWebserver
+docker run --rm -p 8080:80 meinwebserver
 ```
 
 ---
 
-**Lighttp komplexer**
+**Bonus**
 
-Dockerfile
-```bash
-```
----
+In den Kursmaterialien ist ein docker-Setup   
+mit Anleitung für einen git-Server, der   
+kennwortloses Arbeiten über http unterstützt!
 
-**Lighttp komplexer**
-
----
-
-**Lighttp komplexer**
-
----
-
-**Lighttp komplexer**
-
----
-xxx
-
----
-
-**Problem**
-
-Bei mehreren Containern, die zusammenarbeiten sind 
-Abhängigkeiten schwer zu verwalten -> Docker compose
-
----
-
-**Komplexeres Dockerfile**  
-
-```bash
-FROM ubuntu:24.04
-     
-# Installiere Git und Nginx
-RUN apt-get update && apt-get install -y \
-    git \
-    nginx \
-    && rm -rf /var/lib/apt/lists/*
-
-# Erstelle Git-Repositorys
-RUN mkdir -p ./repositories
-
-# Kopiere das Nginx-Config
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Kopiere Beispiel-Repositories (optional)
-RUN mkdir ./repositories/myrepo.git && \
-          ./repositories/myrepo.git && \
-          git init --bare
-
-# Nginx- und Git-Ports freigeben
-EXPOSE 80 9418
-
-# Starte nginx
-CMD ["nginx", "-g", "daemon off;"]
-```
-
----
-
-
-**Docker compose**
-
-* Yaml-Steuerungsdatei zum Koordinieren von mehreren Containern
-* Definiert Abhängigkeiten zwischen Containern
-* Definiert eigene Netzwerke für Container.
-
----
-
-**Übungen**
-
----

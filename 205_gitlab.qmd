@@ -1,0 +1,183 @@
+## GitLab mit Docker{#gitlab}
+
+**Problem**
+
+Bei mehreren Containern, die zusammenarbeiten sind 
+Abhängigkeiten schwer zu verwalten -> Docker compose
+
+---
+
+**Docker compose**
+
+* Yaml-Steuerungsdatei zum Koordinieren von mehreren Containern
+* Definiert Abhängigkeiten zwischen Containern
+* Definiert eigene Netzwerke für Container(gruppen).
+
+---
+
+**Weiteres Vorgehen**
+
+* Erstellen eines GitLab-Servers
+* Docker compose beim Aufbauen erklären
+* Serverport für ssh auf Port 23 umstellen
+
+---
+
+### ssh-Serverport umstellen auf 23
+
+::: {.fragment}
+ssh auf Server 
+```bash
+ssh benutzer@<IP>
+sudo -i
+```
+:::
+
+::: {.fragment}
+Firewall umstellen 
+```bash
+ufw disable
+ufw allow 23/tcp 
+ufw enable
+ufw status verbose
+```
+:::
+
+::: {.fragment}
+ssh port umstellen 
+```bash
+sed -i -e "s/#Port 22/Port 23/g" /etc/ssh/sshd_config
+reboot
+```
+:::
+---
+
+**Neue Verbindung**
+
+::: {.fragment}
+```bash
+ssh -p 23 benutzer@<IP>
+sudo -i
+cd /srv
+mkdir -p docker/gitlab
+nano docker-compose.yml
+```
+:::
+
+::: {.fragment}
+docker-compose.yml bauen wir schrittweise auf.  
+Einrückungen mit Leerzeichen!
+:::
+---
+
+### Docker-compose
+
+::: columns 
+::: column
+```bash
+version: '3.6'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    container_name: 'gitlab'
+    restart: always
+    hostname: '192.168.3.181'
+```
+:::
+
+::: column
+Ziemlich selbsterklärend.  
+Mit *services* können mehrere Container
+koordiniert werden.  
+Eigentlich echter Domainname für Hostname
+:::
+::: 
+
+---
+
+**Gleicher Einrück-Level wie hostname**
+
+::: columns 
+::: {.column width="70%"} 
+```bash
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://182.168.3.181:443'
+        gitlab_rails['gitlab_shell_ssh_port'] = 22
+    ports:
+      - '22:22' # ssh für GitLab
+      - '80:80' # http 
+      - '443:443' # https
+```
+:::
+
+::: {.column width="30%"}
+Environment-Variablen  
+Port-Mapping
+:::
+::: 
+
+---
+
+**Einrückl-Level wie ports**  
+
+::: columns 
+::: column
+```bash
+    volumes:
+      - ./config:/etc/gitlab
+      - ./logs:/var/log/gitlab
+      - ./data:/var/opt/gitlab
+    shm_size: '256m'
+    networks:
+      - gitlab_net
+```
+:::
+
+::: column
+Lokale Ordner, die in den   
+Container eingebunden werden.
+
+Shared Memory (statt 64MB)
+
+Eigenes Netz für GitLab
+:::
+::: 
+
+---
+
+**Globale Definition der Netze**
+<div class="smaller">(ganz ausgerückt)</div>
+```bash
+networks:
+  gitlab_net:
+    external: true
+```
+
+--- 
+
+**Image erstellen**
+
+```bash
+docker network create gitlab_net
+
+docker compose up --build 
+```
+
+**Erstkennwort ermitteln**
+
+```bash
+cat config/initial_root_password
+```
+
+---
+
+### Weitere Schritte
+
+* Anmelden
+* Kennwort ändern
+* ssh-Key hinterlegen
+* Repos erstellen
+
+---
+

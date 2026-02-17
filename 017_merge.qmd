@@ -1,35 +1,50 @@
 ---
-title: "Merge I"
-author: "Wolfgang Höfer"
-format: 
-  revealjs:
-    width: 1300
-    margin: 0.05
-    auto-stretch: false
-jupyter: python3
+format:  revealjs
 ---
 
-# Branches
+# Branches {#merge}
 
-## Erstellen
+(Abzweigungen bei der Entwicklung)
+
+---
+
+**Erstellen eines Branchs**
 
 ```bash
 git switch -c spielplatz
 ```
 
-Erstelle einen Zeiger *spielplatz*   
-auf den aktuellen Commit.
+::: {.fragment}
+[Erstellt einen Zeiger *spielplatz* auf den aktuellen Commit.]{.smaller}
+:::
+
+
+::: columns 
+::: column 
+::: {.fragment}
+Davor  
+![](tikz/spielplatz_start_1.png)
+:::
+
+:::
+::: column 
+::: {.fragment}
+Danach  
+![](tikz/spielplatz_start_2.png)
+:::
+:::
+:::
 
 ---
 
-Vorbereitung
+### Praxis
 
 ::: columns 
 ::: {.column width="50%"}
 ::: {.fragment }
 ```bash 
 cd /tmp
-rm -rf lab
+rm -rf branch_lab
 
 git init branch_lab
 cd branch_lab 
@@ -55,12 +70,55 @@ git log --oneline
 
 ---
 
-Ein Blick in Git
+### Ein Blick in Git
 
 ::: columns
 ::: column 
 ::: {.fragment}
-![](bilder/branch/mainbranch.png)
+```bash
+.git
+├── branches
+├── COMMIT_EDITMSG
+├── config
+├── description
+├── HEAD
+├── hooks
+│   ├── applypatch-msg.sample
+│   ├── commit-msg.sample
+│   ├── fsmonitor-watchman.sample
+│   ├── post-update.sample
+│   ├── pre-applypatch.sample
+│   ├── pre-commit.sample
+│   ├── pre-merge-commit.sample
+│   ├── prepare-commit-msg.sample
+│   ├── pre-push.sample
+│   ├── pre-rebase.sample
+│   ├── pre-receive.sample
+│   ├── push-to-checkout.sample
+│   ├── sendemail-validate.sample
+│   └── update.sample
+├── index
+├── info
+│   └── exclude
+├── logs
+│   ├── HEAD
+│   └── refs
+│       └── heads
+│           └── main
+├── objects
+│   ├── 23
+│   │   └── bc85c5557f20ae6530d2ad0e66dd9d42ad225d
+│   ├── 4d
+│   │   └── 5819dc3711611c3e6a16b1ed362a6952e980fc
+│   ├── b1
+│   │   └── 367440191d3abc86bb46f955d140fec7eef42a
+│   ├── info
+│   └── pack
+└── refs
+    ├── heads
+    │   └── main
+    └── tags
+```
 :::
 :::
 
@@ -70,7 +128,7 @@ Ein Blick in Git
 cat .git/refs/heads/main
 
 # Ausgabe
-70eaef36a87aeb8a1e2eba93577a01329aff34d8
+23bc85c5557f20ae6530d2ad0e66dd9d42ad225d
 ```
 :::
 
@@ -106,13 +164,15 @@ git log --oneline  # HEAD->main
 ::: column 
 ::: {.fragment}
 ```bash
-c921d8f (HEAD -> main) Zeile 2
-0e468ef Datei 1 erstellt
-
-ec1375f (HEAD -> main) Zeile 3
-c921d8f Zeile 2
-0e468ef Datei 1 erstellt
+e049cba (HEAD -> main) Zeile 2
+23bc85c Datei 1 erstellt
+[main 35473c0] Zeile 3
+ 1 file changed, 1 insertion(+)
+35473c0 (HEAD -> main) Zeile 3
+e049cba Zeile 2
+23bc85c Datei 1 erstellt
 ```
+![](tikz/spielplatz_start_1.png)
 :::
 :::
 
@@ -133,7 +193,9 @@ git switch -c spielplatz
 git log --oneline  # HEAD -> spielplatz, main
 ```
 
-Der Zeiger wechselt die Position auf *spielplatz*
+Der Zeiger *spielplatz* erstellen, Zeiger HEAD positionieren
+
+![](tikz/spielplatz_start_2.png)
 
 ---
 
@@ -144,7 +206,9 @@ git switch main
 git log --oneline  # HEAD -> main, spielplatz
 ```
 
-Der Zeiger wechselt die Position zu *main*
+Der Zeiger HEAD wechselt die Position zu *main*
+
+![](tikz/spielplatz_start_3.png)
 
 ::: notes
 Die aktuelle Branchposition ist in gitk schlecht zu sehen
@@ -152,17 +216,17 @@ Die aktuelle Branchposition ist in gitk schlecht zu sehen
 
 ---
 
-Verfolgen in GIT
+## Verfolgen in GIT
 
 
 ::: columns
 ::: column 
 ::: {.fragment}
-
+Branch erstellt
 ```bash
 cat .git/HEAD
 
-#Ausgabe
+# Ausgabe
 ref: refs/heads/spielplatz
 ```
 :::
@@ -174,10 +238,10 @@ Noch ist der Stand gleich:
 
 ```bash
 cat .git/refs/heads/spielplatz
-7c5a5851fcb062c07a9b99195e33b97ee5353ab0
+35473c01000d9323569132c2b915750d5b2cfd29
 
 cat .git/refs/heads/main
-7c5a5851fcb062c07a9b99195e33b97ee5353ab0
+35473c01000d9323569132c2b915750d5b2cfd29
 ```
 :::
 :::
@@ -187,13 +251,67 @@ cat .git/refs/heads/main
 Einen Commit auf Spielplatz drauf setzen und ausgeben lassen
 :::
 
+---
+
+## Verfolgen in GIT
+
+
+::: columns
+::: column 
+::: {.fragment}
+Einen Commit mehr
+```bash
+echo "Test" >> test.txt
+git add . 
+git commit -m "test"
+```
+:::
+:::
+
+::: column 
+::: {.fragment}
+Nun sieht es anders aus:
+
+```bash
+cat .git/refs/heads/spielplatz
+8abcd48a5bec41d5a147cf70b8b9f005422db862
+
+cat .git/refs/heads/main
+35473c01000d9323569132c2b915750d5b2cfd29
+```
+:::
+:::
+:::
+
+
 ## Zusammenführung
 
-Einfachster Fall:  
+**Einfachster Fall**  
 
+::: columns
+::: column
+::: {.fragment}
 Nur Änderungen in Spielplatz ...
 
-![](bilder/branch/spielplatz.tikz.png){style="width: 60%;"}
+::: {style="width: 80%;"}
+![](tikz/spielplatz.png)
+:::
+
+:::
+:::
+
+::: column 
+::: {.fragment}
+
+Nur verschieben des Zeigers
+ 
+::: {style="width: 80%;"}
+![](tikz/spielplatz1.png)
+:::
+
+:::
+:::
+:::
 
 ::: {.notes}
 Hier spult git einfach vor und setzt den Pointer vor.

@@ -1,12 +1,8 @@
 ---
-title: "HandsOn I"
-author: "Wolfgang Höfer"
 format: revealjs
-editor: visual
-jupyter: python3
 ---
 
-## Hands On 2
+## Hands On I {#handson_I}
 
 ::: fragment
 Anlegen des Repos `versuch_1`
@@ -15,6 +11,7 @@ Anlegen des Repos `versuch_1`
 ::: columns
 ::: column
 ::: fragment
+[Variante 1]{.smaller}
 ``` bash
 mkdir versuch_1
 cd versuch_1
@@ -26,6 +23,7 @@ git branch -m main
 
 ::: column
 ::: fragment
+[Variante 2]{.smaller}
 ``` bash
 git init versuch_1
 cd versuch_1
@@ -37,9 +35,9 @@ git branch -m main
 
 ---
 
-Kontrolle  
+Kontrolle
 
-```bash
+``` bash
 git status 
 
 # Ausgabe 
@@ -48,22 +46,26 @@ Noch keine Commits
 nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
 Sie "git add" zum Versionieren)
 ```
-
+::: {.fragment}
 Inhalte erstellen
-```bash
+
+```{.bash code-line-numbers="1-3|5-7"}
 echo "Version 1" > datei1.txt
 git add datei1.txt
 git commit -m "Erste Datei erstellt"
+
 echo "Version 2" >> datei1.txt
 git add datei1.txt
 git commit -m "Erläuterung"
 ```
+:::
+
 
 ---
 
-Check  
+Check
 
-```bash
+``` bash
 git log
 
 # Ausgabe
@@ -81,20 +83,23 @@ Erste Datei erstellt
 
 ---
 
-Kontrolle  
+Kontrolle
 
-```bash
+::: {.fragment}
+``` bash
 # Eingabe
 git status
-# Ausgabe (Zeilenumbrüche geändert)
+
+# Ausgabe 
 Auf Branch main
-nichts zu committen,
-Arbeitsverzeichnis unverändert
+nichts zu committen, Arbeitsverzeichnis unverändert
 ```
+:::
 
-## Weiterer Inhalt
+::: {.fragment}
+Weiterer Inhalt
 
-```bash
+``` bash
 # Eingabe (Lasse ich zukünftig weg)
 echo "Version 3" >> datei1.txt
 echo "Version 1" >> datei2.txt
@@ -102,30 +107,32 @@ echo "Version 1" >> datei2.txt
 # Status anzeigen lassen
 git status
 ```
+:::
 
 ---
 
-```bash
-# Ausgabe
-Auf Branch main
+Ausgabe
+
+``` bash
+Auf Branch main xx
 Änderungen, die nicht zum Commit vorgemerkt sind:
-(benutzen Sie "git add <Datei>...",
-um die Änderungen zum Commit vorzumerken)
-(benutzen Sie "git restore <Datei>...",
-um die Änderungen im Arbeitsverzeichnis zu verwerfen)
-geändert: datei1.txt
-Unversionierte Dateien:
-(benutzen Sie "git add <Datei>...",
-um die Änderungen zum Commit vorzumerken)
-      datei2.txt
-keine Änderungen zum Commit vorgemerkt
-(benutzen Sie "git add" und/oder "git commit -a")
+(benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+(benutzen Sie "git restore <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+
+    geändert: datei1.txt
+
+Unversionierte Dateien: (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+    datei2.txt
+
+keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git commit -a")
 ```
 
 ---
+
 Versionieren
 
-```bash
+``` bash
 # Dateien aufnehmen
 git add .
 
@@ -134,20 +141,17 @@ git status
 
 # Ausgabe
 Auf Branch main
-Zum Commit vorgemerkte Änderungen:
-(benutzen Sie "git restore --staged <Datei>..."
-zum Entfernen aus der Staging-Area)
-geändert:
-neue Datei:
-datei1.txt
-datei2.txt
+Zum Commit vorgemerkte Änderungen: (benutzen Sie "git restore --staged <Datei>..."
+zum Entfernen aus der Staging-Area) 
+    geändert:    datei1.txt
+    neue Datei:  datei2.txt
 ```
 
 ---
 
-Weitere Zeilen 
+Weitere Zeilen
 
-```bash
+``` bash
 echo "Weitere Zeile" >> datei1.txt
 echo "Weitere Zeile" >> datei2.txt
 git status
@@ -157,73 +161,66 @@ git status
 
 Ausgabe
 
-```bash
+::: {.fragment}
+``` bash
 Auf Branch main
-Zum Commit vorgemerkte Änderungen:
-(benutzen Sie "git restore --staged <Datei>..."
+Zum Commit vorgemerkte Änderungen: (benutzen Sie "git restore --staged <Datei>..."
 zum Entfernen aus der Staging-Area)
-geändert:
-neue Datei:
-datei1.txt
-datei2.txt
---------------- Ende Stage ------------
+  geändert:    datei1.txt
+  neue Datei:  datei2.txt
+########## Ende Stage 
 ```
+:::
 
----
-
-Ausgabe - cont
-
-```bash
---------------- Anfang Workdir --------
+::: {.fragment}
+``` bash
+####### Anfang Workdir
 Änderungen, die nicht zum Commit vorgemerkt sind:
-(benutzen Sie "git add <Datei>...", um die Änderungen
-zum Commit vorzumerken)
-(benutzen Sie "git restore <Datei>...",
-um die Änderungen im Arbeitsverzeichnis zu verwerfen)
-geändert:
-geändert:
-datei1.txt
-datei2.txt
+(benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+(benutzen Sie "git restore <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+     geändert:    datei1.txt
+     geändert:    datei2.txt
 ```
+:::
+
 
 <!-- Ende Seite 18 + block 19 -->
 
----
+------------------------------------------------------------------------
 
 Commit des aktuellen Stands
 
-```bash
+::: {.fragment}
+``` bash
 git commit -m "nur Stage"
 ```
 
-------------
-
 Aktueller Status
+:::
 
-```bash
+::: {.fragment}
+``` bash
 git Status
 
 # Ausgabe
 Auf Branch main
-Änderungen, die nicht zum Commit vorgemerkt sind:
-(benutzen Sie "git add <Datei>...", um die Änderungen zum Commit
-vorzumerken)
-(benutzen Sie "git restore <Datei>...", um die Änderungen im
-Arbeitsverzeichnis zu verwerfen)
-geändert:
-datei1.txt
-geändert:
-datei2.txt
-keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add"
-und/oder "git commit -a")
+Änderungen, die nicht zum Commit vorgemerkt sind:(benutzen Sie "git add <Datei>...", um die Änderungen zum Commitvorzumerken)
+(benutzen Sie "git restore <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
+geändert:    datei1.txt
+geändert:    datei2.txt
+
+keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git commit -a")
 ```
+
+:::
+
 <!--Seite 19-->
 
-----
+------------------------------------------------------------------------
 
 Jetzt der Rest ...
 
-```bash
+``` bash
 # Zum Stage hinzufügen
 git add .
 git status
@@ -233,8 +230,6 @@ Auf Branch main
 Zum Commit vorgemerkte Änderungen:
 (benutzen Sie "git restore --staged <Datei>..." zum Entfernen aus
 der Staging-Area)
-geändert:
-datei1.txt
-geändert:
-datei2.txt
+    geändert:    datei1.txt
+    geändert:    datei2.txt
 ```

@@ -1,28 +1,66 @@
 ---
-title: "Lokales Arbeiten"
-author: "Wolfgang Höfer"
 format: revealjs
-editor: visual
-jupyter: python3
 ---
 
-# Lokales Arbeiten
 
-Konfiguration von Git
+# Lokales Arbeiten {#lokale_arbeit}
+
+## Clients
+
+:::{.fragment}
+### Ablauf 
+Zum Lernen: Kommandozeile *git-Bash*
+:::
+
+::: {.fragment}
+Später Client nach Wahl
+
+* Gitkraken
+* GitEye
+* VsCode
+* IntelliJ
+* ...
+:::
+
+---
+
+### git-Bash
+
+::: {.fragment}
+#### Download
+[https://git-scm.com/install/windows](https://git-scm.com/install/windows){preview-link="true"}
+:::
+
+::: {.fragment}
+[Einzig wichtige Stellen]{smaller}
+
+::: {.columns}
+::: {.column}
+[Festlegen des Editors]{.smaller}
+:::
+::: {.column}
+[Noch was]{.smaller}
+:::
+:::
+
+:::
+---
+
+### Konfiguration von Git
 
 ::: fragment
 ``` bash
 # Eingabe
 git config --list
+
 # Ausgabe
 user.email=
 user.name=
 ...
 ```
-:::
 
-::: fragment
 Variablen setzen
+
 :::
 
 ::: fragment
@@ -32,13 +70,14 @@ git config --global user.email="susi@sandmann.de"
 ```
 :::
 
-------------------------------------------------------------------------
+---
 
-Repository anlegen
+### Repository anlegen
 
 ::::::: columns
 :::: column
 ::: fragment
+[Variante 1]{.smaller}
 ``` bash
 mkdir versuch_1
 cd versuch_1
@@ -49,6 +88,7 @@ git init
 
 :::: column
 ::: fragment
+[Variante 2]{.smaller}
 ``` bash
 git init versuch_1
 cd versuch_1
@@ -64,12 +104,20 @@ Umbenennen
 git branch -m main 
 ```
 :::
+:::{.fragment}
+[Global änderbar]{.smaller}
+```bash
+git config --global init.defaultBranch main
+```
+:::
 
 # Linux - Grundlagen
 
 Übungsblatt
 
-# Einfacher Workflow
+# Arbeiten mit Git
+
+## Einfacher Workflow
 
 ::: fragment
 Inhalt erstellen
@@ -101,7 +149,7 @@ git commit -m "Erste Datei erstellt"
 ```
 :::
 
-------------------------------------------------------------------------
+---
 
 Erweitern der Datei
 
@@ -113,8 +161,7 @@ git commit -m "Erläuterung"
 ```
 :::
 
-------------------------------------------------------------------------
-
+::: fragment
 Was ist passiert?
 
 ``` bash
@@ -123,42 +170,71 @@ git log --oneline  # auch ohne --oneline probieren!
 eaa6289 (HEAD -> main) Erläuterung
 afbc9c5 Erste Datei erstellt
 ```
-
-------------------------------------------------------------------------
-
-Varianten von *add*
-
-::: fragment
-git add <dateiname> \# Einzelne Datei
 :::
 
-::: fragment
-git add . \# Alle Dateien im aktuellen Ordner \# und den Unterordnern
+::: {.fragment}
+![](tikz/head_main.png)
 :::
 
+
+---
+
+### Varianten von *add*
+
 ::: fragment
-git add --all \# (oder -A) fügt alle Dateien \# ab der obersten Ebene des Projekts hinzu
+```bash
+git add <dateiname> # Einzelne Datei
+```
 :::
 
-------------------------------------------------------------------------
+<br>
 
-Ausschließen von Dateien
+::: fragment
+```bash
+git add . # Alle Dateien im aktuellen Ordner 
+          # und den Unterordnern
+```
+:::
 
-Inhalt von *.gitignore* (evtl. verborgene Dateien anzeigen lassen)
+<br>
+
+::: fragment
+```bash
+git add --all # (oder -A) fügt alle Dateien 
+              # ab der obersten Ebene des Projekts hinzu
+```
+:::
+
+---
+
+### Ausschließen von Dateien
+
+::: {.fragment}
+[Anlegen von *.gitignore*]{.smaller}
+```bash
+nano .gitignore 
+```
+:::
+
+::: {.fragment}
+[Inhalt von *.gitignore* (evtl. verborgene Dateien im Exlorer anzeigen lassen)]{.smaller}
 
 ``` bash
 *.log
 *.tmp
 ```
+:::
 
-------------------------------------------------------------------------
+::: {.fragment}
+[Git arbeitet dateibasiert und ignoriert leere Ordner.]{.smaller}
+:::
 
-Git arbeitet dateibasiert und ignoriert leere Ordner.
-
-Eine Datei *.gitkeep* erzwingt Ordnerversionierung
+::: {.fragment}
+[Eine Datei *.gitkeep* erzwingt Versionierung "leere" Ordner]{.smaller}
 
 ``` bash
-touch .gitignore 
+mkdir material
+cd material
+touch .gitkeep 
 ```
-
-------------------------------------------------------------------------
+:::

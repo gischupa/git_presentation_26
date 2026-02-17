@@ -1,0 +1,24 @@
+project:
+  type: website
+  render: 
+    - index.qmd
+  output-dir: _site
+
+format:
+  revealjs:
+    title: "GIT - 2026"
+    theme: simple
+    css: styles.css
+    slide-number: false
+    hash: true
+    navigation-mode: linear
+    transition: fade
+    footer: "[⬅ Startseite](#start)"
+    width: 1300
+    margin: 0.05
+    auto-stretch: false
+ 
+website:
+  title: "GIT - 2026"
+  
+    

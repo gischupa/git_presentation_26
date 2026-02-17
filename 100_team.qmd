@@ -1,27 +1,34 @@
 ---
-title: "Arbeit im Team"
-author: "Wolfgang Höfer"
-format: 
-  revealjs:
-    width: 1300
-    margin: 0.05
-    auto-stretch: false
-jupyter: python3
+format: revealjs
 ---
 
-# Allgemein
+# Arbeiten im Team{#team}
 
 ---
 
+**Vorgehen**  
+
+:::{.fragment}
 Im Prinzip wie bei der lokalen Arbeit.
+:::
 
+:::{.fragment}
 Zwischenstände werden geteilt.
+:::
+
+:::{.fragment}
+Wo wird gearbeitet?
+:::
+
+:::{.fragment}
 
 * Einfacher Git-Server (ssh)
 * Kennwortloser http-git-server
 * github / gitlab / gitea
 
 (Selbst hosten)?
+:::
+
 
 # Server-Repository
 
@@ -106,7 +113,7 @@ Danach können andere mit dem Repository arbeiten.
 **Clonen**
 
 ```bash
-git clone <IP>/home/benutzer/projekt.git
+git clone benutzer@<IP>:/home/benutzer/projekt.git
 cd projekt   # ohne ".git"
 ```
 
@@ -123,8 +130,8 @@ cd projekt
 git remote -v 
 
 # Ausgabe
-origin	<IP>:/home/benutzer/projekt.git (fetch)
-origin	<IP>:/home/benutzer/projekt.git (push)
+origin	benutzer@<IP>:/home/benutzer/projekt.git (fetch)
+origin	benutzer@<IP>:/home/benutzer/projekt.git (push)
 ```
 
 ---
@@ -170,15 +177,222 @@ Hier kommt eine kleine Tree-Demo auf Server und Client
 
 ## Blick ins Innere von git
 
----
+Warum das Umbenennen?
+
+```bash
+git init --bare labor.git
+cd labor 
+tree 
+```
+
 
 Einzelschritte beobachten mit Tree auf Server und Client
-
 
 ```bash
 sudo apt install tree -y
 ```
 
+---
+
+Aktueller Stand (Server)
+```bash
+.
+├── branches
+├── config
+├── description
+├── HEAD     <<<< Was steht hier??
+├── hooks
+│   ├── applypatch-msg.sample
+...
+├── info
+│   └── exclude
+├── objects
+│   ├── info
+│   └── pack
+└── refs
+    ├── heads    <<<< MERKEN
+    └── tags
+```
+
+---
+
+Aktueller Stand (Server)
+```bash
+cat HEAD 
+
+# Ausgabe
+ref: refs/heads/master
+```
+
+Aber kein Branch dieses Namens vorhanden!
+
+```bash
+└── refs
+    ├── heads    <<<< kein "master"
+    └── tags
+```
+
+---
+
+Umbenennen  (Server)
+```bash
+git branch -m main 
+```
+
+Inhalt von HEAD 
+```bash
+cat HEAD 
+
+# Ausgabe
+ref: refs/heads/main
+```
+
+Untersuchen mit *tree*
+
+```bash
+└── refs
+    ├── heads   <<< kein "main"
+    └── tags
+```
+
+--- 
+
+Auf der Client-Seite 
+
+```bash
+git clone benutzer@<IP>:/home/benutzer/labor
+```
+
+Untersuchen
+```bash
+tree labor/.git 
+
+# oder 
+cd labor/.git
+tree
+```
+
+--- 
+
+Aktueller Stand
+
+```bash
+cat labor/.git/HEAD 
+
+# Ausgabe
+ref: refs/heads/master   <<<< trotz "main" auf dem Server
+```
+
+```bash
+...
+└── refs
+    ├── heads  <<<<<< Kein "master", kein "main"
+    └── tags
+```
+
+---
+
+Der Status zeigt 
+
+```bash
+cd /home/benutzer/labor 
+git status
+
+# Ausgabe 
+Auf Branch master
+
+Noch keine Commits
+
+nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
+Sie "git add" zum Versionieren)
+```
+
+---
+
+Manuelles Ändern des Eintrags in HEAD wirkt sich direkt aus!
+
+*PROBIEREN*
+
+```bash
+nano .git/HEAD
+...
+strg + o
+strg + x
+```
+
+---
+
+Branch auf *main* umbenennen ändert nur Eintrag in HEAD 
+
+```bash
+git branch -m main 
+```
+
+---
+
+Daten erzeugen
+
+```bash
+echo "Test" > Readme 
+git add .
+git commit -m "test"
+```
+
+---
+
+Mit diesem Commit entsteht der eigentliche Branch:
+
+```bash
+tree 
+
+# Ausgabe
+...
+└── refs
+    ├── heads
+    │   └── main   <<<<<<< NEU
+    └── tags
+
+```
+
+---
+
+DIESER Branch kommt auf den Server:
+
+```bash
+git push -u origin main 
+```
+::: columns 
+::: column
+Tree-Kontrolle auf dem Client:
+```bash
+tree 
+
+#Ausgabe
+...
+└── refs
+    ├── heads
+    │   └── main
+    ├── remotes
+    │   └── origin
+    │       └── main  <<< /origin/main
+    └── tags
+```
+:::
+::: column
+Tree-Kontrolle auf dem Server:
+
+```bash 
+tree 
+
+# Ausgabe
+...
+└── refs
+    ├── heads
+    │   └── main   <<< NEU origin main
+    └── tags
+```
+:::
+:::
 
 ## Fetch / Pull / Push
 
@@ -194,19 +408,12 @@ sudo apt install tree -y
 
 **Beispiel**  
 
-```bash
-git switch main 
-git fetch 
-git diff main origin/main # aktuell <-> neu
-git log HEAD..origin/main # neue Commits 
+Längeres Script im Material *pull_fetch.sh*
+
+
+```{.bash style="max-height:60vh; overflow-y:auto;"}
+{{< include material/team/pull_fetch.sh >}}
 ```
-
----
-
-**Push**  
-
-Schiebt eigene Änderungen ins Repository.
-
 
 ---
 
@@ -240,3 +447,241 @@ done
 exit 0
 
 ```
+
+## Szenario durchspielen
+
+---
+
+Max und Susi arbeiten an einem gemeinsamen Projekt ...
+
+* 2 Terminals öffnen
+* Ein Ordner max  (Terminal 1)
+* Ein Ordner Susi (Terminal 2)
+
+ToDo (Übung)
+
+* Repository auf dem Server erstellen
+* Lokal clonen und herrichten
+* Push auf Server
+
+---
+
+Susi und Max clonen das Repository
+
+```bash
+cd /tmp
+git clone benutzer@$IP:/home/benutzer/entfernt.git susi
+git clone benutzer@$IP:/home/benutzer/entfernt.git max
+```
+
+---
+
+Status-Check von Susi (Max analog)
+```bash
+Auf Branch main    <<< das ist der lokale von Susi
+Ihr Branch ist auf demselben Stand wie 'origin/main'. <<< Server
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+
+---
+
+Susi erstellt einen Commit
+
+```bash
+echo "Hallo Welt" >> datei_susi.txt
+git add datei_susi.txt
+git commit -m "Hallo von Susi"
+```
+
+Kontrolle
+```bash
+git Status
+
+# Ausgabe
+Auf Branch main
+Ihr Branch ist 1 Commit vor 'origin/main'.
+(benutzen Sie "git push", um lokale Commits zu publizieren)
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+---
+
+## Blick in den Tree?
+
+---
+
+Push durch Susi
+
+```bash
+git push  
+```
+*Git* kommentiert das:
+
+```bash
+Objekte aufzählen: 4, fertig.
+Zähle Objekte: 100% (4/4), fertig.
+Delta-Kompression verwendet bis zu 6 Threads.
+Komprimiere Objekte: 100% (2/2), fertig.
+Schreibe Objekte: 100% (3/3), 292 Bytes | 292.00 KiB/s, fertig.
+Gesamt 3 (Delta 0), Wiederverwendet 0 (Delta 0), 
+Pack wiederverwendet 0
+To /tmp/labor2/entfernt
+   d46681d..78db34e  main -> main
+``` 
+
+---
+
+Status:
+
+```bash
+Auf Branch main                                        <<<< SUSI
+Ihr Branch ist auf demselben Stand wie 'origin/main'.  <<<< SERVER 
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+
+---
+
+Max beginnt mit der Arbeit
+
+```bash
+git fetch   # pull würde gleich auch mergen
+```
+
+Als Ausgabe bekommt er
+```bash
+remote: Objekte aufzählen: 4, fertig.
+remote: Zähle Objekte: 100% (4/4), fertig.
+remote: Komprimiere Objekte: 100% (2/2), fertig.
+remote: Gesamt 3 (Delta 0), Wiederverwendet 0 (Delta 0), 
+Pack wiederverwendet 0
+Entpacke Objekte: 100% (3/3), 272 Bytes | 272.00 KiB/s, fertig.
+Von /tmp/labor2/entfernt
+   d46681d..78db34e  main       -> origin/main
+```
+
+---
+
+Aktueller Status
+
+```bash
+Auf Branch main     <<<< MAX lokal 
+Ihr Branch ist 1 Commit hinter 'origin/main', und kann vorgespult 
+werden.
+(benutzen Sie "git pull", um Ihren lokalen Branch zu aktualisieren)
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+```
+
+---
+
+Genauerer Blick
+
+```bash
+git log origin/main
+```
+
+Max sieht den Commit, der noch nicht in seinen Branch integriert ist.
+
+```bash
+commit 78db34e31.....c06aa4dda5c50cdb (origin/main, origin/HEAD)
+Author: susi <susi@t-online.de>
+Date:   Wed Jan 29 12:39:38 2025 +0100
+
+    Begrüßung
+
+commit d46681db23c9e2b3f5379a951c026e3d673fe3e0 (HEAD -> main)
+Author: max <max@t-online.de>
+Date:   Wed Jan 29 12:34:48 2025 +0100
+
+    Init
+```
+
+---
+
+Sieht ok aus ...
+
+```bash
+git merge
+```
+
+Die Hashes zeigen, was passiert:
+
+```bash
+Aktualisiere d46681d..78db34e
+Fast-forward
+ datei.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 datei.txt
+```
+
+---
+
+## Wie sieht ein Feher aus?
+
+---
+
+* Führe das Script *susi_und_max.sh* aus dem Material aus
+
+---
+
+Susi erstellt einen Commit
+
+```bash
+echo "Hallo Welt" >> datei_susi.txt
+git add datei_susi.txt
+git commit -m "Hallo von Susi"
+git push
+```
+
+Max erstellt einen Commit (ohne voheriges pullen)
+```bash
+echo "Hallo Welt" >> datei_max.txt
+git add datei_max.txt
+git commit -m "Hallo von Max"
+```
+
+---
+
+Max versucht einen Push
+
+```bash
+To 192.168.3.154:/home/benutzer/entfernt.git
+ ! [rejected]        main -> main (fetch first)
+error: Fehler beim Versenden einiger Referenzen 
+        nach '192.168.3.154:/home/benutzer/entfernt.git'
+Hinweis: Updates were rejected because the remote contains work 
+Hinweis: that you do not have locally. This is usually caused
+Hinweis: by another repository pushing to the same ref. 
+Hinweis: If you want to integrate the remote changes, use
+Hinweis: 'git pull' before pushing again.
+Hinweis: See the 'Note about fast-forwards' in 'git push --help' 
+Hinweis: for details.
+```
+
+---
+
+Max holt die Änderungen im Repository
+
+```bash
+git fetch 
+```
+
+Er checkt die Unterschiede
+
+```bash
+git log origin/main
+git diff main origin/main 
+git log HEAD..origin/main 
+```
+
+Alles ok
+
+```bash
+git merge 
+```
+
+
+
+
+

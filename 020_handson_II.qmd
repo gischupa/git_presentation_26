@@ -1,12 +1,8 @@
 ---
-title: "HandsOn II"
-author: "Wolfgang Höfer"
 format: revealjs
-editor: visual
-jupyter: python3
 ---
 
-## Hands On 2
+## Hands On 2 {#handson_II}
 
 Erstellen / Nacherstellen zweier „Kurzgeschichten“.
 
@@ -14,13 +10,29 @@ Erstellen / Nacherstellen zweier „Kurzgeschichten“.
 
 Repository I: Meine Vorlage
 
-Repository II: Eure Entwicklung
+Repository II: Euer Buch
+
+::: {.notes}
+Verweis auf Materialordner PDF
+:::
 
 ## Vorsicht
 
 Der Entwicklungszyklus ist sehr exakt ausgearbeitet, um bestimmte Situationen zu erzeugen. Also wirklich jeden Schritt *genau so* machen, wie beschrieben!
 
-## Schritt 1
+``` bash
+git log --oneline
+
+# Ausgabe 
+* b1d90b7 (HEAD -> main, tag: Step_6) Story2 ß->s
+* 728a5a4 (tag: Step_5) Idee2
+* 2a95c37 (tag: Step_4) Idee1
+* 742f590 (tag: Step_3) Story 2 begonnen
+* 0ab5c1e (tag: Step_2) Story_1 komplett
+* 8d9c6ac (tag: Step_1) Story_1 Teil1
+```
+
+## Vorbereitung
 
 ::: fragment
 Erstellen eines Arbeitsordners, z.B.
@@ -39,7 +51,7 @@ git clone xxx.xxx.xxx
 ```
 :::
 
-## Schritt 2
+## Vorbereitung
 
 ::: fragment
 Erstellen des Buch-Repositories
@@ -51,27 +63,37 @@ git branch -m main
 ```
 :::
 
-## Schritt 3
+## Arrangieren der Fenster
 
+::::::: columns
+:::: column
 ::: fragment
-Terminal 1: Vorlagen Repository
+**Terminal 1**\
+Vorlagen Repository
 
 ``` bash
 cd hands_on_ii
 cd vorlage
 ```
 :::
+::::
 
+:::: column
 ::: fragment
-Terminal 2: Buch Repository
+**Terminal 2**\
+Buch Repository
 
 ``` bash
 cd hands_on_ii
 cd buch
 ```
 :::
+::::
+:::::::
 
-## Schritt 4 (Vorlage-Ordner/Fenster)
+## Story 1 - Teil 1
+
+[(Vorlage-Ordner/Fenster)]{.smaller}
 
 ::: fragment
 Den ersten Entwicklungsstand (Projektbeginn) auschecken
@@ -89,10 +111,13 @@ cp story_1.md ../buch
 ```
 :::
 
-## Aktueller Stand (Buch-Ordner/Fenster)
+---
 
-Die erste Hälfte von Story 1 ist *geschrieben*.\
-Kurzen Blick in die Geschichte werfen, um Orientierung zu bekommen:
+### Aktueller Stand 
+[(Buch-Ordner/Fenster)]{.smaller}
+
+Die erste Hälfte von Story 1 ist *geschrieben*.  
+Kurzer Blick in die Geschichte, um Orientierung zu bekommen:
 
 ``` bash
 less story_1.md
@@ -100,7 +125,9 @@ less story_1.md
 # beenden mit 'q'
 ```
 
-### Aufnehmen
+---
+
+### Versionieren
 
 Status prüfen
 
@@ -108,11 +135,31 @@ Status prüfen
 git status
 ```
 
-------------------------------------------------------------------------
-
 Ausgabe:
 
 ``` bash
+Auf Branch main 
+
+Noch keine Commits
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", 
+   um die Änderungen zum Commit vorzumerken)
+    story1.md 
+
+nichts zum Commit vorgemerkt, aber es gibt unversionierte Dateien
+(benutzen Sie "git add" zum Versionieren) 
+```
+
+---
+
+### Versionieren
+
+``` bash
+git add .
+git status 
+
+# Ausgabe 
 Auf Branch main
 Noch keine Commits
 Zum Commit vorgemerkte Änderungen:
@@ -122,9 +169,9 @@ Zum Commit vorgemerkte Änderungen:
       story1.md
 ```
 
-**Noch keine Aufnahme in die Versionsverwaltung!**
+## Story 1 - Teil 2
 
-## Schritt 5 (Vorlage-Ordner/Fenster)
+[(Vorlage-Ordner/Fenster)]{.smaller}
 
 ::: fragment
 Step 2 auschecken
@@ -142,16 +189,32 @@ cp story_1.md ../buch
 ```
 :::
 
-::: fragment
-Im Buch-Ordner die Aufnahme in Git
+---
 
+### Status-Check
+
+::: fragment
 ``` bash
-git add .
-git status
+# Ausgabe
+Auf Branch main
+Noch keine Commits
+Zum Commit vorgemerkte Änderungen:
+  (benutzen Sie "git rm --cached <Datei>..."
+   zum Entfernen aus der Staging-Area)
+   neue Datei:  story1.md
+
+Änderungen, die nicht zum Commit vorgemerkt sind:
+  (benutzen Sie "git add <Datei>...",
+   um die Änderungen zum Commit vorzumerken)
+   (benutzen Sie "git restore <Datei>...", um die Änderungen im
+    Arbeitsverzeichnis zu verwerfen)
+    geändert:  story1.md
 ```
 :::
 
-## Schritt 6 BUCH
+---
+
+### Versionieren
 
 Kurzer Blick in die Geschichte
 
@@ -163,24 +226,31 @@ less story_1.qmd
 ```
 :::
 
-::: fragment
-Versionieren
-
+::: {.fragment}
 ``` bash
-git add story_1.md
-git commit -m "Guter Ansatz"
+git add .
+git commit -m 'Guter Ansatz'
+
+# Ausgabe 
+[main (Root-Commit) 5229c6b] Guter Ansatz
+1 file changed, 4 insertions(+)
+create mode 100644 story1.md
 ```
 :::
 
-## Schritt 7 (Buch)
 
-Anfang von Story 2 geplant - Branch erstellen
+
+## Story 2 - Planung
+[Buch Fenster]{.smaller}
+
+Branch erstellen
 
 ``` bash
 git switch -c entwicklung_story_2
 ```
 
-## Schritt 8: (Vorlage)
+## Story 2 - Teil 1
+[Vorlage Fenster]{.smaller}
 
 ::: fragment
 Step 3 auschecken
@@ -198,13 +268,25 @@ cp story_2.md ../buch/
 ```
 :::
 
-## Schritt 9: (Buch)
+---
+
+### Versionieren
+[Buch Fenster]{.smaller}
 
 Blick ins Buch
 
 ``` bash
 less story_2.md
 ```
+
+::: fragment
+Für gut befunden ...
+
+``` bash
+git add story2.md
+git commit -m "Story 2 begonnen"
+```
+:::
 
 ::: fragment
 Schaffenskrise - which way?
@@ -215,7 +297,8 @@ git switch -c story2_idee_2
 ```
 :::
 
-## Schritt 10
+## Verfolgen von Idee 1
+[Buch Fenster]{.smaller}
 
 Beginnen mit Idee 1
 
@@ -228,7 +311,7 @@ git switch story2_idee_1
 :::
 
 ::: fragment
-Step 4 auschecken und kopieren (VORLAGE)
+Step 4 auschecken und kopieren [(VORLAGE)]{.alert}
 
 ``` bash
 git checkout Step_4
@@ -236,10 +319,13 @@ cp story_2.md ../buch
 ```
 :::
 
-## Schritt 11
+---
+
+### Versionieren
+[Buch Fenster]{.smaller}
 
 ::: fragment
-Ansehen (BUCH)
+Blick ins Buch
 
 ``` bash
 less story2.md
@@ -255,9 +341,8 @@ git commit-m "Inhalt nach Idee1 fortgeführt"
 ```
 :::
 
-## Schritt 12 (Buch/Vorlage)
-
-Entwurf Idee 2
+## Story 2 - Idee 2
+[Buch Fenster]{.smaller}
 
 ::: fragment
 Wechsel in richtigen Branch
@@ -268,18 +353,16 @@ git switch story2_idee_2
 :::
 
 ::: fragment
-Verfeinern von Idee 2
+Ausarbeiten von Idee 2 [(VORLAGE)]{.alert}
 
 ``` bash
-cd  ../vorlage
 git checkout Step_5
 cp story2.md ../buch/
-cd ../buch
 ```
 :::
 
 ::: fragment
-Versionieren
+Versionieren [(BUCH)]{.alert}
 
 ``` bash
 git add story2.md
@@ -287,37 +370,120 @@ git commit -m "Inhalt nach Idee 2 fortgeführt"
 ```
 :::
 
-## Schritt 13
+---
 
-Orientieren / Reparieren
+### Versions-Chaos
+[Buch Fenster]{.smaller}
 
-**Nicht in einem Ideen-Branch ausführen**
+1.  *story2.md* im Branch entwicklung_story_2
+2.  *story2.md* im Branch story_2_idee_1
+3.  *story2.md* im Branch story_2_idee_2
 
-Tauschen „weiße“ durch „weise“ im **Entwicklungszweig**
+---
 
-::: fragment
+## Orientieren / Reparieren
+
+---
+
+### Schreibfehler
+
+Im Branch [entwicklung_story_2]{.branch}:
+
+„[weiße]{.alert} Schildkröte“ wird zu „[weise]{.success} Schildkröte“
+
+[Nicht in einem Ideen-Branch ausführen!]{.alert .smaller}
+
 ``` bash
 git switch entwicklung_story_2
-
-cd ../vorlage
+```
+::: {.columns}
+::: {.column}
+::: fragment
+[Vorlage Fenster]{.smaller}
+```bash
 git checkout Step_6
 cp story2.md ../buch/
-cd ../buch
+```
+:::
+:::
+::: {.column}
+::: fragment
+[Buch Fenster]{.smaller}
+```bash
+git diff # Workdir gegen Stage
+```
+:::
+::: {.fragment}
+```bash
+Freddy war nicht allein. Seine beste Freundin,
+-Shelly, die weiße Schildkröte, lebte ebenfalls am  # alt 
++Shelly, die weise Schildkröte, lebte ebenfalls am  # neu
+```
+:::
+::: {.fragment}
+```bash
 git add story2.md
 git commit -m "typo 'weiße' korrigiert"
 ```
 :::
+:::
+:::
+<!-- end columns -->
 
-## Schritt 14
 
-Mergen von Branch *Idee 1* auf *Entwicklung*
+
+::: fragment
+[Die Änderung erreicht die Ideen-Branches **nicht**!]{.quadrant3}
+:::
+
+## Idee 1 gewinnt
+
+::: {.fragment}
+[Mergen von Branch [Idee 1]{.branch} auf [Entwicklung]{.branch}]{.smaller}
+:::
+
+::: fragment
+Unterschiede Checken
+
+``` bash
+git diff story2_idee_1..HEAD # Idee 1 gegen Entwicklung 
+```
+:::
+
+::: fragment
+Problem Rechtschreibfehler
+
+``` bash
+...
+Freddy war nicht allein. Seine beste Freundin,
+-Shelly, die weiße Schildkröte, lebte ebenfalls am  # alt 
++Shelly, die weise Schildkröte, lebte ebenfalls am  # neu
+...
+```
+:::
+
+---
+
+### Merge
+
+::: fragment
+``` bash
+* b6cd137 (HEAD -> entwicklung_story_2) ß->S
+| * 9fef27a (story2_idee_1) Inhalt nach Idee1 fortgeführt
+|/  
+| * 38fdb9f (story2_idee_2) Inhalt nach Idee 2 fortgeführt
+|/  
+* 2beb0f8 (main) Story 2 begonnen
+* 9fc3bf6 Guter Ansatz
+```
+:::
 
 ::: fragment
 Ein FF-Merge ist nicht möglich.\
 Ein Merge-Commit ist nötig.
 :::
 
-::: note
+::: notes
 ``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 ```
@@ -327,19 +493,21 @@ Vergleich der Commits: weiseweiße
 
 ## Schritt 15
 
+**Weitere Änderung**
+
 ::: fragment
-Zum Testen ändern wir im Branch für Idee 1\
-die Schildkröte in Riesenschildkröte.
+Die Schildkröte soll eine Riesenschildkröte werden!  
+Änderung im Branch *story2_idee_1* vornehmen.
 :::
 
 ::: fragment
 ``` bash
 git switch story2_idee_1 
-sed -i -s/Schildkröte/Riesenschildkröte/g story2.md 
+sed -i s/Schildkröte/Riesenschildkröte/g story2.md 
 ```
 :::
 
-::: note
+::: notes
 ``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 ```
@@ -360,7 +528,21 @@ git commit -m "Riesenschildkröte statt Schildkröte"
 ```
 :::
 
-::: note
+::: fragment
+``` bash
+git diff --color-words entwicklung_story_2..story2_idee_1
+
+# Ausgabe
+Freddy war nicht allein. Seine beste Freundin,
+Shelly, die >>weise Schildkröte<<,**weiße Riesenschildkröte**, 
+lebte ebenfalls am Teich. Shelly war für ihre ruhige und besonnene
+Art bekannt, aber sie konnte auch sehr mutig sein,
+wenn es darauf ankam.
+
+```
+:::
+
+::: notes
 Wieder den Commit - Vergleich
 
 ``` bash
@@ -368,7 +550,7 @@ git diff --color-words entwicklung_story_2..story2_idee_1
 ```
 
 Entwicklung: WEISE schildkröte = Tier falsch\
-Ideen: WEIße riesenschildkröte = weiße falsch
+Ideen: WEIßE riesenschildkröte = weiße falsch
 :::
 
 ## Schritt 17
@@ -378,7 +560,10 @@ Merge von Idee auf Entwicklung
 :::
 
 ::: fragment
-git switch entwicklung_story_2 git merge story2_idee_1
+``` bash
+git switch entwicklung_story_2 
+git merge story2_idee_1
+```
 :::
 
 ------------------------------------------------------------------------
@@ -390,4 +575,19 @@ automatischer Merge von story2.md
 KONFLIKT (Inhalt): Merge-Konflikt in story2.md
 Automatischer Merge fehlgeschlagen; beheben 
 Sie die Konflikte und committen Sie dann das Ergebnis.
+```
+
+------------------------------------------------------------------------
+
+Manuell korrigieren und wieder speichern
+
+``` bash
+Freddy war nicht allein. Seine beste Freundin,
+<<<<<<< HEAD
+Shelly, die weise Schildkröte, lebte ebenfalls am
+=======
+Shelly, die weiße Riesenschildkröte, lebte ebenfalls am
+>>>>>>> story2_idee_1
+Teich. Shelly war für ihre ruhige und besonnene
+Art bekannt, aber sie konnte auch sehr mutig sein,
 ```

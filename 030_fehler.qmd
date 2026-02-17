@@ -1,18 +1,15 @@
 ---
-title: "Fehler und ihre Behebung"
-author: "Wolfgang Höfer"
 format: revealjs
-jupyter: python3
 ---
 
-# Einfache Fehler
+# Fehler beheben {#fehler}
 
-* Datei aus Commit restaurieren
-* Komplett auf Commit zurücksetzen
-* Suchen gehen
+* Einfache Fehler: Dateien restaurieren
+* Größere Fehler: Zurücksetzen auf Stände
 
+## Einfache Fehler
 
-# Dateien restaurieren
+### Dateien restaurieren
 
 --- 
 
@@ -22,11 +19,8 @@ Aus dem Stage
 git restore <datei>
 ```
 
----
-
-Beispiel
-
 ::: {.fragment}
+Beispiel
 ```bash
 git init beispiel_1
 cd beispiel_1
@@ -83,7 +77,7 @@ git restore --source=<HASH> datei.txt
 
 ---
 
-### Problem
+**Problem**
 
 ::: {.fragment}
 Das geht mit jedem Commit, überschreibt 
@@ -100,10 +94,9 @@ git show <HASH>:datei.txt > datei_alt.txt
 
 ## Größere Fehler
 
-Rücksetzen auf frühere Stände -- Varianten
+**Rücksetzen auf frühere Stände -- Varianten**
 
----
-
+::: {.fragment}
 Hard 
 
 ```bash
@@ -111,34 +104,35 @@ git reset --hard <commit-hash>  # alles ab bestimmtem commit
 git reset --hard HEAD           # alles Neue ist weg
 ```
 
-Probleme im Team, wegen Änderung der History, falls der 
-aktuelle Stand bereits veröffentlicht war.
-
----
-
+<div class="smaller">Probleme im Team, wegen Änderung der History, falls der 
+aktuelle Stand bereits veröffentlicht war.</div>
+:::
+::: {.fragment}
 Mixed (Quasi Standard)
 
 ```bash
 git reset --soft <commit-hash>  # nur Workdir bleibt erhalten
 git reset <commit-hash>
 ```
-
---- 
-
+:::
+::: {.fragment} 
 Soft
 
 ```bash
 git reset --soft <commit-hash>  # auch Stage bleibt erhalten
 ```
+:::
 
-# Commits auschecken
+---
 
+**Commits auschecken**
+
+::: {.fragment}
 ```bash
-git checkout xxxx
+git checkout <HASH>
 ```
-
---- 
-
+:::
+::: {.fragment}
 Vorbereitung
 
 ```bash
@@ -155,6 +149,7 @@ do
   git commit -m "commit $i"
 done
 ```
+:::
 
 ---
 
@@ -178,17 +173,20 @@ b07f6f1 commit 5
 
 ---
 
-Auschecken von Commit 4
+**Auschecken von Commit 4**
 
+::: {.fragment}
 ```bash
 git checkout 92f8c26
 ```
+:::
+::: {.fragment}
 
+:::{.smaller}
 Warnung über *detached Head*
+:::
 
----
-
-Log betrachten
+**Log betrachten**
 
 ```bash
 git log --oneline 
@@ -200,8 +198,11 @@ git log --oneline
 8e0a9ab commit 1
 ```
 
+:::{.smaller}
 Beachte: Kein *main* zu sehen!
+:::
 
+:::
 ---
 
 Log im Detail

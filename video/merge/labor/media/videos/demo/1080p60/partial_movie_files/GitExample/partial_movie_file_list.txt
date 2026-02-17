@@ -1,0 +1,9 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/3544663784_2872842549_2248439788.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_3330373412.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_2741543556.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_662958506.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_2179232204.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_1228627089.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_2947807814.mp4'
+file 'file:/home/linuxadmin/nfs/daten/NEU/Fortbildungsentwicklung_25/eigene_baustellen/GIT/praesentationen_dillingen/video/merge/labor/media/videos/demo/1080p60/partial_movie_files/GitExample/260329756_2844360058_1207641498.mp4'

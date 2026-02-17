@@ -1,0 +1,23 @@
+﻿\begin{tikzpicture}
+\draw[white](-1,1) rectangle ++(7,-3);
+\draw [>=latex,<-](0.1,0) -- ++ (1,0);
+
+\draw[fill=blue](0,0) circle(0.1cm);
+\draw[fill=yellow](1,0) circle(0.1cm);
+
+\draw(0,0) node [yshift=-0.25cm] {\tiny afbc9c5};
+\draw(1,0) node [yshift=-0.25cm]  {\tiny eaa6289};
+
+
+\begin{scope}[]
+\draw(1,0.7) node[draw,rectangle] {\small main};
+\draw[>=latex, <-](1,0.1) -- ++ (0, 0.37);
+\end{scope}
+
+\begin{scope}[yshift=-0.22cm]
+\draw(2.5,0.9) node[draw,rectangle] {\small HEAD};
+\draw[>=latex, <-](1.44,0.9) -- ++ (0.5, 0);
+\end{scope}
+
+
+\end{tikzpicture}
