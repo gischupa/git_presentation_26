@@ -9,7 +9,7 @@ format: revealjs
 
 ## Einfache Fehler
 
-### Dateien restaurieren
+[Dateien restaurieren]{.smaller}
 
 --- 
 
@@ -94,7 +94,11 @@ git show <HASH>:datei.txt > datei_alt.txt
 
 ## Größere Fehler
 
-**Rücksetzen auf frühere Stände -- Varianten**
+[Rücksetzen auf frühere Stände -- Varianten]{.smaller}
+
+---
+
+### Reset
 
 ::: {.fragment}
 Hard 
@@ -111,7 +115,7 @@ aktuelle Stand bereits veröffentlicht war.</div>
 Mixed (Quasi Standard)
 
 ```bash
-git reset --soft <commit-hash>  # nur Workdir bleibt erhalten
+git reset --soft <commit-hash>  # Workdir bleibt = Stage
 git reset <commit-hash>
 ```
 :::
@@ -119,13 +123,21 @@ git reset <commit-hash>
 Soft
 
 ```bash
-git reset --soft <commit-hash>  # auch Stage bleibt erhalten
+git reset --mixed <commit-hash>  # Workdir bleibt, Stage vom Commit 
 ```
 :::
 
 ---
 
-**Commits auschecken**
+## Praxis zum Testen
+
+::: {.notes}
+Hinweis auf Scripte im Material
+:::
+
+---
+
+### Commits auschecken
 
 ::: {.fragment}
 ```bash
@@ -133,7 +145,7 @@ git checkout <HASH>
 ```
 :::
 ::: {.fragment}
-Vorbereitung
+[Vorbereitung]{.smaller}
 
 ```bash
 rm -rf lab
@@ -153,7 +165,7 @@ done
 
 ---
 
-Log betrachten
+### Log betrachten
 
 ```bash
 git log --oneline
@@ -173,7 +185,7 @@ b07f6f1 commit 5
 
 ---
 
-**Auschecken von Commit 4**
+### Auschecken von Commit 4
 
 ::: {.fragment}
 ```bash
@@ -182,11 +194,11 @@ git checkout 92f8c26
 :::
 ::: {.fragment}
 
-:::{.smaller}
-Warnung über *detached Head*
+[Warnung über *detached Head*]{.smaller}
 :::
 
-**Log betrachten**
+::: {.fragment}
+### Log betrachten
 
 ```bash
 git log --oneline 
@@ -203,10 +215,12 @@ Beachte: Kein *main* zu sehen!
 :::
 
 :::
+
 ---
 
-Log im Detail
-
+::: columns 
+::: column
+### Log im Detail
 ```bash
 git log --oneline --all --date-order
 # oder --topo-order
@@ -223,11 +237,16 @@ b07f6f1 commit 5
 07c0acd commit 2
 8e0a9ab commit 1
 ```
+:::
 
----
-
-Rücksprung
+::: column
+::: {.fragment}
+### Rücksprung
 
 ```bash
 git checkout main 
 ```
+:::
+
+:::
+:::

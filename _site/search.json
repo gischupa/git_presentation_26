@@ -4,7 +4,7 @@
     "href": "index.html#start",
     "title": "GIT - 2026",
     "section": "Willkommen 👋",
-    "text": "Willkommen 👋\nUnsere Themen:\n\n\n\nLokales Arbeiten\nHandsOn I\nBlick unter die Haube\nMerge – einfach\nHandOn II\nFehler beheben\nMerge – umfassender\n\n\n\nArbeiten im Team\nGit-Server\nGitLab\nCI/CD\nTDD"
+    "text": "Willkommen 👋\nUnsere Themen:\n\n\n\nLokales Arbeiten\nHandsOn I\nBlick unter die Haube\nMerge – einfach\nMehr Merge\nDetails\nHandOn II\nFehler beheben\n\n\n\nArbeiten im Team\nGit-Server\nGitLab\nCI/CD\nTDD"
   },
   {
     "objectID": "index.html#clients",
@@ -61,6 +61,27 @@
     "title": "GIT - 2026",
     "section": "Zusammenführung",
     "text": "Zusammenführung\nEinfachster Fall\n\n\n\nNur Änderungen in Spielplatz …\n\n\n\n\n\n\nNur verschieben des Zeigers\n\n\n\n\n\n\nHier spult git einfach vor und setzt den Pointer vor. Mehr kommt später!"
+  },
+  {
+    "objectID": "index.html#fast-forward",
+    "href": "index.html#fast-forward",
+    "title": "GIT - 2026",
+    "section": "Fast-Forward",
+    "text": "Fast-Forward\nVerschiebt nur den Branchpointer"
+  },
+  {
+    "objectID": "index.html#merge-commit",
+    "href": "index.html#merge-commit",
+    "title": "GIT - 2026",
+    "section": "Merge-Commit",
+    "text": "Merge-Commit\n(3 Way Merge)\nÄnderungen in beiden Branches werden\nin einem Commit zusammengeführt.\n\n\n\n\n\n\nNicht alle Pointer werden versetzt!"
+  },
+  {
+    "objectID": "index.html#merge-base",
+    "href": "index.html#merge-base",
+    "title": "GIT - 2026",
+    "section": "Merge-Base",
+    "text": "Merge-Base\n\nEin Merge vergleicht nicht Branches!\n\n\nEs werden diffs bezüglich der Merge-Base erstellt."
   },
   {
     "objectID": "index.html#handson_II",
@@ -161,25 +182,11 @@
     "text": "Idee 1 gewinnt\n\nMergen von Branch Idee 1 auf Entwicklung\n\n\nUnterschiede Checken\ngit diff story2_idee_1..HEAD # Idee 1 gegen Entwicklung \n\n\nProblem Rechtschreibfehler\n...\nFreddy war nicht allein. Seine beste Freundin,\n-Shelly, die weiße Schildkröte, lebte ebenfalls am  # alt \n+Shelly, die weise Schildkröte, lebte ebenfalls am  # neu\n..."
   },
   {
-    "objectID": "index.html#schritt-15",
-    "href": "index.html#schritt-15",
+    "objectID": "index.html#zusammenführen",
+    "href": "index.html#zusammenführen",
     "title": "GIT - 2026",
-    "section": "Schritt 15",
-    "text": "Schritt 15\nWeitere Änderung\n\nDie Schildkröte soll eine Riesenschildkröte werden!\nÄnderung im Branch story2_idee_1 vornehmen.\n\n\ngit switch story2_idee_1 \nsed -i s/Schildkröte/Riesenschildkröte/g story2.md \n\n\ngit diff --color-words entwicklung_story_2..story2_idee_1\nWas sehen wir? Keine Neuerung, da Änderung nicht im Commit!\nWir brauchen git diff"
-  },
-  {
-    "objectID": "index.html#schritt-16",
-    "href": "index.html#schritt-16",
-    "title": "GIT - 2026",
-    "section": "Schritt 16",
-    "text": "Schritt 16\nCommiten der Version\n\ngit add story2.md\ngit commit -m \"Riesenschildkröte statt Schildkröte\"\n\n\ngit diff --color-words entwicklung_story_2..story2_idee_1\n\n# Ausgabe\nFreddy war nicht allein. Seine beste Freundin,\nShelly, die &gt;&gt;weise Schildkröte&lt;&lt;,**weiße Riesenschildkröte**, \nlebte ebenfalls am Teich. Shelly war für ihre ruhige und besonnene\nArt bekannt, aber sie konnte auch sehr mutig sein,\nwenn es darauf ankam.\n\n\nWieder den Commit - Vergleich\ngit diff --color-words entwicklung_story_2..story2_idee_1\nEntwicklung: WEISE schildkröte = Tier falsch\nIdeen: WEIßE riesenschildkröte = weiße falsch"
-  },
-  {
-    "objectID": "index.html#schritt-17",
-    "href": "index.html#schritt-17",
-    "title": "GIT - 2026",
-    "section": "Schritt 17",
-    "text": "Schritt 17\n\nMerge von Idee auf Entwicklung\n\n\ngit switch entwicklung_story_2 \ngit merge story2_idee_1"
+    "section": "Zusammenführen",
+    "text": "Zusammenführen\n\nMerge von Idee auf Entwicklung\n\n\ngit switch entwicklung_story_2 \ngit merge story2_idee_1\n\n\nMeldung\nautomatischer Merge von story2.md\nKONFLIKT (Inhalt): Merge-Konflikt in story2.md\nAutomatischer Merge fehlgeschlagen; beheben \nSie die Konflikte und committen Sie dann das Ergebnis."
   },
   {
     "objectID": "index.html#einfache-fehler",
@@ -193,21 +200,14 @@
     "href": "index.html#größere-fehler",
     "title": "GIT - 2026",
     "section": "Größere Fehler",
-    "text": "Größere Fehler\nRücksetzen auf frühere Stände – Varianten\n\nHard\ngit reset --hard &lt;commit-hash&gt;  # alles ab bestimmtem commit \ngit reset --hard HEAD           # alles Neue ist weg\n\nProbleme im Team, wegen Änderung der History, falls der aktuelle Stand bereits veröffentlicht war.\n\n\n\nMixed (Quasi Standard)\ngit reset --soft &lt;commit-hash&gt;  # nur Workdir bleibt erhalten\ngit reset &lt;commit-hash&gt;\n\n\nSoft\ngit reset --soft &lt;commit-hash&gt;  # auch Stage bleibt erhalten"
+    "text": "Größere Fehler\nRücksetzen auf frühere Stände – Varianten"
   },
   {
-    "objectID": "index.html#fast-forward",
-    "href": "index.html#fast-forward",
+    "objectID": "index.html#praxis-zum-testen",
+    "href": "index.html#praxis-zum-testen",
     "title": "GIT - 2026",
-    "section": "Fast-Forward",
-    "text": "Fast-Forward\nVerschiebt nur den Branchpointer"
-  },
-  {
-    "objectID": "index.html#merge-commit",
-    "href": "index.html#merge-commit",
-    "title": "GIT - 2026",
-    "section": "Merge-Commit",
-    "text": "Merge-Commit\n(3 Way Merge)\nÄnderungen in beiden Branches werden\nin einem Commit zusammengeführt.\nNicht alle Pointer werden versetzt!"
+    "section": "Praxis zum Testen",
+    "text": "Praxis zum Testen\n\nHinweis auf Scripte im Material"
   },
   {
     "objectID": "index.html#rebase",
@@ -249,14 +249,14 @@
     "href": "index.html#wie-sieht-ein-feher-aus",
     "title": "GIT - 2026",
     "section": "Wie sieht ein Feher aus?",
-    "text": "Wie sieht ein Feher aus?"
+    "text": "Wie sieht ein Feher aus?\nFühre das Script susi_und_max.sh aus dem Material aus"
   },
   {
     "objectID": "index.html#verbindung-zum-server",
     "href": "index.html#verbindung-zum-server",
     "title": "GIT - 2026",
     "section": "Verbindung zum Server",
-    "text": "Verbindung zum Server\nFür die Installation ssh-Verbindung nötig\n\ncmd.exe (nicht empfohlen)\ngit-Bash (empfohlen)\nputty (geht auch gut, weil portabel)"
+    "text": "Verbindung zum Server\nFür die Installation ssh-Verbindung nötig\n\n\ncmd.exe (nicht empfohlen)\ngit-Bash (empfohlen)\nputty (geht auch gut, weil portabel)"
   },
   {
     "objectID": "index.html#was-ist-docker",

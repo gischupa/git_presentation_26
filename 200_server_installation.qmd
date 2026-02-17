@@ -2,27 +2,31 @@
 format:   revealjs
 ---
 
-# Allgemein{#server_installation}
+# Server-installation{#server_installation}
 
 ---
 
-**Varianten**  
+### Varianten
 
+:::{.smaller .inset .incremental}
 * VirtualBox
 * Direkt auf dem Server (nicht empfohlen)
 * Mit Docker virtualisieren (empfohlen)
 * Codeberg.org (selber testen)
 * Provider verwenden (kostet mehr)
 * Originäre Plattformen gitlab / github / ...
+:::
 
 ---
 
-**Vorüberlegungen**  
+### Vorüberlegungen
 
+:::{.smaller .inset .incremental}
 * Zweck des Servers 
 * Nutzer des Servers
 * Rollen der Benutzer
 * Benutzerkonten
+:::
 
 ::: {.notes}
 
@@ -40,15 +44,19 @@ format:   revealjs
 :::{.fragment}
 **Vollwertiger Server**  
 
+:::{.smaller .inset}
 * Simulieren wir hier mit Proxmox  
 * Jeder bekommt einen kompletten Server -- virtuell
+:::
 :::
 
 :::{.fragment}
 **Docker**  
 
+:::{.smaller .inset}
 * Simulieren wir mit Proxmox
 * Jeder bekommt einen kompletten Server -- virtuell
+:::
 :::
 
 # Git-Server -- native
@@ -57,9 +65,11 @@ format:   revealjs
 
 Für die Installation ssh-Verbindung nötig
 
+:::{.smaller .inset .incremental}
 * cmd.exe (nicht empfohlen)
 * git-Bash (empfohlen)
 * putty (geht auch gut, weil portabel)
+:::
 
 ---
 
@@ -90,10 +100,12 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
 ### logout
 
+:::{.smaller .inset}
 * exit
 * logout
 * strg+d
 * schließen (brutale Variante)
+:::
 
 ---
 

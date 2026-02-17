@@ -12,10 +12,14 @@ format:
 {{< include 010_handson_I.qmd >}}
 {{< include 015_git_internals.qmd >}}
 {{< include 017_merge.qmd >}}
-{{< include 020_handson_II.qmd >}}
+{{< include 019_merge_2.qmd >}}
+{{< include 022_deepmerge.qmd >}}
+{{< include 025_handson_II.qmd >}}
 {{< include 030_fehler.qmd >}}
-{{< include 040_merge_2.qmd >}}
+{{< include 050_rebase.qmd >}}
 {{< include 100_team.qmd >}}
 {{< include 200_server_installation.qmd >}}
 {{< include 205_gitlab.qmd >}}
-{{< include 210_cicd.qmd >}}
+{{< include 210_cicd.qmd >}}      
+   
+   

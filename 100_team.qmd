@@ -20,11 +20,12 @@ Zwischenstände werden geteilt.
 Wo wird gearbeitet?
 :::
 
-:::{.fragment}
+:::{.fragment .smaller}
 
 * Einfacher Git-Server (ssh)
 * Kennwortloser http-git-server
-* github / gitlab / gitea
+* github / gitlab / gitea (bezahlt)
+* Gemeinnützig, z.B. codeberg.org
 
 (Selbst hosten)?
 :::
@@ -32,25 +33,35 @@ Wo wird gearbeitet?
 
 # Server-Repository
 
+---
+
+
+
 Ein Server-Repository wird angelegt durch
 
 ```bash
 git init --bare projekt
 ```
 
-Dort werden von Benutzern keine Dateien erstellt!
-
----
+::: {.fragment}
+[Dort werden von Benutzern keine Dateien erstellt!]{.smaller}
 
 **Workflow**  
+:::
 
+::: {.fragment .smaller}
 * Repository clonen (einmalig)
 * Aktualisieren (pull -- regelmäßig)
 * Veröffentlichen (push -- wenn sinnvoll)
+:::
+
 
 ---
 
-**Regeln**  
+### Regeln  
+
+::: {.fragment}
+**Wichtig**
 
 Firmen definieren ihre eigenen Workflows.
 
@@ -58,29 +69,31 @@ Es gibt kein *richtig* sondern nur Regeln.
 
 Branching wird zentrales Thema!
 
+:::
 
----
-
-**Clone**
+::: {.fragment}
+**Neu: Clonen**  
 
 Haben wir bereits gemacht (ohne Zugriffsrechte!)
 
 Jetzt kompletter Setup!
 
+:::
+
 ---
 
-**ssh**  
+### ssh
 
-(secure shell - Verschlüsselter Remote Zugriff)
+[(secure shell - Verschlüsselter Remote Zugriff)]{.smaller}
 
-Mit SSH anmelden auf deinem Server
+[Mit SSH anmelden auf deinem Server]{.smaller}
 
 ```bash
 ssh  benutzer@<IP>
 # Kennwort gitkurs
 ```
 
-Falls abweichender Port:
+[Falls abweichender Port:]{.smaller}
 
 ```bash
 ssh -p 25 benutzer@<IP>
@@ -88,7 +101,7 @@ ssh -p 25 benutzer@<IP>
 
 ---
 
-Anlegen eines git Repos
+### Anlegen eines git Repos
 
 ```bash
 cd /home/benutzer/
@@ -97,34 +110,39 @@ cd projekt.git
 git branch -m main 
 ```
 
----
-
+::: {.fragment}
 **Weitere Reihenfolge**
 
+:::{.smaller}
 * clonen
 * Readme anlegen
 * ersten Commit erstellen
 * pushen
 
 Danach können andere mit dem Repository arbeiten.
+:::
+:::
 
 ---
 
-**Clonen**
+### Clonen
 
 ```bash
 git clone benutzer@<IP>:/home/benutzer/projekt.git
 cd projekt   # ohne ".git"
 ```
 
-Bei abweichendem Port
+::: {.fragment}
+[Bei abweichendem Port]{.smaller}
 
 ```bash
 git clone ssh://<IP>:25/home/benutzer/projekt.git
 cd projekt
 ```
+:::
 
-**Generelle Kontrolle**
+::: {.fragment}
+[Generelle Kontrolle]{.smaller}
 
 ```bash
 git remote -v 
@@ -133,10 +151,11 @@ git remote -v
 origin	benutzer@<IP>:/home/benutzer/projekt.git (fetch)
 origin	benutzer@<IP>:/home/benutzer/projekt.git (push)
 ```
+:::
 
 ---
 
-**Vorsicht**
+### Vorsicht
 
 ```bash
 git status
@@ -150,15 +169,18 @@ nichts zu committen (erstellen/kopieren Sie Dateien und benutzen
 Sie "git add" zum Versionieren)
 ```
 
-**Umbenennen**
+::: {.fragment}
+### Umbenennen
 
 ```bash
 git branch -m main 
 ```
 
+:::
+
 ---
 
-**Readme anlegen**
+### Readme anlegen
 
 ```bash
 echo "Willkommen ..." > README.txt
@@ -172,7 +194,6 @@ git push -u origin main
 Hier kommt eine kleine Tree-Demo auf Server und Client
 
 :::
-
 
 
 ## Blick ins Innere von git
@@ -328,8 +349,7 @@ Branch auf *main* umbenennen ändert nur Eintrag in HEAD
 git branch -m main 
 ```
 
----
-
+::: {.fragment}
 Daten erzeugen
 
 ```bash
@@ -337,9 +357,9 @@ echo "Test" > Readme
 git add .
 git commit -m "test"
 ```
+:::
 
----
-
+::: {.fragment}
 Mit diesem Commit entsteht der eigentliche Branch:
 
 ```bash
@@ -353,6 +373,8 @@ tree
     └── tags
 
 ```
+:::
+
 
 ---
 
@@ -454,15 +476,19 @@ exit 0
 
 Max und Susi arbeiten an einem gemeinsamen Projekt ...
 
+::: {.smaller .inset}
 * 2 Terminals öffnen
 * Ein Ordner max  (Terminal 1)
 * Ein Ordner Susi (Terminal 2)
+:::
 
-ToDo (Übung)
+[ToDo (Übung)]{.smaller}
 
+::: {.smaller .inset}
 * Repository auf dem Server erstellen
 * Lokal clonen und herrichten
 * Push auf Server
+:::
 
 ---
 
@@ -474,8 +500,7 @@ git clone benutzer@$IP:/home/benutzer/entfernt.git susi
 git clone benutzer@$IP:/home/benutzer/entfernt.git max
 ```
 
----
-
+::: {.fragment}
 Status-Check von Susi (Max analog)
 ```bash
 Auf Branch main    <<< das ist der lokale von Susi
@@ -483,6 +508,8 @@ Ihr Branch ist auf demselben Stand wie 'origin/main'. <<< Server
 
 nichts zu committen, Arbeitsverzeichnis unverändert
 ```
+:::
+
 
 ---
 
@@ -618,10 +645,7 @@ Fast-forward
 ---
 
 ## Wie sieht ein Feher aus?
-
----
-
-* Führe das Script *susi_und_max.sh* aus dem Material aus
+[Führe das Script *susi_und_max.sh* aus dem Material aus]{.smaller}
 
 ---
 
@@ -634,12 +658,14 @@ git commit -m "Hallo von Susi"
 git push
 ```
 
+::: {.fragment}
 Max erstellt einen Commit (ohne voheriges pullen)
 ```bash
 echo "Hallo Welt" >> datei_max.txt
 git add datei_max.txt
 git commit -m "Hallo von Max"
 ```
+:::
 
 ---
 
@@ -669,17 +695,21 @@ git fetch
 
 Er checkt die Unterschiede
 
+::: {.fragment}
 ```bash
 git log origin/main
 git diff main origin/main 
 git log HEAD..origin/main 
 ```
+:::
 
+::: {.fragment}
 Alles ok
 
 ```bash
 git merge 
 ```
+:::
 
 
 

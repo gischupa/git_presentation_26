@@ -21,3 +21,18 @@
     top: 70%;
     width: 40%;
 }
+
+.left-middle{
+    position: absolute;
+    left: 0px;
+    top: 40%;
+    width: 50%;
+}
+
+.inset{
+    margin-left: 50px;
+}
+
+.no-inset{
+    margin-left: 0px;
+}

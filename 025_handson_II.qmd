@@ -1,5 +1,6 @@
 ---
 format: revealjs
+scrollable: true
 ---
 
 ## Hands On 2 {#handson_II}
@@ -439,7 +440,7 @@ git commit -m "typo 'weiße' korrigiert"
 ## Idee 1 gewinnt
 
 ::: {.fragment}
-[Mergen von Branch [Idee 1]{.branch} auf [Entwicklung]{.branch}]{.smaller}
+[Mergen von Branch [Idee 1]{.alert} auf [Entwicklung]{.branch}]{.smaller}
 :::
 
 ::: fragment
@@ -453,7 +454,7 @@ git diff story2_idee_1..HEAD # Idee 1 gegen Entwicklung
 ::: fragment
 Problem Rechtschreibfehler
 
-``` bash
+```bash
 ...
 Freddy war nicht allein. Seine beste Freundin,
 -Shelly, die weiße Schildkröte, lebte ebenfalls am  # alt 
@@ -468,19 +469,27 @@ Freddy war nicht allein. Seine beste Freundin,
 
 ::: fragment
 ``` bash
-* b6cd137 (HEAD -> entwicklung_story_2) ß->S
-| * 9fef27a (story2_idee_1) Inhalt nach Idee1 fortgeführt
+* b6cd137 (HEAD -> entwicklung_story_2) ß->S = weise 
+| * 9fef27a (story2_idee_1)  Idee 1=weiße
 |/  
-| * 38fdb9f (story2_idee_2) Inhalt nach Idee 2 fortgeführt
+| * 38fdb9f (story2_idee_2)  Idee 2=weiße 
 |/  
-* 2beb0f8 (main) Story 2 begonnen
+* 2beb0f8 (main) Story 2 begonnen (merge base)
 * 9fc3bf6 Guter Ansatz
 ```
 :::
 
-::: fragment
+::: {.fragment .smaller} 
 Ein FF-Merge ist nicht möglich.\
 Ein Merge-Commit ist nötig.
+:::
+
+::: {.fragment .smaller}
+```bash
+2beb0f8 = weiße = Merge-Base  
+9fef27a - 2beb0f8 = weiße = kein diff  
+b6cd137 - 2beb0f8 = weise = liefert diff - wird angewendet
+```
 :::
 
 ::: notes
@@ -491,11 +500,12 @@ git diff --color-words entwicklung_story_2..story2_idee_1
 Vergleich der Commits: weiseweiße
 :::
 
-## Schritt 15
+---
 
-**Weitere Änderung**
 
-::: fragment
+### Weitere Änderung
+
+::: {.fragment .smaller}
 Die Schildkröte soll eine Riesenschildkröte werden!  
 Änderung im Branch *story2_idee_1* vornehmen.
 :::
@@ -517,18 +527,21 @@ Was sehen wir? Keine Neuerung, da Änderung nicht im Commit!
 Wir brauchen `git diff`
 :::
 
-## Schritt 16
-
-Commiten der Version
-
+::: columns 
+::: column
 ::: fragment
+[Commiten der Version]{.smaller}
+
 ``` bash
 git add story2.md
 git commit -m "Riesenschildkröte statt Schildkröte"
 ```
 :::
+:::
 
+::: column 
 ::: fragment
+[Kontrolle]{.smaller}
 ``` bash
 git diff --color-words entwicklung_story_2..story2_idee_1
 
@@ -540,6 +553,8 @@ Art bekannt, aber sie konnte auch sehr mutig sein,
 wenn es darauf ankam.
 
 ```
+:::
+:::
 :::
 
 ::: notes
@@ -553,7 +568,9 @@ Entwicklung: WEISE schildkröte = Tier falsch\
 Ideen: WEIßE riesenschildkröte = weiße falsch
 :::
 
-## Schritt 17
+---
+
+## Zusammenführen
 
 ::: fragment
 Merge von Idee auf Entwicklung
@@ -566,8 +583,7 @@ git merge story2_idee_1
 ```
 :::
 
-------------------------------------------------------------------------
-
+::: {.fragment}
 Meldung
 
 ``` bash
@@ -576,10 +592,43 @@ KONFLIKT (Inhalt): Merge-Konflikt in story2.md
 Automatischer Merge fehlgeschlagen; beheben 
 Sie die Konflikte und committen Sie dann das Ergebnis.
 ```
+:::
 
-------------------------------------------------------------------------
 
-Manuell korrigieren und wieder speichern
+---
+
+### Warum?
+
+::: {.fragment}
+``` bash
+* 29e6197 (HEAD -> story2_idee_1) Riese... = weiße Riesenschildkröte
+* 9fef27a Idee 1=weiße Schildkröte
+| * b6cd137 (entwicklung_story_2) ß->s = weise Schildkröte
+|/  
+| * 38fdb9f (story2_idee_2) Idee 2=weiße Schildkröte
+|/  
+* 2beb0f8 (main) Story 2 begonnen (merge base) = weiße Schildkröte
+* 9fc3bf6 Guter Ansatz
+```
+:::
+
+::: {.fragment }
+[Diffs - Git arbeitet (vereinfacht) zeilenweise]{.smaller}
+
+```bash
+2beb0f8 Merge Base: weiße Schildkröte 
+29e6197 - 2beb0f8: weiße Riesenschildkröte = diff 
+b6cd137 - 2beb0f8: weise Schildkröte = diff 
+```
+:::
+::: {.fragment .smaller}
+2 Versionen der gleichen Zeile  
+Keine Entscheidung möglich - Konflikt
+:::
+
+---
+
+### Manuell korrigieren und wieder speichern
 
 ``` bash
 Freddy war nicht allein. Seine beste Freundin,

@@ -8,9 +8,11 @@ Unsere Themen:
 - [**HandsOn I**](#handson_I)
 - [**Blick unter die Haube**](#git_internals)
 - [**Merge -- einfach**](#merge)
+- [**Mehr Merge**](#merge_2)
+- [**Details**](#deepmerge)
 - [**HandOn II**](#handson_II)
 - [**Fehler beheben**](#fehler)
-- [**Merge -- umfassender**](#merge_2)
+
 :::
 ::: column
 - [**Arbeiten im Team**](#team)
