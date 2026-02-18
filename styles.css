@@ -1,0 +1,59 @@
+.smaller {
+    font-size: 0.7em;
+}
+
+.alert{
+    color:red;
+}
+
+.success{
+    color: green;
+}
+
+.branch{
+    font-weight: bold;
+    color: green;
+}
+
+.quadrant3{
+    position: absolute;
+    left: 0px;
+    top: 70%;
+    width: 40%;
+}
+
+.left-middle{
+    position: absolute;
+    left: 0px;
+    top: 40%;
+    width: 50%;
+}
+
+.inset{
+    margin-left: 50px;
+}
+
+.no-inset{
+    margin-left: 0px;
+}
+
+
+/* Zeile mit kurzer Definion Fett, dahinter normaler Text */
+
+.definition-row p{
+    display: flex;
+    width: 100%;
+}
+
+.def-20p-bold{
+    flex: 0 0 20%;
+    font-weight: bold;
+}
+
+.def-80p{
+    flex: 1;
+}
+
+.width-20p{
+    width: 20%;
+}
