@@ -35,6 +35,14 @@ Danach
 :::
 :::
 
+:::{.notes}
+Auch andere Befehle in älteren Anleitungen (checkout)  
+Wegen Verwirrung geändert.
+
+Branch = Zeiger -- BILDER
+
+:::
+
 ---
 
 ### Praxis
@@ -66,6 +74,12 @@ git log --oneline
 ```
 :::
 :::
+:::
+
+:::{.notes}
+Nächstes Repo „branch_lab“  
+Eine Datei füllen und committen  
+Log ansehen (HEAD->main) als Pointer
 :::
 
 ---
@@ -140,6 +154,11 @@ Inhalt von *main* ändert sich.
 
 :::
 
+:::{.notes}
+Die Datei HEAD zeigt auf refs/heads/main  
+Die enthält den Hash vom Commit
+:::
+
 ---
 
 Mehr Inhalt
@@ -181,6 +200,8 @@ e049cba Zeile 2
 
 
 ::: notes
+&& oder ; ? Unterschied erklären
+exit 0
 Der Zeiger rutscht von Commit zu Commit
 :::
 
@@ -193,9 +214,14 @@ git switch -c spielplatz
 git log --oneline  # HEAD -> spielplatz, main
 ```
 
-Der Zeiger *spielplatz* erstellen, Zeiger HEAD positionieren
+Den Zeiger *spielplatz* erstellen, Zeiger HEAD positionieren
 
 ![](tikz/spielplatz_start_2.png)
+
+::: notes
+Branch Spielplatz erstellen  - HEAD!
+Die aktuelle Branchposition ist in gitk schlecht zu sehen
+:::
 
 ---
 
@@ -211,7 +237,7 @@ Der Zeiger HEAD wechselt die Position zu *main*
 ![](tikz/spielplatz_start_3.png)
 
 ::: notes
-Die aktuelle Branchposition ist in gitk schlecht zu sehen
+Wieder HEAD-Wechsel beobachtbar
 :::
 
 ---
@@ -251,6 +277,12 @@ cat .git/refs/heads/main
 Einen Commit auf Spielplatz drauf setzen und ausgeben lassen
 :::
 
+::: notes
+Im Tree beobachtbar  
+Aktueller Stand der refs identisch  
+Pointer auf gleichen Commit
+:::
+
 ---
 
 ## Verfolgen in GIT
@@ -281,6 +313,11 @@ cat .git/refs/heads/main
 ```
 :::
 :::
+:::
+
+
+::: notes
+Neuer Commit ändert das
 :::
 
 

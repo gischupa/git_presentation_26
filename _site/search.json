@@ -11,49 +11,49 @@
     "href": "index.html#clients",
     "title": "GIT - 2026",
     "section": "Clients",
-    "text": "Clients\n\nAblauf\nZum Lernen: Kommandozeile git-Bash\n\n\nSpäter Client nach Wahl\n\nGitkraken\nGitEye\nVsCode\nIntelliJ\n…"
+    "text": "Clients\n\nZum Lernen: Kommandozeile git-Bash\n\n\nSpäter: Client nach Wahl\n\n\nGitkraken\nGitEye\nVsCode\nIntelliJ\n…\n\n\n\n\n\ngit wurde ursprünglich für die Bash konzipiert\ngrapfische Clients verbiegen manche Abläufe.\nNicht schlecht, aber nicht universell bei Wechsel des Systems\nZuerst git-Bash. Eine Form von Mini-Linux für Windows\nLSW ansprechen"
   },
   {
     "objectID": "index.html#einfacher-workflow",
     "href": "index.html#einfacher-workflow",
     "title": "GIT - 2026",
     "section": "Einfacher Workflow",
-    "text": "Einfacher Workflow\n\nInhalt erstellen\n\n\necho \"Version 1\" &gt; datei1.txt\n\n\nDatei aufnehmen\n\n\ngit add datei1.txt\n\n\nDatei versionieren\n\n\ngit commit -m \"Erste Datei erstellt\""
+    "text": "Einfacher Workflow\n\nInhalt erstellen\n\n\necho \"Version 1\" &gt; datei1.txt\n\n\nDatei aufnehmen\n\n\ngit add datei1.txt\n\n\nDatei versionieren\n\n\ngit commit -m \"Erste Datei erstellt\"\n\n\n\necho ist ein weiterer Bash-Befehl\n&gt; vs. &gt;&gt;\ntypischer Workflow von git\nhier könnten wir den Workshop beenden :)"
   },
   {
     "objectID": "index.html#handson_I",
     "href": "index.html#handson_I",
     "title": "GIT - 2026",
     "section": "Hands On I",
-    "text": "Hands On I\n\nAnlegen des Repos versuch_1\n\n\n\n\nVariante 1\nmkdir versuch_1\ncd versuch_1\ngit init\ngit branch -m main\n\n\n\nVariante 2\ngit init versuch_1\ncd versuch_1\ngit branch -m main"
+    "text": "Hands On I\n\nAnlegen des Repos versuch_1\n\n\n\n\nVariante 1\nmkdir versuch_1\ncd versuch_1\ngit init\ngit branch -m main\n\n\n\nVariante 2\ngit init versuch_1\ncd versuch_1\ngit branch -m main\n\n\n\n\nWir bleiben im Ordner gitkurs\n\nselbst versuchen lassen\nAlternative Varianten"
   },
   {
     "objectID": "index.html#was-passiert-in-git",
     "href": "index.html#was-passiert-in-git",
     "title": "GIT - 2026",
     "section": "Was passiert in Git?",
-    "text": "Was passiert in Git?\nVorbereitungen\n\n\n\nVersion 1\nmkdir demo\ncd demo\ngit init\ngit branch -m main\n\n\n\nVersion 2\ngit init demo\ncd demo\ngit branch -m main"
+    "text": "Was passiert in Git?\nVorbereitungen\n\n\n\nVersion 1\nmkdir demo\ncd demo\ngit init\ngit branch -m main\n\n\n\nVersion 2\ngit init demo\ncd demo\ngit branch -m main\n\n\n\nNeues Repo anlegen - DEMO Kann man nicht oft genug machen Keine konsistente Namensgebung im Kurs erwarten!"
   },
   {
     "objectID": "index.html#git---ordner",
     "href": "index.html#git---ordner",
     "title": "GIT - 2026",
     "section": "Git - Ordner",
-    "text": "Git - Ordner\nDarstellen der Ordnerstruktur durch tree erfordert Nachinstallation!\n\n\n\nhttp://gnuwin32.sourceforge.net/packages/tree.htm\nZip herunterladen\nOrdner c:\\benutzer\\name\\bin erstellen\nZip dort entpacken"
+    "text": "Git - Ordner\nDarstellen der Ordnerstruktur durch tree erfordert Nachinstallation!\n\n\n\nhttp://gnuwin32.sourceforge.net/packages/tree.htm\nZip herunterladen\nOrdner c:\\benutzer\\name\\bin erstellen\nZip dort entpacken\n\n\n\n\nTREE installieren"
   },
   {
     "objectID": "index.html#verfolgen-in-git",
     "href": "index.html#verfolgen-in-git",
     "title": "GIT - 2026",
     "section": "Verfolgen in GIT",
-    "text": "Verfolgen in GIT\n\n\n\nBranch erstellt\ncat .git/HEAD\n\n# Ausgabe\nref: refs/heads/spielplatz\n\n\n\nNoch ist der Stand gleich:\ncat .git/refs/heads/spielplatz\n35473c01000d9323569132c2b915750d5b2cfd29\n\ncat .git/refs/heads/main\n35473c01000d9323569132c2b915750d5b2cfd29\n\n\n\nEinen Commit auf Spielplatz drauf setzen und ausgeben lassen"
+    "text": "Verfolgen in GIT\n\n\n\nBranch erstellt\ncat .git/HEAD\n\n# Ausgabe\nref: refs/heads/spielplatz\n\n\n\nNoch ist der Stand gleich:\ncat .git/refs/heads/spielplatz\n35473c01000d9323569132c2b915750d5b2cfd29\n\ncat .git/refs/heads/main\n35473c01000d9323569132c2b915750d5b2cfd29\n\n\n\nEinen Commit auf Spielplatz drauf setzen und ausgeben lassen\n\n\nIm Tree beobachtbar\nAktueller Stand der refs identisch\nPointer auf gleichen Commit"
   },
   {
     "objectID": "index.html#verfolgen-in-git-1",
     "href": "index.html#verfolgen-in-git-1",
     "title": "GIT - 2026",
     "section": "Verfolgen in GIT",
-    "text": "Verfolgen in GIT\n\n\n\nEinen Commit mehr\necho \"Test\" &gt;&gt; test.txt\ngit add . \ngit commit -m \"test\"\n\n\n\nNun sieht es anders aus:\ncat .git/refs/heads/spielplatz\n8abcd48a5bec41d5a147cf70b8b9f005422db862\n\ncat .git/refs/heads/main\n35473c01000d9323569132c2b915750d5b2cfd29"
+    "text": "Verfolgen in GIT\n\n\n\nEinen Commit mehr\necho \"Test\" &gt;&gt; test.txt\ngit add . \ngit commit -m \"test\"\n\n\n\nNun sieht es anders aus:\ncat .git/refs/heads/spielplatz\n8abcd48a5bec41d5a147cf70b8b9f005422db862\n\ncat .git/refs/heads/main\n35473c01000d9323569132c2b915750d5b2cfd29\n\n\n\nNeuer Commit ändert das"
   },
   {
     "objectID": "index.html#zusammenführung",

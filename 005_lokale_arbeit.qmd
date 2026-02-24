@@ -7,19 +7,31 @@ format: revealjs
 
 ## Clients
 
-:::{.fragment}
-### Ablauf 
-Zum Lernen: Kommandozeile *git-Bash*
+:::{.fragment .definition-row}
+[Zum Lernen:]{.def-20p-bold} 
+[Kommandozeile *git-Bash*]{.def-80p}
 :::
 
-::: {.fragment}
-Später Client nach Wahl
+::: {.fragment .definition-row}
+[Später:]{.def-20p-bold} 
+[Client nach Wahl]{.def-80p}
 
+:::{.smaller .inset}
 * Gitkraken
 * GitEye
 * VsCode
 * IntelliJ
 * ...
+:::
+:::
+
+::: {.notes}
+
+* git wurde ursprünglich für die Bash konzipiert
+* grapfische Clients *verbiegen* manche Abläufe.  
+  Nicht schlecht, aber nicht universell bei Wechsel des Systems
+* Zuerst git-Bash. Eine Form von Mini-Linux für Windows
+* LSW ansprechen
 :::
 
 ---
@@ -28,22 +40,30 @@ Später Client nach Wahl
 
 ::: {.fragment}
 #### Download
+:::{.inset}
 [https://git-scm.com/install/windows](https://git-scm.com/install/windows){preview-link="true"}
 :::
-
-::: {.fragment}
-[Einzig wichtige Stellen]{smaller}
-
-::: {.columns}
-::: {.column}
-[Festlegen des Editors]{.smaller}
-:::
-::: {.column}
-[Noch was]{.smaller}
-:::
 :::
 
+:::{.notes}
+* Seite anklicken und gemeinsam runterladen
+* Installation durchführen
+* Details sind auf der nächsten Folie
 :::
+
+
+---
+
+#### Einzig wichtige Stellen
+
+<iframe src="material/installation/install_doku.pdf" width="100%" height="600px"></iframe>
+
+
+:::{.notes}
+* Durchklicken
+* Einige wichige Stellen besprechen
+:::
+
 ---
 
 ### Konfiguration von Git
@@ -69,6 +89,13 @@ git config --global user.name="Susi Sandmann"
 git config --global user.email="susi@sandmann.de"
 ```
 :::
+
+
+:::{.notes}
+* Varianten, wie man ins Terminal kommt
+* Noch keine Pfad-Navigation in der Shell!
+:::
+
 
 ---
 
@@ -111,9 +138,15 @@ git config --global init.defaultBranch main
 ```
 :::
 
+:::{.notes}
+* Einen Ordner mit Namen *GITKURS* aus dem Explorer heraus erstellen
+* Über RMT das Terminal öffnen
+* Die Befehle erklären, aber nicht mehr -> Linux kommt gleich
+:::
+
 # Linux - Grundlagen
 
-Übungsblatt
+Das Übungsblatt befindet sich in den Materialien.
 
 # Arbeiten mit Git
 
@@ -149,6 +182,13 @@ git commit -m "Erste Datei erstellt"
 ```
 :::
 
+:::{.notes}
+* echo ist ein weiterer Bash-Befehl
+* `>` vs. `>>`
+* typischer Workflow von git
+* hier könnten wir den Workshop beenden :)
+:::
+
 ---
 
 Erweitern der Datei
@@ -176,6 +216,14 @@ afbc9c5 Erste Datei erstellt
 ![](tikz/head_main.png)
 :::
 
+:::{.notes}
+* Wir erweitern die Datei
+* Wir lernen das Protokoll von git kennen (log)
+* Testen lassen mit / ohne oneline
+* Hash thematisieren
+* Hashes sehen wir noch genauer an
+* HEAD -> main als Pointer
+:::
 
 ---
 
@@ -203,6 +251,10 @@ git add . # Alle Dateien im aktuellen Ordner
 git add --all # (oder -A) fügt alle Dateien 
               # ab der obersten Ebene des Projekts hinzu
 ```
+:::
+
+:::{.notes}
+Varianten von add
 :::
 
 ---
@@ -237,4 +289,11 @@ mkdir material
 cd material
 touch .gitkeep 
 ```
+:::
+
+:::{.notes}
+* Was sind Wildcards?
+* Wie speichert man in nano
+* Datei mit ls suchen => ls -a
+* gitkeep
 :::

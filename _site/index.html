@@ -110,6 +110,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -230,12 +231,12 @@
 </section>
 <section id="clients" class="slide level2">
 <h2>Clients</h2>
-<div class="fragment">
-<h3 id="ablauf">Ablauf</h3>
-<p>Zum Lernen: Kommandozeile <em>git-Bash</em></p>
+<div class="fragment definition-row">
+<p><span class="def-20p-bold">Zum Lernen:</span> <span class="def-80p">Kommandozeile <em>git-Bash</em></span></p>
 </div>
-<div class="fragment">
-<p>Später Client nach Wahl</p>
+<div class="fragment definition-row">
+<p><span class="def-20p-bold">Später:</span> <span class="def-80p">Client nach Wahl</span></p>
+<div class="smaller inset">
 <ul>
 <li>Gitkraken</li>
 <li>GitEye</li>
@@ -244,23 +245,75 @@
 <li>…</li>
 </ul>
 </div>
+</div>
+<aside class="notes">
+<ul>
+<li>git wurde ursprünglich für die Bash konzipiert</li>
+<li>grapfische Clients <em>verbiegen</em> manche Abläufe.<br>
+Nicht schlecht, aber nicht universell bei Wechsel des Systems</li>
+<li>Zuerst git-Bash. Eine Form von Mini-Linux für Windows</li>
+<li>LSW ansprechen</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <h3 id="git-bash">git-Bash</h3>
 <div class="fragment">
 <h4 id="download">Download</h4>
+<div class="inset">
 <p><a href="https://git-scm.com/install/windows" data-preview-link="true">https://git-scm.com/install/windows</a></p>
 </div>
-<div class="fragment">
-<p>[Einzig wichtige Stellen]{smaller}</p>
-<div class="columns">
-<div class="column">
-<p><span class="smaller">Festlegen des Editors</span></p>
-</div><div class="column">
-<p><span class="smaller">Noch was</span></p>
-</div></div>
 </div>
+<aside class="notes">
+<ul>
+<li>Seite anklicken und gemeinsam runterladen</li>
+<li>Installation durchführen</li>
+<li>Details sind auf der nächsten Folie</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+<h4 id="einzig-wichtige-stellen">Einzig wichtige Stellen</h4>
+<iframe src="material/installation/install_doku.pdf" width="100%" height="600px">
+</iframe>
+<aside class="notes">
+<ul>
+<li>Durchklicken</li>
+<li>Einige wichige Stellen besprechen</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -279,6 +332,22 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="fu">git</span> config <span class="at">--global</span> user.name=<span class="st">"Susi Sandmann"</span></span>
 <span id="cb2-2"><a></a><span class="fu">git</span> config <span class="at">--global</span> user.email=<span class="st">"susi@sandmann.de"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<ul>
+<li>Varianten, wie man ins Terminal kommt</li>
+<li>Noch keine Pfad-Navigation in der Shell!</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -306,10 +375,27 @@
 <p><span class="smaller">Global änderbar</span></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="fu">git</span> config <span class="at">--global</span> init.defaultBranch main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<ul>
+<li>Einen Ordner mit Namen <em>GITKURS</em> aus dem Explorer heraus erstellen</li>
+<li>Über RMT das Terminal öffnen</li>
+<li>Die Befehle erklären, aber nicht mehr -&gt; Linux kommt gleich</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section id="linux---grundlagen" class="title-slide slide level1 center">
 <h1>Linux - Grundlagen</h1>
-<p>Übungsblatt</p>
+<p>Das Übungsblatt befindet sich in den Materialien.</p>
 </section>
 
 <section>
@@ -337,6 +423,24 @@
 <div class="fragment">
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Erste Datei erstellt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<ul>
+<li>echo ist ein weiterer Bash-Befehl</li>
+<li><code>&gt;</code> vs.&nbsp;<code>&gt;&gt;</code></li>
+<li>typischer Workflow von git</li>
+<li>hier könnten wir den Workshop beenden :)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -356,6 +460,26 @@
 <div class="fragment">
 <p><img data-src="tikz/head_main.png"></p>
 </div>
+<aside class="notes">
+<ul>
+<li>Wir erweitern die Datei</li>
+<li>Wir lernen das Protokoll von git kennen (log)</li>
+<li>Testen lassen mit / ohne oneline</li>
+<li>Hash thematisieren</li>
+<li>Hashes sehen wir noch genauer an</li>
+<li>HEAD -&gt; main als Pointer</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -373,6 +497,19 @@
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a></a><span class="fu">git</span> add <span class="at">--all</span> <span class="co"># (oder -A) fügt alle Dateien </span></span>
 <span id="cb14-2"><a></a>              <span class="co"># ab der obersten Ebene des Projekts hinzu</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<p>Varianten von add</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -395,6 +532,24 @@
 <span id="cb17-2"><a></a><span class="bu">cd</span> material</span>
 <span id="cb17-3"><a></a><span class="fu">touch</span> .gitkeep </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<ul>
+<li>Was sind Wildcards?</li>
+<li>Wie speichert man in nano</li>
+<li>Datei mit ls suchen =&gt; ls -a</li>
+<li>gitkeep</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="handson_I" class="slide level2">
 <h2>Hands On I</h2>
@@ -418,6 +573,24 @@
 <span id="cb19-3"><a></a><span class="fu">git</span> branch <span class="at">-m</span> main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
+<aside class="notes">
+<ul>
+<li>Wir bleiben im Ordner gitkurs<br>
+</li>
+<li>selbst versuchen lassen</li>
+<li>Alternative Varianten</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -439,6 +612,26 @@
 <span id="cb21-6"><a></a><span class="fu">git</span> add datei1.txt</span>
 <span id="cb21-7"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Erläuterung"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<p>ZIEL: längeres Log sehen</p>
+<ul>
+<li>Status-Befehl</li>
+<li>TIPPS zum weiteren Vorgehen im Text</li>
+<li>datei erstellen, füllen, adden, committen</li>
+<li>Datei erweitern , add, commit<br>
+</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -477,11 +670,26 @@
 <span id="cb24-5"><a></a><span class="co"># Status anzeigen lassen</span></span>
 <span id="cb24-6"><a></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
+<p>Status zuerst ohne Änderung,<br>
+Dann eine neue Datei und Änderung an alter.<br>
+Was bekommen wir?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
 <p>Ausgabe</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a></a><span class="ex">Auf</span> Branch main xx</span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a></a><span class="ex">Auf</span> Branch main </span>
 <span id="cb25-2"><a></a><span class="ex">Änderungen,</span> die nicht zum Commit vorgemerkt sind:</span>
 <span id="cb25-3"><a></a><span class="kw">(</span><span class="ex">benutzen</span> Sie <span class="st">"git add &lt;Datei&gt;..."</span>, um die Änderungen zum Commit vorzumerken<span class="kw">)</span></span>
 <span id="cb25-4"><a></a><span class="kw">(</span><span class="ex">benutzen</span> Sie <span class="st">"git restore &lt;Datei&gt;..."</span>, um die Änderungen im Arbeitsverzeichnis zu verwerfen<span class="kw">)</span></span>
@@ -493,6 +701,19 @@
 <span id="cb25-10"><a></a>    <span class="ex">datei2.txt</span></span>
 <span id="cb25-11"><a></a></span>
 <span id="cb25-12"><a></a><span class="ex">keine</span> Änderungen zum Commit vorgemerkt <span class="er">(</span><span class="ex">benutzen</span> Sie <span class="st">"git add"</span> und/oder <span class="st">"git commit -a"</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Geändert / unversioniert</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -509,6 +730,19 @@
 <span id="cb26-10"><a></a><span class="ex">zum</span> Entfernen aus der Staging-Area<span class="kw">)</span> </span>
 <span id="cb26-11"><a></a>    <span class="ex">geändert:</span>    datei1.txt</span>
 <span id="cb26-12"><a></a>    <span class="ex">neue</span> Datei:  datei2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Wir adden - was passiert? Workdir sauber, stage erweitert</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -536,7 +770,20 @@
 <span id="cb29-5"><a></a>     <span class="ex">geändert:</span>    datei1.txt</span>
 <span id="cb29-6"><a></a>     <span class="ex">geändert:</span>    datei2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- Ende Seite 18 + block 19 -->
+<aside class="notes">
+<p>Bestand wieder ändern. Was bekommen wir?<br>
+Work / stage / commit verschiedene Versionen</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -557,7 +804,20 @@
 <span id="cb31-9"><a></a></span>
 <span id="cb31-10"><a></a><span class="ex">keine</span> Änderungen zum Commit vorgemerkt <span class="er">(</span><span class="ex">benutzen</span> Sie <span class="st">"git add"</span> und/oder <span class="st">"git commit -a"</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!--Seite 19-->
+<aside class="notes">
+<p>Was passiert beim Commit?<br>
+Commit ändert das Workdir nicht, stage ist “leer”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -573,6 +833,19 @@
 <span id="cb32-9"><a></a><span class="ex">der</span> Staging-Area<span class="kw">)</span></span>
 <span id="cb32-10"><a></a>    <span class="ex">geändert:</span>    datei1.txt</span>
 <span id="cb32-11"><a></a>    <span class="ex">geändert:</span>    datei2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Wieder adden -&gt; ? Stage ist voll nächster Commit möglich</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="git_internals" class="title-slide slide level1 center">
@@ -599,6 +872,19 @@
 <span id="cb34-3"><a></a><span class="fu">git</span> branch <span class="at">-m</span> main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
+<aside class="notes">
+<p>Neues Repo anlegen - DEMO Kann man nicht oft genug machen Keine konsistente Namensgebung im Kurs erwarten!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="git---ordner" class="slide level2">
 <h2>Git - Ordner</h2>
@@ -613,6 +899,19 @@
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>TREE installieren</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -646,6 +945,23 @@
 <span id="cb36-26"><a></a><span class="ex">└──</span> refs</span>
 <span id="cb36-27"><a></a>    <span class="ex">├──</span> heads</span>
 <span id="cb36-28"><a></a>    <span class="ex">└──</span> tags</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<ul>
+<li>versteckte Datei</li>
+<li>So sieht leeres Repo aus</li>
+<li>Man sieht HEAD =&gt; genauerer Blick!</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -657,6 +973,22 @@
 <div class="fragment">
 <p>und wieder <code>tree  .git</code></p>
 </div>
+<aside class="notes">
+<ul>
+<li>Datei anlegen und adden</li>
+<li>dann wieder tree</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -692,6 +1024,23 @@
 <span id="cb38-29"><a></a><span class="ex">└──</span> refs</span>
 <span id="cb38-30"><a></a>    <span class="ex">├──</span> heads</span>
 <span id="cb38-31"><a></a>    <span class="ex">└──</span> tags</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<ul>
+<li>Abweichende Hashes!!!!</li>
+<li>CE als Ordner</li>
+<li>Versuchen in die Datei zu sehen bringt nichts!</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -766,8 +1115,9 @@ Status 0</p>
 <span id="cb43-28"><a></a>    <span class="ex">│&nbsp;&nbsp;</span> └── main</span>
 <span id="cb43-29"><a></a>    <span class="ex">└──</span> tags</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>Einige Änderungen</p>
-<p>Objects und logs</p>
+<p>NICHT SOFORT MACHEN wegen VLG mit Folie<br>
+Einige Änderungen - suchen lassen</p>
+<p>Objects und logs und refs</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -798,6 +1148,20 @@ Status 0</p>
 <span id="cb45-5"><a></a><span class="ex">Author:</span> wolfgang <span class="op">&lt;</span>hoeferwolf@t-online.de<span class="op">&gt;</span></span>
 <span id="cb45-6"><a></a><span class="ex">Date:</span> Sun Jan 26 20:20:10 2025 +0100</span>
 <span id="cb45-7"><a></a>      <span class="ex">homepage.html</span> added</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Wo sehen wir den obersten Hash?<br>
+log aufrufen =&gt; commit</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -807,6 +1171,19 @@ Status 0</p>
 <span id="cb46-3"><a></a></span>
 <span id="cb46-4"><a></a><span class="co"># Ausgabe </span></span>
 <span id="cb46-5"><a></a><span class="ex">commit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Alternativer Weg t steht für Typ</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -827,6 +1204,20 @@ Status 0</p>
 <span id="cb48-2"><a></a></span>
 <span id="cb48-3"><a></a><span class="co"># Ausgabe </span></span>
 <span id="cb48-4"><a></a><span class="ex">tree</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Details des Commit anzeigen (p = pretty) t-Ausgabe vom Tree-Hash als Kontrolle<br>
+Aber was ist ein Tree?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -837,6 +1228,20 @@ Status 0</p>
 <span id="cb49-4"><a></a><span class="co"># Ausgabe - normal deutlich länger, da mehr Dateien!</span></span>
 <span id="cb49-5"><a></a><span class="ex">100644</span> blob ce1332fcf1795166c3c5cd0216b5e7dc2dce7998 homepage.html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>blob</em> = Inhalt von <em>homepage.html</em></p>
+<aside class="notes">
+<p>Inhalt vom Tree ist eine Info über einen BLOB (Binary Large Object)<br>
+Also der Link Inhalt &lt;-&gt; Dateiname, getrennte Speicherung!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -845,6 +1250,19 @@ Status 0</p>
 <span id="cb50-2"><a></a></span>
 <span id="cb50-3"><a></a><span class="co"># Ausgabe</span></span>
 <span id="cb50-4"><a></a><span class="ex">Etwas</span> HTML</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Was steht im BLOB?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -896,6 +1314,21 @@ unveränderte Rohdaten verweisen können.</p>
 <img data-src="tikz/spielplatz_start_2.png"></p>
 </div>
 </div></div>
+<aside class="notes">
+<p>Auch andere Befehle in älteren Anleitungen (checkout)<br>
+Wegen Verwirrung geändert.</p>
+<p>Branch = Zeiger – BILDER</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -921,6 +1354,21 @@ unveränderte Rohdaten verweisen können.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode numberSource bash smaller number-lines code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a></a><span class="ex">0e468ef</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">Datei</span> 1 erstellt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
+<aside class="notes">
+<p>Nächstes Repo „branch_lab“<br>
+Eine Datei füllen und committen<br>
+Log ansehen (HEAD-&gt;main) als Pointer</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -983,6 +1431,20 @@ unveränderte Rohdaten verweisen können.</p>
 Inhalt von <em>main</em> ändert sich.</p>
 </div>
 </div></div>
+<aside class="notes">
+<p>Die Datei HEAD zeigt auf refs/heads/main<br>
+Die enthält den Hash vom Commit</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -1013,7 +1475,7 @@ Inhalt von <em>main</em> ändert sich.</p>
 </div>
 </div></div>
 <aside class="notes">
-<p>Der Zeiger rutscht von Commit zu Commit</p>
+<p>&amp;&amp; oder ; ? Unterschied erklären exit 0 Der Zeiger rutscht von Commit zu Commit</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1031,8 +1493,21 @@ Inhalt von <em>main</em> ändert sich.</p>
 <p>Branch <em>spielplatz</em> erstellen</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a></a><span class="fu">git</span> switch <span class="at">-c</span> spielplatz</span>
 <span id="cb58-2"><a></a><span class="fu">git</span> log <span class="at">--oneline</span>  <span class="co"># HEAD -&gt; spielplatz, main</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Der Zeiger <em>spielplatz</em> erstellen, Zeiger HEAD positionieren</p>
+<p>Den Zeiger <em>spielplatz</em> erstellen, Zeiger HEAD positionieren</p>
 <p><img data-src="tikz/spielplatz_start_2.png"></p>
+<aside class="notes">
+<p>Branch Spielplatz erstellen - HEAD! Die aktuelle Branchposition ist in gitk schlecht zu sehen</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -1042,7 +1517,7 @@ Inhalt von <em>main</em> ändert sich.</p>
 <p>Der Zeiger HEAD wechselt die Position zu <em>main</em></p>
 <p><img data-src="tikz/spielplatz_start_3.png"></p>
 <aside class="notes">
-<p>Die aktuelle Branchposition ist in gitk schlecht zu sehen</p>
+<p>Wieder HEAD-Wechsel beobachtbar</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1089,6 +1564,21 @@ Inhalt von <em>main</em> ändert sich.</p>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<aside class="notes">
+<p>Im Tree beobachtbar<br>
+Aktueller Stand der refs identisch<br>
+Pointer auf gleichen Commit</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="verfolgen-in-git-1" class="slide level2">
 <h2>Verfolgen in GIT</h2>
@@ -1110,6 +1600,19 @@ Inhalt von <em>main</em> ändert sich.</p>
 <span id="cb63-5"><a></a><span class="ex">35473c01000d9323569132c2b915750d5b2cfd29</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
+<aside class="notes">
+<p>Neuer Commit ändert das</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="zusammenführung" class="slide level2">
 <h2>Zusammenführung</h2>
@@ -1527,7 +2030,7 @@ Kurzer Blick in die Geschichte, um Orientierung zu bekommen:</p>
 <span id="cb98-2"><a></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Inhalt nach Idee 2 fortgeführt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section class="slide level2">
+<section class="slide level2 scrollable">
 
 <h3 id="versions-chaos">Versions-Chaos</h3>
 <p><span class="smaller">Buch Fenster</span></p>

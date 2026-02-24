@@ -33,6 +33,12 @@ git branch -m main
 :::
 :::
 
+:::{.notes}
+* Wir bleiben im Ordner gitkurs  
+* selbst versuchen lassen
+* Alternative Varianten 
+:::
+
 ---
 
 Kontrolle
@@ -60,6 +66,15 @@ git commit -m "Erläuterung"
 ```
 :::
 
+
+:::{.notes}
+ZIEL: längeres Log sehen
+
+* Status-Befehl
+* TIPPS zum weiteren Vorgehen im Text
+* datei erstellen, füllen, adden, committen
+* Datei erweitern , add, commit   
+:::
 
 ---
 
@@ -109,12 +124,19 @@ git status
 ```
 :::
 
+
+:::{.notes}
+Status zuerst ohne Änderung,   
+Dann eine neue Datei und Änderung an alter.  
+Was bekommen wir?
+:::
+
 ---
 
 Ausgabe
 
 ``` bash
-Auf Branch main xx
+Auf Branch main 
 Änderungen, die nicht zum Commit vorgemerkt sind:
 (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
 (benutzen Sie "git restore <Datei>...", um die Änderungen im Arbeitsverzeichnis zu verwerfen)
@@ -127,6 +149,10 @@ Unversionierte Dateien: (benutzen Sie "git add <Datei>...", um die Änderungen z
 
 keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git commit -a")
 ```
+
+:::{.notes}
+Geändert / unversioniert
+:::
 
 ---
 
@@ -146,6 +172,12 @@ zum Entfernen aus der Staging-Area)
     geändert:    datei1.txt
     neue Datei:  datei2.txt
 ```
+
+:::{.notes}
+Wir adden - was passiert?
+Workdir sauber, stage erweitert
+:::
+
 
 ---
 
@@ -184,9 +216,13 @@ zum Entfernen aus der Staging-Area)
 :::
 
 
-<!-- Ende Seite 18 + block 19 -->
+:::{.notes}
+Bestand wieder ändern. Was bekommen wir?  
+Work / stage / commit verschiedene Versionen
+:::
 
-------------------------------------------------------------------------
+
+---
 
 Commit des aktuellen Stands
 
@@ -214,7 +250,10 @@ keine Änderungen zum Commit vorgemerkt (benutzen Sie "git add" und/oder "git co
 
 :::
 
-<!--Seite 19-->
+:::{.notes}
+Was passiert beim Commit?  
+Commit ändert das Workdir nicht, stage ist "leer"
+:::
 
 ------------------------------------------------------------------------
 
@@ -233,3 +272,9 @@ der Staging-Area)
     geändert:    datei1.txt
     geändert:    datei2.txt
 ```
+
+:::{.notes}
+Wieder adden -> ?
+Stage ist voll
+nächster Commit möglich
+:::

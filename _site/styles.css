@@ -36,3 +36,24 @@
 .no-inset{
     margin-left: 0px;
 }
+
+
+/* Zeile mit kurzer Definion Fett, dahinter normaler Text */
+
+.definition-row p{
+    display: flex;
+    width: 100%;
+}
+
+.def-20p-bold{
+    flex: 0 0 20%;
+    font-weight: bold;
+}
+
+.def-80p{
+    flex: 1;
+}
+
+.width-20p{
+    width: 20%;
+}

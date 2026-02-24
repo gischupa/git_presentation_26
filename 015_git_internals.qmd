@@ -33,6 +33,14 @@ git branch -m main
 ::::
 :::::::
 
+
+:::{.notes}
+Neues Repo anlegen - DEMO
+Kann man nicht oft genug machen 
+Keine konsistente Namensgebung im Kurs erwarten!
+:::
+
+
 ## Git - Ordner
 
 [Darstellen der Ordnerstruktur durch *tree* erfordert Nachinstallation!]{.smaller}
@@ -46,6 +54,11 @@ git branch -m main
 -   Zip dort entpacken
 :::
 :::
+
+:::{.notes}
+TREE installieren
+:::
+
 ---
 
 ### Git Ordner inspizieren
@@ -85,6 +98,12 @@ tree .git
     └── tags
 ```
 
+:::{.notes}
+* versteckte Datei
+* So sieht leeres Repo aus
+* Man sieht HEAD => genauerer Blick!
+:::
+
 ---
 
 ### Inhalt hinzufügen
@@ -100,7 +119,13 @@ git add homepage.html
 und wieder `tree  .git`
 :::
 
-------------------------------------------------------------------------
+
+:::{.notes}
+* Datei anlegen und adden
+* dann wieder tree
+:::
+
+---
 
 Neue Inhalte:
 
@@ -138,6 +163,13 @@ Neue Inhalte:
     └── tags
 ```
 
+
+:::{.notes}
+* Abweichende Hashes!!!!
+* CE als Ordner
+* Versuchen in die Datei zu sehen bringt nichts!
+:::
+
 ---
 
 Nicht direkt lesbar
@@ -166,7 +198,7 @@ Dateityp 100664\
 Status 0
 :::
 
-------------------------------------------------------------------------
+---
 
 Direktanzeige des Hashs der Datei:
 
@@ -179,7 +211,7 @@ ce1332fcf1795166c3c5cd0216b5e7dc2dce7998
 ```
 :::
 
-------------------------------------------------------------------------
+---
 
 Commiten der Hompage
 
@@ -222,9 +254,10 @@ git commit -m "homepage.html added"
 ```
 
 ::: notes
-Einige Änderungen
+NICHT SOFORT MACHEN wegen VLG mit Folie  
+Einige Änderungen - suchen lassen  
 
-Objects und logs
+Objects und logs und refs
 :::
 
 ---
@@ -253,6 +286,11 @@ Date: Sun Jan 26 20:20:10 2025 +0100
       homepage.html added
 ```
 
+:::{.notes}
+Wo sehen wir den obersten Hash?  
+log aufrufen => commit
+:::
+
 ---
 
 Überprüfen des Verdachts ... nur Bestätigung
@@ -264,6 +302,11 @@ git cat-file -t 71df20d4a14e84f6f1dc12737731afba85415171
 # Ausgabe 
 commit
 ```
+
+:::{.notes}
+Alternativer Weg
+t steht für Typ
+:::
 
 ---
 
@@ -292,6 +335,12 @@ git cat-file -t 94eed25c4ef6cfa1384df66f28308c09dc9bf28d
 tree
 ```
 
+:::{.notes}
+Details des Commit anzeigen (p = pretty)
+t-Ausgabe vom Tree-Hash als Kontrolle  
+Aber was ist ein Tree?
+:::
+
 ---
 
 Inhalt des Trees
@@ -306,6 +355,11 @@ git cat-file -p 94eed25c4ef6cfa1384df66f28308c09dc9bf28d
 
 *blob* = Inhalt von *homepage.html*
 
+:::{.notes}
+Inhalt vom Tree ist eine Info über einen BLOB (Binary Large Object)  
+Also der Link Inhalt <-> Dateiname, getrennte Speicherung!
+:::
+
 ---
 
 Der Blob enthält:
@@ -316,6 +370,10 @@ git cat-file -p ce1332fcf1795166c3c5cd0216b5e7dc2dce7998
 # Ausgabe
 Etwas HTML
 ```
+
+:::{.notes}
+Was steht im BLOB?
+:::
 
 ---
 
