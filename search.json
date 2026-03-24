@@ -14,6 +14,13 @@
     "text": "Clients\n\nZum Lernen: Kommandozeile git-Bash\n\n\nSpäter: Client nach Wahl\n\n\nGitkraken\nGitEye\nVsCode\nIntelliJ\n…\n\n\n\n\n\ngit wurde ursprünglich für die Bash konzipiert\ngrapfische Clients verbiegen manche Abläufe.\nNicht schlecht, aber nicht universell bei Wechsel des Systems\nZuerst git-Bash. Eine Form von Mini-Linux für Windows\nLSW ansprechen"
   },
   {
+    "objectID": "index.html#die-letzten-befehle-merken",
+    "href": "index.html#die-letzten-befehle-merken",
+    "title": "GIT - 2026",
+    "section": "DIE LETZTEN BEFEHLE MERKEN !!!!",
+    "text": "DIE LETZTEN BEFEHLE MERKEN !!!!"
+  },
+  {
     "objectID": "index.html#einfacher-workflow",
     "href": "index.html#einfacher-workflow",
     "title": "GIT - 2026",
@@ -25,14 +32,14 @@
     "href": "index.html#handson_I",
     "title": "GIT - 2026",
     "section": "Hands On I",
-    "text": "Hands On I\n\nAnlegen des Repos versuch_1\n\n\n\n\nVariante 1\nmkdir versuch_1\ncd versuch_1\ngit init\ngit branch -m main\n\n\n\nVariante 2\ngit init versuch_1\ncd versuch_1\ngit branch -m main\n\n\n\n\nWir bleiben im Ordner gitkurs\n\nselbst versuchen lassen\nAlternative Varianten"
+    "text": "Hands On I\n\nLöschen des Repositories versuch_1\n\n\nrm -rf versuch_1 \n\n\nAnlegen des Repos versuch_1\n\n\n\n\nVariante 1\nmkdir versuch_1\ncd versuch_1\ngit init\ngit branch -m main\n\n\n\nVariante 2\ngit init versuch_1\ncd versuch_1\ngit branch -m main\n\n\n\n\nWir bleiben im Ordner gitkurs\n\nselbst versuchen lassen\nAlternative Varianten"
   },
   {
     "objectID": "index.html#was-passiert-in-git",
     "href": "index.html#was-passiert-in-git",
     "title": "GIT - 2026",
     "section": "Was passiert in Git?",
-    "text": "Was passiert in Git?\nVorbereitungen\n\n\n\nVersion 1\nmkdir demo\ncd demo\ngit init\ngit branch -m main\n\n\n\nVersion 2\ngit init demo\ncd demo\ngit branch -m main\n\n\n\nNeues Repo anlegen - DEMO Kann man nicht oft genug machen Keine konsistente Namensgebung im Kurs erwarten!"
+    "text": "Was passiert in Git?\nVorbereitungen\n\n\n\nVersion 1\nmkdir demo\ncd demo\ngit init\ngit branch -m main\n\n\n\nVersion 2\ngit init demo\ncd demo\ngit branch -m main\n\n\n\nNeues Repo anlegen - DEMO\nKann man nicht oft genug machen\nKeine konsistente Namensgebung im Kurs erwarten!"
   },
   {
     "objectID": "index.html#git---ordner",
