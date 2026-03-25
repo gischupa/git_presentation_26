@@ -340,7 +340,7 @@ Nur Änderungen in Spielplatz ...
 ::: column 
 ::: {.fragment}
 
-Nur verschieben des Zeigers
+Nur Verschieben des Zeigers
  
 ::: {style="width: 80%;"}
 ![](tikz/spielplatz1.png)

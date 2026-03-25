@@ -85,8 +85,8 @@ Variablen setzen
 
 ::: fragment
 ``` bash
-git config --global user.name="Susi Sandmann"
-git config --global user.email="susi@sandmann.de"
+git config --global user.name "Susi Sandmann"
+git config --global user.email "susi@sandmann.de"
 ```
 :::
 

@@ -236,7 +236,7 @@ Aktueller Status
 
 ::: {.fragment}
 ``` bash
-git Status
+git status
 
 # Ausgabe
 Auf Branch main

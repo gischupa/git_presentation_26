@@ -60,7 +60,7 @@
     "href": "index.html#zusammenführung",
     "title": "GIT - 2026",
     "section": "Zusammenführung",
-    "text": "Zusammenführung\nEinfachster Fall\n\n\n\nNur Änderungen in Spielplatz …\n\n\n\n\n\n\nNur verschieben des Zeigers\n\n\n\n\n\n\nHier spult git einfach vor und setzt den Pointer vor. Mehr kommt später!"
+    "text": "Zusammenführung\nEinfachster Fall\n\n\n\nNur Änderungen in Spielplatz …\n\n\n\n\n\n\nNur Verschieben des Zeigers\n\n\n\n\n\n\nHier spult git einfach vor und setzt den Pointer vor. Mehr kommt später!"
   },
   {
     "objectID": "index.html#fast-forward",
