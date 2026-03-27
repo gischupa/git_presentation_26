@@ -285,5 +285,19 @@
     "title": "GIT - 2026",
     "section": "Repository erstellen",
     "text": "Repository erstellen\n\nReadme erstellen lassen\n\n\nNeue Datei erstellen: .gitlab-ci.yml\n\n\nstages:\n  - build \n\nausgabe_1:\n  stage: build \n  script: echo \"Ich bin die erste Ausgabe\""
+  },
+  {
+    "objectID": "index.html#gitlab-installieren",
+    "href": "index.html#gitlab-installieren",
+    "title": "GIT - 2026",
+    "section": "GitLab installieren",
+    "text": "GitLab installieren\n\n\nIP vom Proxmox ermitteln\nDer VM 12GB geben\nIP der VM ermitteln\nSSH - Port vom Ubuntu auf 23 ändern\nVerbindung testen"
+  },
+  {
+    "objectID": "index.html#runner",
+    "href": "index.html#runner",
+    "title": "GIT - 2026",
+    "section": "Runner",
+    "text": "Runner\n\n\nIn GitLab einen Runner anlegen\ncd runner\ndocker compose up\nFehlermeldungen bewundern\nstrg+c\ndocker compose up -d"
   }
 ]

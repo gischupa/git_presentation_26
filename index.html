@@ -993,7 +993,7 @@ Work / stage / commit verschiedene Versionen</p>
 <p>Aktueller Status</p>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a></a><span class="fu">git</span> Status</span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a></a><span class="fu">git</span> status</span>
 <span id="cb31-2"><a></a></span>
 <span id="cb31-3"><a></a><span class="co"># Ausgabe</span></span>
 <span id="cb31-4"><a></a><span class="ex">Auf</span> Branch main</span>
@@ -4056,6 +4056,120 @@ Schnelle Variante Docker
 <section class="slide level2">
 
 <p><strong>Lokales Dockerimage für Quarto</strong></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="roadmap-freitag" class="title-slide slide level1 center">
+<h1>Roadmap Freitag</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li>GitLab installieren</li>
+<li>Spielen</li>
+<li>CICD erstellen</li>
+</ul>
+</section>
+<section id="gitlab-installieren" class="slide level2">
+<h2>GitLab installieren</h2>
+<div>
+<ul>
+<li class="fragment">IP vom Proxmox ermitteln</li>
+<li class="fragment">Der VM 12GB geben</li>
+<li class="fragment">IP der VM ermitteln</li>
+<li class="fragment">SSH - Port vom Ubuntu auf 23 ändern</li>
+<li class="fragment">Verbindung testen</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment"><code>docker network create gitlab_net</code></li>
+<li class="fragment"><code>cd /home/benutzer/image/images_gitlab</code></li>
+<li class="fragment"><code>ls</code></li>
+<li class="fragment"><code>docker load -i &lt;IMAGENAME&gt;</code> # alle 3</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment"><code>cd /dillingen_material_git/material/docker/</code></li>
+<li class="fragment"><code>cd gitLab</code></li>
+<li class="fragment"><code>nano docker-compose.yml</code></li>
+<li class="fragment">Eintragen der IP vom Ubuntu</li>
+<li class="fragment"><code>docker compose up</code></li>
+<li class="fragment">WARTEN …</li>
+<li class="fragment">Im Broser: <code>http://&lt;IP-UBUNTU&gt;:443</code> (refreshen …)</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment">Detach vom <em>Log</em></li>
+<li class="fragment"><code>sudo cat config/initial_root_password</code></li>
+<li class="fragment">Anmelden als <em>root</em></li>
+</ul>
+</div>
+</section>
+<section id="runner" class="slide level2">
+<h2>Runner</h2>
+<div>
+<ul>
+<li class="fragment">In GitLab einen Runner anlegen</li>
+<li class="fragment"><code>cd runner</code></li>
+<li class="fragment"><code>docker compose up</code></li>
+<li class="fragment">Fehlermeldungen bewundern</li>
+<li class="fragment">strg+c</li>
+<li class="fragment"><code>docker compose up -d</code></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment">Container des Runners betreten</li>
+<li class="fragment"><code>docker execute -it gitlab-runner bash</code></li>
+<li class="fragment">Befehl aus dem Gitlab einkopieren + Enter</li>
+<li class="fragment">strg+p strg+q</li>
+<li class="fragment"><code>docker compose down</code></li>
+<li class="fragment">und wieder <code>docker compose up -d</code></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="cicd-1" class="title-slide slide level1 center">
+<h1>CI/CD</h1>
+
+</section>
+<section class="slide level2">
+
+<div>
+<ul>
+<li class="fragment">Repository auf gitlab erstellen</li>
+<li class="fragment">Aus dem Buchordner von gitea den Inhalt übernehmen</li>
+<li class="fragment">Kopieren der .gitlab-ci.yml ins Repository</li>
+<li class="fragment">add, commit, push</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<p>In Gitlab den Job suchen,<br>
+Ausgabe ansehen<br>
+Artifact Downloaden</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
